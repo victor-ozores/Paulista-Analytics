@@ -1,0 +1,50 @@
+# Dados brutos coletados (local, não versionar)
+data/raw/
+data/processed/
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Power BI (arquivos locais do projeto PBIP)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Editor, Office e configuração local
+.claude/settings.local.json
+.idea/
+.vscode/
+~$*
+
+.pytest_cache/
+
+# Excel de conferência gerado: base não redistribuída
+excel/*.xlsx
+
+# Protótipo do versus: páginas geradas embutem os dados processados (só o fragmento é versionado)
+prototype/versus/index.html
+prototype/versus/sandbox.html
+
+# Protótipo do dashboard (barra de navegação) e da tela Público e renda: páginas geradas (só os fragmentos e o shell são versionados)
+prototype/app/index.html
+prototype/app/sandbox.html
+prototype/financeiro/index.html
+prototype/conferencia/index.html
+prototype/classificacao/index.html
+prototype/visao_geral/index.html
+prototype/gols/index.html
+prototype/disciplina/index.html
+prototype/jogos/index.html
+
+# Power BI: o .pbix embute os dados importados (a base não é redistribuída); o projeto é versionado como PBIP (texto)
+*.pbix
+*.pbit
+
+# Sistema operacional e ambientes locais
+Thumbs.db
+.DS_Store
+desktop.ini
+.venv/
+venv/
+node_modules/

@@ -1,0 +1,444 @@
+<style>
+#vgx{--disp:"Arial Black","Segoe UI Black","Segoe UI",Arial,sans-serif;--gold:#ffd166;--mut:#9aa6b8;--txt:#e6ecf5;--ver:#2fd47a;--verc:#79e7a6;--verm:#ff5470;--ciano:#4cc9f0;--lar:#ff9a3c;--rox:#b388ff;position:relative;width:100%;height:100%;min-height:320px;overflow:hidden;background:#05070a;color:#fff;font-family:"Segoe UI",Arial,sans-serif;-webkit-user-select:none;user-select:none;outline:0}
+#vgx *{box-sizing:border-box}
+#vgx button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0;text-align:inherit}
+#vgx button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#vgx img{display:block}
+#vgx .palco{position:absolute;left:0;top:0;width:1920px;height:1024px;transform-origin:0 0;overflow:hidden;background:radial-gradient(ellipse 80% 70% at 50% 22%,#1d1912 0,#0a0907 75%)}
+#vgx .fundo{position:absolute;left:0;top:0;width:1920px;height:1024px;background:repeating-linear-gradient(115deg,rgba(255,255,255,.028) 0 2px,transparent 2px 34px)}
+#vgx .faixa{position:absolute;left:0;top:0;width:1010px;height:88px;background:linear-gradient(100deg,#4a2208 0,#a14a12 58%,#e07a24 100%);clip-path:polygon(0 0,100% 0,calc(100% - 64px) 100%,0 100%)}
+#vgx .faixa::after{content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:radial-gradient(circle,rgba(0,0,0,.26) 1.6px,transparent 2.2px) 0 0/17px 17px;-webkit-mask-image:linear-gradient(90deg,#000,transparent 85%);mask-image:linear-gradient(90deg,#000,transparent 85%)}
+#vgx .tit{position:absolute;left:46px;top:6px;font:italic 900 46px/1.05 var(--disp);text-transform:uppercase;text-shadow:0 5px 0 rgba(0,0,0,.35);white-space:nowrap}
+#vgx .tit b{color:var(--gold)}
+#vgx .sub{position:absolute;left:46px;top:58px;width:900px;font-size:18px;font-weight:700;color:#ffe9d2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:help}
+#vgx .ctl{position:absolute;right:46px;top:22px;display:flex;align-items:center;gap:14px;z-index:6}
+#vgx .chp{display:inline-block;transform:skewX(-14deg);padding:7px 20px;font-size:16px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2)}
+#vgx .chp span{display:block;transform:skewX(14deg)}
+#vgx .chp:hover{background:rgba(255,255,255,.14)}
+#vgx .chp.on{background:var(--gold);color:#12151c;border-color:var(--gold)}
+#vgx .chp.lim{background:rgba(255,84,112,.18);border-color:rgba(255,84,112,.6)}
+#vgx .chp.lim.off{display:none}
+#vgx .aju{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.55);border:2px solid rgba(255,255,255,.75);font:900 24px var(--disp);color:#fff}
+#vgx .aju:hover{background:rgba(0,0,0,.8)}
+#vgx .kpis{position:absolute;left:700px;top:100px;width:1175px;height:244px}
+#vgx .kpi{position:absolute;width:281px;height:116px;padding:11px 18px 0;background:linear-gradient(180deg,rgba(24,21,15,.96),rgba(10,9,7,.98));border:1px solid rgba(255,255,255,.14);border-top:4px solid var(--kc);clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,0 100%);cursor:help}
+#vgx .kpi h4{margin:0;font-size:16px;letter-spacing:.1em;color:var(--mut);font-weight:800;text-transform:uppercase;white-space:nowrap}
+#vgx .kpi .v{font:italic 900 40px/1.12 var(--disp);color:#fff;margin-top:2px;white-space:nowrap;text-shadow:0 0 18px var(--kc)}
+#vgx .kpi .v em{font:italic 900 22px var(--disp);color:var(--kc);text-shadow:none}
+#vgx .kpi small{display:block;font-size:16px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#vgx .pn{position:absolute;padding:14px 22px 0;background:linear-gradient(180deg,rgba(21,18,13,.94),rgba(9,8,6,.98));border:1px solid rgba(255,255,255,.14);border-top:4px solid #fff;clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%)}
+#vgx .pn h3{margin:0 0 8px;height:30px;display:flex;justify-content:space-between;align-items:center;font:italic 900 24px/1 var(--disp);text-transform:uppercase;white-space:nowrap}
+#vgx .pn h3 span{cursor:help}
+#vgx .pn h3 small{font:700 16px "Segoe UI",Arial,sans-serif;color:var(--mut);text-transform:none;letter-spacing:0;cursor:help}
+#vgx .p0{left:46px;top:100px;width:640px;height:244px}
+#vgx .p1{left:46px;top:360px;width:760px;height:330px}
+#vgx .p2{left:46px;top:704px;width:760px;height:276px}
+#vgx .p3{left:820px;top:360px;width:510px;height:620px}
+#vgx .p4{left:1344px;top:360px;width:530px;height:470px}
+#vgx .p5{left:1344px;top:844px;width:530px;height:136px}
+#vgx .cmp{display:flex;gap:22px;align-items:center;margin-top:2px}
+#vgx .cmp .esc{width:88px;height:88px;flex:none;display:grid;place-items:center}
+#vgx .cmp .esc img{width:88px;height:88px;object-fit:contain}
+#vgx .cmp .esc .sg{display:grid;place-items:center;width:80px;height:80px;border-radius:50%;font:900 40px var(--disp);color:#10141b}
+#vgx .cmp .nm{font:italic 900 42px/1.05 var(--disp);text-transform:uppercase;white-space:nowrap;text-shadow:0 0 22px rgba(255,209,102,.5)}
+#vgx .cmp .vc{margin-top:6px;font-size:18px;font-weight:700;color:var(--txt);white-space:nowrap}
+#vgx .cmp .vc b{color:var(--gold)}
+#vgx .cam{margin-top:8px;display:grid;gap:2px}
+#vgx .cam div{display:flex;gap:10px;font-size:17px;font-weight:700;color:#c3ccda;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:25px;align-items:center}
+#vgx .cam div span{width:150px;flex:none;color:var(--mut);font-weight:800}
+#vgx .cam div b{color:#fff;font-weight:800;overflow:hidden;text-overflow:ellipsis}
+#vgx .cam .tt{cursor:help}
+#vgx .bars{position:relative;width:716px;height:252px}
+#vgx .bars svg{display:block;overflow:visible}
+#vgx .bars text{font-family:"Segoe UI",Arial,sans-serif;font-size:16px;font-weight:700;fill:var(--mut);pointer-events:none}
+#vgx .bars text.vl{fill:#fff;font-weight:800}
+#vgx .bars .bq{fill:var(--lar);transition:opacity .15s}
+#vgx .bars .bm{fill:var(--ciano);transition:opacity .15s}
+#vgx .bars .slot{fill:transparent;cursor:help}
+#vgx .bars .slot:hover+.bq,#vgx .bars .slot:hover+.bm{opacity:.75}
+#vgx .bars .med{stroke:rgba(255,255,255,.55);stroke-width:2;stroke-dasharray:6 5;pointer-events:none}
+#vgx .bars .base{stroke:rgba(255,255,255,.25);stroke-width:2;pointer-events:none}
+#vgx .md{height:52px;display:flex;margin-top:2px;cursor:help}
+#vgx .md div{display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#10141b;white-space:nowrap;overflow:hidden}
+#vgx .md .a{background:var(--ver)}
+#vgx .md .b{background:#c3ccda}
+#vgx .md .c{background:var(--ciano)}
+#vgx .mdn{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:18px}
+#vgx .mdn div{padding:0 0 0 14px;border-left:5px solid var(--cc)}
+#vgx .mdn b{display:block;font:italic 900 40px/1.1 var(--disp);white-space:nowrap}
+#vgx .mdn span{display:block;font-size:17px;font-weight:800;color:#fff}
+#vgx .mdn small{display:block;font-size:16px;color:var(--mut);white-space:nowrap}
+#vgx .nota{margin-top:14px;font-size:16px;color:var(--mut);line-height:1.35}
+#vgx .ar{display:grid;grid-template-columns:44px 44px 1fr 40px;gap:0 10px;align-items:center;height:88px;border-bottom:1px solid rgba(255,255,255,.08);cursor:help}
+#vgx .ar:hover{background:rgba(255,255,255,.06)}
+#vgx .ar .ps{font:italic 900 24px var(--disp);text-align:center;color:var(--mut)}
+#vgx .ar .esc{width:44px;height:44px;display:grid;place-items:center}
+#vgx .ar .esc img{width:40px;height:40px;object-fit:contain}
+#vgx .ar .esc .sg{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;font-size:18px;font-weight:900;color:#10141b}
+#vgx .ar .tx{min-width:0}
+#vgx .ar .tx b{display:block;font-size:22px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#vgx .ar .tx small{display:block;font-size:16px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#vgx .ar .br{display:flex;height:10px;margin-top:5px;background:rgba(255,255,255,.07)}
+#vgx .ar .br i{display:block;height:10px}
+#vgx .ar .br .q{background:var(--lar)}
+#vgx .ar .br .m{background:var(--ciano)}
+#vgx .ar .gl{font:italic 900 36px var(--disp);text-align:right}
+#vgx .rw{position:relative}
+#vgx .rw::after{content:"";position:absolute;left:0;right:0;bottom:0;height:30px;background:linear-gradient(transparent,rgba(9,8,6,.96));pointer-events:none;opacity:0;transition:opacity .15s}
+#vgx .rw.mais::after{opacity:1}
+#vgx .rola{padding-right:28px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#ff9a3c rgba(255,255,255,.1)}
+#vgx .lg2{display:flex;gap:26px;margin-top:10px;font-size:16px;font-weight:700;color:var(--mut)}
+#vgx .lg2 span::before{content:"";display:inline-block;width:14px;height:14px;margin-right:8px;vertical-align:-2px}
+#vgx .lg2 .q::before{background:var(--lar)}
+#vgx .lg2 .m::before{background:var(--ciano)}
+#vgx .rc{height:100px;border-bottom:1px solid rgba(255,255,255,.08);cursor:help;padding-top:4px}
+#vgx .rc:hover{background:rgba(255,255,255,.06)}
+#vgx .rc h4{margin:0;font-size:16px;letter-spacing:.1em;color:var(--mut);font-weight:800;text-transform:uppercase}
+#vgx .rc .v{font-size:25px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+#vgx .rc small{display:block;font-size:16px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#vgx .cfm{display:block;width:100%;text-align:left}
+#vgx .cfm:hover .st{color:var(--gold)}
+#vgx .cfm .st{font-size:18px;font-weight:800;color:#fff;line-height:1.35}
+#vgx .cfm .st b{color:var(--verc)}
+#vgx .cfm small{display:block;margin-top:2px;font-size:16px;color:var(--mut);line-height:1.35}
+#vgx .rod{position:absolute;left:0;top:988px;width:1920px;height:36px;z-index:12;display:flex;justify-content:space-between;align-items:center;padding:0 46px;font-size:16px;color:var(--mut);background:linear-gradient(0deg,rgba(0,0,0,.55),transparent)}
+#vgx .rod b{color:#c3ccda;font-weight:600}
+#vgx .rod span:first-child{cursor:help}
+#vgx .tip{position:absolute;left:0;top:0;max-width:470px;z-index:60;padding:12px 16px;background:rgba(10,13,19,.97);border:1px solid rgba(255,255,255,.28);border-left:4px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.6);font-size:17px;line-height:1.4;color:var(--txt);opacity:0;pointer-events:none;transition:opacity .12s}
+#vgx .tip.on{opacity:1}
+#vgx .tip b{display:block;color:var(--gold);font-size:19px;margin-bottom:4px}
+#vgx .tip>span{display:block;margin-top:6px}
+#vgx .tip .tv{display:grid;gap:3px;margin-top:4px;padding:8px 12px;background:rgba(255,255,255,.07);border-left:3px solid rgba(255,255,255,.25)}
+#vgx .tip .tv div{display:flex;justify-content:space-between;gap:28px}
+#vgx .tip .tv div em{font-style:normal;font-weight:800;color:#fff;text-align:right}
+#vgx .tip small{display:block;margin-top:8px;font-size:16px;color:var(--mut)}
+#vgx .aj{position:absolute;left:0;top:0;width:1920px;height:1024px;z-index:55;display:none;background:rgba(3,5,8,.84);align-items:center;justify-content:center}
+#vgx .aj.on{display:flex}
+#vgx .aj .cx{width:1400px;padding:34px 44px 28px;background:linear-gradient(180deg,#1b1812,#0e0c09);border:1px solid rgba(255,255,255,.22);border-top:5px solid var(--gold);display:grid;grid-template-columns:1fr 1fr;gap:20px 52px}
+#vgx .aj h2{grid-column:1 / span 2;margin:0;font:italic 900 34px var(--disp);text-transform:uppercase}
+#vgx .aj h3{margin:0 0 10px;font-size:18px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+#vgx .aj ol{margin:0;padding-left:26px}
+#vgx .aj li{font-size:19px;line-height:1.45;color:var(--txt);margin:0 0 10px}
+#vgx .aj dl{margin:0}
+#vgx .aj dt{font-weight:800;color:#fff;font-size:19px}
+#vgx .aj dd{margin:0 0 9px;font-size:18px;line-height:1.4;color:#c3ccda}
+#vgx .aj .fe{grid-column:1 / span 2;display:flex;justify-content:flex-end;align-items:center}
+#vgx .aj .fe button{padding:10px 26px;font-size:17px;font-weight:800;border:1px solid var(--gold);background:var(--gold);color:#12151c}
+#vgx.go .kpi,#vgx.go .pn{animation:vg-sobe .55s both}
+#vgx.go .kpi:nth-child(2){animation-delay:.05s}
+#vgx.go .kpi:nth-child(3){animation-delay:.1s}
+#vgx.go .kpi:nth-child(4){animation-delay:.15s}
+#vgx.go .kpi:nth-child(5){animation-delay:.2s}
+#vgx.go .kpi:nth-child(6){animation-delay:.25s}
+#vgx.go .kpi:nth-child(7){animation-delay:.3s}
+#vgx.go .kpi:nth-child(8){animation-delay:.35s}
+#vgx.go .p1{animation-delay:.3s}
+#vgx.go .p2{animation-delay:.38s}
+#vgx.go .p3{animation-delay:.46s}
+#vgx.go .p4{animation-delay:.54s}
+#vgx.go .p5{animation-delay:.62s}
+#vgx.rm *{animation:none!important;transition:none!important}
+@keyframes vg-sobe{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+</style>
+<div id="vgx" tabindex="0">
+<div class="palco"><div class="fundo"></div><div class="faixa"></div><div class="tit">Visão <b>geral</b></div><div class="sub"></div><div class="ctl"></div><div class="kpis"></div><div class="pn p0"></div><div class="pn p1"></div><div class="pn p2"></div><div class="pn p3"></div><div class="pn p4"></div><div class="pn p5"></div><div class="rod"></div><div class="aj" role="dialog" aria-modal="true" aria-label="Como ler esta tela"></div><div class="tip"></div></div>
+</div>
+<script>
+(function(){
+var D=__DADOS__;
+var raiz=document.getElementById('vgx'),palco=raiz.querySelector('.palco'),tipEl=raiz.querySelector('.tip'),ajEl=raiz.querySelector('.aj');
+var EL={sub:raiz.querySelector('.sub'),ctl:raiz.querySelector('.ctl'),kpis:raiz.querySelector('.kpis'),p0:raiz.querySelector('.p0'),p1:raiz.querySelector('.p1'),p2:raiz.querySelector('.p2'),p3:raiz.querySelector('.p3'),p4:raiz.querySelector('.p4'),p5:raiz.querySelector('.p5'),rod:raiz.querySelector('.rod')};
+var COR={ciano:'#4cc9f0',verde:'#2fd47a',verdeClaro:'#79e7a6',vermelho:'#ff5470',amarelo:'#ffd166',roxo:'#b388ff',laranja:'#ff9a3c',cinza:'#9aa6b8'};
+var M=D.meta,CL={},LG={};
+D.clubes.forEach(function(c){CL[c.id]=c});
+if(window.PA&&window.PA.clubes)window.PA.clubes.forEach(function(c){LG[c.id]=c.logo});
+var FS={t:'Todas as fases',p:'1ª fase',m:'Mata-mata'};
+var FASE={1:'1ª fase',2:'Quartas de final',3:'Semifinal',4:'Final'};
+var FX={t:function(){return true},p:function(j){return j.f===1},m:function(j){return j.f>1}};
+var est={fase:'t',k:1,ox:0,oy:0};
+var reduzido=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+if(reduzido)raiz.classList.add('rm');
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function num(n){return Number(n).toLocaleString('pt-BR')}
+function dec(n,c){return Number(n).toLocaleString('pt-BR',{minimumFractionDigits:c,maximumFractionDigits:c})}
+function pc(a,b){return b>0?dec(100*a/b,1)+'%':'—'}
+function reais(c){return'R$ '+dec(c/100,2)}
+function milhoes(c){return'R$ '+dec(c/100000000,2)+' mi'}
+function dataBR(d){var p=d.split('-');return p[2]+'/'+p[1]}
+function dataLonga(d){var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
+function plural(n,u,p){return num(n)+' '+(n===1?u:p)}
+function nomeLista(a){return a.length<2?(a[0]||''):a.slice(0,-1).join(', ')+' e '+a[a.length-1]}
+function tp(){return' data-tip="'+Array.prototype.slice.call(arguments).map(esc).join('||')+'"'}
+function linhasTip(l){return'@'+l.map(function(x){return x[0]+'::'+x[1]}).join('\n')}
+function tipHtml(s){
+var sec=String(s).split('||'),h='<b>'+esc(sec[0])+'</b>';
+for(var i=1;i<sec.length;i++){
+var x=sec[i];if(!x)continue;
+if(x.charAt(0)==='@')h+='<div class="tv">'+x.slice(1).split('\n').map(function(l){var p=l.split('::');return'<div><span>'+esc(p[0])+'</span><em>'+esc(p[1]===undefined?'':p[1])+'</em></div>'}).join('')+'</div>';
+else if(x.charAt(0)==='~')h+='<small>'+esc(x.slice(1))+'</small>';
+else h+='<span>'+esc(x)+'</span>';
+}
+return h;
+}
+function nome(id){return CL[id].curto}
+function logo(id,t){
+var c=CL[id];
+if(LG[id])return'<img src="'+LG[id]+'" alt=""'+(t?' style="width:'+t+'px;height:'+t+'px"':'')+'>';
+return'<span class="sg" style="background:'+c.cor+(t?';width:'+t+'px;height:'+t+'px':'')+'">'+esc(c.sigla.charAt(0))+'</span>';
+}
+function dosJogos(f){return D.jogos.filter(FX[f])}
+function soma(js,c){return js.reduce(function(s,j){return s+j[c]},0)}
+function resumo(f){
+var js=dosJogos(f),n=js.length,g=soma(js,'gm')+soma(js,'gv'),pu=soma(js,'pu'),pg=soma(js,'pg'),rb=soma(js,'rb'),am=soma(js,'am'),vm=soma(js,'vm');
+var a=js.filter(function(j){return j.gm>j.gv}).length,e=js.filter(function(j){return j.gm===j.gv}).length,b=js.filter(function(j){return j.gm<j.gv}).length;
+return{n:n,g:g,pu:pu,pg:pg,rb:rb,am:am,vm:vm,a:a,e:e,b:b,gpj:n?g/n:0,pm:n?pu/n:0,tk:pg?rb/pg:0,cpj:n?(am+vm)/n:0};
+}
+function jogoTxt(j){return nome(j.m)+' '+j.gm+' × '+j.gv+' '+nome(j.v)}
+function quemFaz(j){return j.f===1?'1ª fase · rodada '+j.r:FASE[j.f]}
+function porFase(fn){return[['Todas as fases',fn(resumo('t'))],['1ª fase',fn(resumo('p'))],['Mata-mata',fn(resumo('m'))]]}
+function itensKpi(){
+var r=resumo(est.fase),rt=resumo('t');
+var n1=dosJogos('p').length;
+var jogosSub=est.fase==='t'?n1+' na 1ª fase e '+(rt.n-n1)+' no mata-mata':est.fase==='p'?rodadas('p').length+' rodadas, pontos corridos':'quartas, semifinais e final';
+return[
+{r:'Jogos',c:COR.ciano,v:num(r.n),s:jogosSub,t:['Jogos','Partidas disputadas no recorte escolhido (um jogo é uma partida da A1 2026).',linhasTip(porFase(function(x){return num(x.n)}))]},
+{r:'Gols',c:COR.verde,v:num(r.g),s:'sem contar pênaltis da disputa',t:['Gols','Gols do placar, contando pênalti convertido no jogo, gol de falta e gol contra (que vale para o adversário de quem fez). Cobranças da disputa de pênaltis não são gols.',linhasTip(porFase(function(x){return num(x.g)}))]},
+{r:'Gols por jogo',c:COR.amarelo,v:dec(r.gpj,2),s:'média do recorte',t:['Gols por jogo','Gols divididos pelos jogos.',linhasTip(porFase(function(x){return dec(x.gpj,2)}))]},
+{r:'Público total',c:COR.laranja,v:num(r.pu),s:'ingressos do boletim',t:['Público total','Soma dos ingressos de cada jogo, segundo o boletim financeiro oficial (pagantes mais gratuidades e cortesias).',linhasTip(porFase(function(x){return num(x.pu)}))]},
+{r:'Público médio',c:COR.laranja,v:num(Math.round(r.pm)),s:'por jogo',t:['Público médio','Público total dividido pelos jogos.',linhasTip(porFase(function(x){return num(Math.round(x.pm))}))]},
+{r:'Renda bruta',c:COR.verdeClaro,v:milhoes(r.rb),s:reais(r.rb),t:['Renda bruta','Arrecadação de ingressos antes das despesas (boletim financeiro oficial). Os números exatos estão abaixo.',linhasTip(porFase(function(x){return reais(x.rb)}))]},
+{r:'Ticket médio',c:COR.roxo,v:reais(r.tk),s:'por pagante',t:['Ticket médio','Renda bruta dividida pelos pagantes. Quem entrou de graça não conta.',linhasTip(porFase(function(x){return reais(x.tk)}))]},
+{r:'Cartões por jogo',c:COR.vermelho,v:dec(r.cpj,2),s:num(r.am)+' amarelos e '+num(r.vm)+' vermelhos',t:['Cartões por jogo','Amarelos e vermelhos pela regra da FPF (todos os amarelos menos os segundos amarelos, mais os vermelhos diretos e os segundos amarelos), divididos pelos jogos.',linhasTip(porFase(function(x){return dec(x.cpj,2)}))]}
+];
+}
+function kpisHtml(){
+return itensKpi().map(function(k,i){
+var col=i%4,lin=Math.floor(i/4);
+return'<div class="kpi" style="left:'+(col*298)+'px;top:'+(lin*128)+'px;--kc:'+k.c+'"'+tp.apply(null,k.t.concat(['~Este número muda com o filtro de fase; os três recortes estão na tabela acima.']))+'><h4>'+esc(k.r)+'</h4><div class="v">'+esc(k.v).replace(/ mi$/,' <em>mi</em>')+'</div><small>'+esc(k.s)+'</small></div>';
+}).join('');
+}
+function jogosDe(id){return D.mm.filter(function(j){return j.m===id||j.v===id}).sort(function(a,b){return a.n-b.n})}
+function campeao(){
+var c=M.camp,v=M.vice,js=jogosDe(c),adv=function(j){return j.m===c?j.v:j.m};
+var linhas=js.filter(function(j){return j.f<4}).map(function(j){
+return{f:FASE[j.f],t:nome(c)+' '+(j.m===c?j.gm+' × '+j.gv:j.gv+' × '+j.gm)+' '+nome(adv(j))+(j.pm!==null?' (pênaltis '+(j.m===c?j.pm+' a '+j.pv:j.pv+' a '+j.pm)+')':'')};
+});
+var fin=js.filter(function(j){return j.f===4});
+linhas.push({f:'Final',t:fin.map(function(j){return(j.m===c?j.gm+' × '+j.gv:j.gv+' × '+j.gm)}).join(' e ')+' contra '+nome(v)});
+return linhas;
+}
+function bloco0(){
+var c=M.camp,v=M.vice,lin=campeao();
+var tipTodos=['Campeão e caminho','Quem somou mais pontos nos dois jogos da final. Este bloco não muda com o filtro de fase.',linhasTip(lin.map(function(l){return[l.f,l.t]}))];
+var h='<h3><span'+tp('Campeão','O campeão do Paulistão A1 2026 e o caminho dele até o título. Não muda com o filtro de fase.')+'>Campeão</span><small'+tp('Filtro de fase','Este bloco mostra a campanha inteira e não muda com o filtro de fase.')+'>não muda com o filtro</small></h3>';
+h+='<div class="cmp"'+tp.apply(null,tipTodos)+'><div class="esc">'+logo(c,88)+'</div><div><div class="nm">'+esc(nome(c))+'</div><div class="vc">Vice-campeão: <b>'+esc(nome(v))+'</b> · final em pontos: <b>'+M.fpts[0]+' a '+M.fpts[1]+'</b></div></div></div>';
+h+='<div class="cam">'+lin.map(function(l){return'<div><span>'+esc(l.f)+'</span><b>'+esc(l.t)+'</b></div>'}).join('')+'</div>';
+return h;
+}
+function rodadas(f){
+var m={};
+dosJogos(f).forEach(function(j){var r=m[j.r]||(m[j.r]={r:j.r,f:j.f,n:0,g:0,js:[]});r.n++;r.g+=j.gm+j.gv;r.js.push(j)});
+return Object.keys(m).map(Number).sort(function(a,b){return a-b}).map(function(k){return m[k]});
+}
+function rotuloRodada(r){return r.f===1?'R'+r.r:r.f===2?'QF':r.f===3?'SF':(r.r===11?'F1':'F2')}
+function nomeRodada(r){return r.f===1?'Rodada '+r.r+' · 1ª fase':r.f===2?'Quartas de final':r.f===3?'Semifinal':(r.r===11?'Final · jogo de ida':'Final · jogo de volta')}
+function barras(){
+var rs=rodadas(est.fase),todas=rodadas('t'),W=716,top=40,H=160,base=top+H;
+var ymax=Math.ceil(Math.max.apply(null,todas.map(function(r){return r.g/r.n})));
+var med=resumo(est.fase).gpj;
+var slot=W/rs.length,bw=Math.min(52,slot*.62);
+var s='<svg viewBox="0 0 '+W+' 252" width="'+W+'" height="252"><line class="base" x1="0" y1="'+base+'" x2="'+W+'" y2="'+base+'"/>';
+rs.forEach(function(r,i){
+var a=r.g/r.n,h=a/ymax*H,x=i*slot+(slot-bw)/2,y=base-h;
+var lin=r.js.map(function(j){return[dataBR(j.d),jogoTxt(j)]});
+var t=tp(nomeRodada(r),plural(r.g,'gol','gols')+' em '+plural(r.n,'jogo','jogos')+' ('+dec(a,2)+' por jogo)',linhasTip(lin));
+s+='<g'+t+'><rect class="slot" x="'+(i*slot)+'" y="0" width="'+slot+'" height="'+(base+36)+'"/><rect class="'+(r.f===1?'bq':'bm')+'" x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'"/></g>';
+s+='<text class="vl" x="'+(i*slot+slot/2).toFixed(1)+'" y="'+(y-7).toFixed(1)+'" text-anchor="middle">'+dec(a,1)+'</text><text x="'+(i*slot+slot/2).toFixed(1)+'" y="'+(base+24)+'" text-anchor="middle">'+rotuloRodada(r)+'</text>';
+});
+var ym=base-med/ymax*H;
+s+='<line class="med" x1="0" y1="'+ym.toFixed(1)+'" x2="'+W+'" y2="'+ym.toFixed(1)+'"/>';
+s+='<text x="0" y="'+(base+50)+'">QF quartas · SF semifinal · F1 e F2 final · tracejado: média '+dec(med,2)+'</text></svg>';
+return s;
+}
+function bloco1(){
+var h='<h3><span'+tp('Gols por jogo, rodada a rodada','Média de gols por jogo em cada rodada. As rodadas do mata-mata têm bem menos jogos que as da 1ª fase, então a barra mostra a média e não o total. Passe o mouse em uma barra para ver os jogos.')+'>Gols por jogo</span><small>'+esc(FS[est.fase])+' · '+plural(rodadas(est.fase).length,'rodada','rodadas')+'</small></h3>';
+return h+'<div class="bars">'+barras()+'</div>';
+}
+function bloco2(){
+var r=resumo(est.fase),n=r.n,tot=plural(n,'jogo','jogos');
+var lin=[['Vitória do mandante',plural(r.a,'jogo','jogos')+' · '+pc(r.a,n)],['Empate no tempo regulamentar',plural(r.e,'jogo','jogos')+' · '+pc(r.e,n)],['Vitória do visitante',plural(r.b,'jogo','jogos')+' · '+pc(r.b,n)]];
+var tm=tp('Mando de campo',tot+' do recorte '+FS[est.fase]+'. Vence quem faz mais gols em 90 minutos; no mata-mata, o jogo empatado vai aos pênaltis para decidir quem passa, mas continua empate aqui.',linhasTip(lin));
+var h='<h3><span'+tp('Mando de campo','Quanto cada resultado aconteceu nos jogos do recorte escolhido.')+'>Quem ganha em casa?</span><small>'+esc(FS[est.fase])+' · '+tot+'</small></h3>';
+var pa=n?100*r.a/n:0,pe=n?100*r.e/n:0,pb=n?100*r.b/n:0;
+h+='<div class="md"'+tm+'><div class="a" style="width:'+pa+'%">'+(pa>=14?num(r.a):'')+'</div><div class="b" style="width:'+pe+'%">'+(pe>=14?num(r.e):'')+'</div><div class="c" style="width:'+pb+'%">'+(pb>=14?num(r.b):'')+'</div></div>';
+h+='<div class="mdn"><div style="--cc:'+COR.verde+'"><b>'+pc(r.a,n)+'</b><span>Mandante</span><small>'+plural(r.a,'vitória','vitórias')+'</small></div><div style="--cc:#c3ccda"><b>'+pc(r.e,n)+'</b><span>Empate</span><small>'+plural(r.e,'jogo','jogos')+'</small></div><div style="--cc:'+COR.ciano+'"><b>'+pc(r.b,n)+'</b><span>Visitante</span><small>'+plural(r.b,'vitória','vitórias')+'</small></div></div>';
+h+='<div class="nota">Resultado dos 90 minutos. No mata-mata, quem empata vai aos pênaltis para decidir quem passa.</div>';
+return h;
+}
+function gols(a){return est.fase==='t'?a.g1+a.g2:est.fase==='p'?a.g1:a.g2}
+function artilharia(){
+var l=D.art.filter(function(a){return gols(a)>0}).sort(function(x,y){return gols(y)-gols(x)||(x.p<y.p?-1:x.p>y.p?1:0)});
+return{lista:l};
+}
+function bloco3(){
+var l=artilharia().lista,max=l.length?gols(l[0]):1;
+var h='<h3><span'+tp('Artilharia','Gols de cada atleta pelo próprio clube, contando pênalti convertido e gol de falta. Gol contra não conta. Todos os que marcaram no recorte escolhido, do que mais marcou para o que menos marcou; role a lista para ver os demais.')+'>Artilharia</span><small>'+esc(FS[est.fase])+' · '+plural(l.length,'atleta','atletas')+'</small></h3><div class="rw"><div class="rola" data-r="ar" style="max-height:484px">';
+l.forEach(function(a,i){
+var g=gols(a),q=est.fase==='m'?0:a.g1,m=est.fase==='p'?0:a.g2,c=CL[a.c];
+var lin=[['Gols na 1ª fase',String(a.g1)],['Gols no mata-mata',String(a.g2)],['Total no campeonato',String(a.g1+a.g2)]];
+var sub=nome(a.c)+(est.fase==='t'&&a.g2>0?' · '+a.g1+' + '+a.g2+' no mata-mata':'');
+h+='<div class="ar"'+tp(a.p+' · '+nome(a.c),linhasTip(lin),'~Gol contra não entra na artilharia.')+'><span class="ps">'+(i+1)+'</span><span class="esc">'+logo(a.c,40)+'</span><div class="tx"><b>'+esc(a.a)+'</b><small>'+esc(sub)+'</small><div class="br"><i class="q" style="width:'+(100*q/max)+'%"></i><i class="m" style="width:'+(100*m/max)+'%"></i></div></div><span class="gl">'+g+'</span></div>';
+});
+if(!l.length)h+='<div class="nota">Nenhum gol de atleta neste recorte.</div>';
+h+='</div></div><div class="lg2"><span class="q">1ª fase</span><span class="m">Mata-mata</span></div>';
+return h;
+}
+function recordes(){
+var js=dosJogos(est.fase),sq=function(j){return Math.abs(j.gm-j.gv)};
+var mg=js.length?Math.max.apply(null,js.map(sq)):0,gl=js.filter(function(j){return sq(j)===mg});
+var pmax=js.length?Math.max.apply(null,js.map(function(j){return j.pu})):0,pmin=js.length?Math.min.apply(null,js.map(function(j){return j.pu})):0;
+var jmax=js.filter(function(j){return j.pu===pmax}),jmin=js.filter(function(j){return j.pu===pmin});
+var sem=js.filter(function(j){return j.gm+j.gv===0});
+return{mg:mg,gl:gl,pmax:pmax,jmax:jmax,pmin:pmin,jmin:jmin,sem:sem};
+}
+function fichaJogo(j){return[['Jogo',String(j.n)+' · '+dataLonga(j.d)],['Fase',quemFaz(j)],['Placar',jogoTxt(j)],['Público',num(j.pu)]]}
+function bloco4(){
+var r=recordes(),h='<h3><span'+tp('Recordes','Os extremos do recorte escolhido: maior goleada, maior e menor público e jogos sem gols.')+'>Recordes</span><small>'+esc(FS[est.fase])+'</small></h3>';
+var gol=r.gl[0],pm=r.jmax[0],pn=r.jmin[0];
+h+='<div class="rc"'+(r.mg>0?tp('Maior goleada',linhasTip(fichaJogo(gol)),r.gl.length>1?'~Outros '+(r.gl.length-1)+' jogo(s) com a mesma diferença de '+r.mg+' gols: '+r.gl.slice(1).map(jogoTxt).join('; ')+'.':'~Diferença de '+r.mg+' gols.'):tp('Maior goleada','Todos os jogos terminaram empatados.'))+'><h4>Maior goleada</h4><div class="v">'+(r.mg>0?esc(jogoTxt(gol)):'—')+'</div><small>'+(r.mg>0?esc(dataLonga(gol.d)+' · '+quemFaz(gol)+(r.gl.length>1?' · e mais '+(r.gl.length-1):'')):'sem goleada')+'</small></div>';
+h+='<div class="rc"'+tp('Maior público',linhasTip(fichaJogo(pm)),'~Ingressos do boletim financeiro oficial.')+'><h4>Maior público</h4><div class="v">'+num(r.pmax)+' pessoas</div><small>'+esc(jogoTxt(pm)+' · '+dataBR(pm.d))+'</small></div>';
+h+='<div class="rc"'+tp('Menor público',linhasTip(fichaJogo(pn)),'~Ingressos do boletim financeiro oficial.')+'><h4>Menor público</h4><div class="v">'+num(r.pmin)+' pessoas</div><small>'+esc(jogoTxt(pn)+' · '+dataBR(pn.d))+'</small></div>';
+h+='<div class="rc"'+(r.sem.length?tp('Jogos sem gols',linhasTip(r.sem.map(function(j){return[dataBR(j.d),'0 × 0 '+nome(j.m)+' e '+nome(j.v)]})),'~Jogos 0 × 0 no tempo regulamentar.'):tp('Jogos sem gols','Nenhum jogo 0 × 0 neste recorte.'))+'><h4>Jogos sem gols</h4><div class="v">'+plural(r.sem.length,'jogo','jogos')+'</div><small>'+esc(r.sem.length?r.sem.slice(0,1).map(function(j){return nome(j.m)+' × '+nome(j.v)}).join('')+(r.sem.length>1?' e mais '+(r.sem.length-1):''):'nenhum 0 × 0')+'</small></div>';
+return h;
+}
+function bloco5(){
+var tip=tp('Conferência dos dados','Quantas regras de conferência cruzam as fontes (placar, público, renda, cartões, escalação) e como terminaram. Clique para abrir a tela de conferência.',linhasTip([['Regras',String(M.regras)],['Sem ocorrência',String(M.ok)],['Com ocorrência explicada',String(M.expl)],['Em aberto',String(M.aber)],['Informativa',String(M.info)],['Placares iguais à FPF',M.placar[0]+' de '+M.placar[1]],['Posições iguais à FPF',M.classif[0]+' de '+M.classif[1]]]));
+return'<button class="cfm" data-act="conf"'+tip+'><div class="st"><b>✔</b> '+M.regras+' regras · '+M.ok+' sem ocorrência · '+M.expl+' explicadas · '+M.aber+' abertas</div><small>Placares iguais à FPF: '+M.placar[0]+' de '+M.placar[1]+' · posições: '+M.classif[0]+' de '+M.classif[1]+'. Clique para ver a conferência.</small></button>';
+}
+function controles(){
+var ch=['t','p','m'].map(function(f){return'<button class="chp'+(est.fase===f?' on':'')+'" data-act="fase" data-v="'+f+'"'+tp(FS[f],f==='t'?plural(resumo('t').n,'jogo','jogos')+' do campeonato.':f==='p'?plural(resumo('p').n,'jogo','jogos')+' da 1ª fase, em pontos corridos.':plural(resumo('m').n,'jogo','jogos')+' de quartas, semifinais e final.','~O campeão e a conferência não mudam com o filtro.')+'><span>'+esc(FS[f])+'</span></button>'}).join('');
+EL.ctl.innerHTML=ch+'<button class="chp lim'+(est.fase!=='t'?'':' off')+'" data-act="limpar"'+tp('Limpar','Volta para todas as fases.')+'><span>Limpar</span></button><button class="aju" data-act="ajuda"'+tp('Como ler esta tela','Passo a passo e significado das palavras. Atalho: ? ou h.')+'>?</button>';
+}
+function cabecalho(){
+var r=resumo(est.fase);
+EL.sub.textContent=est.fase==='t'?'Paulistão A1 2026 em uma olhada · '+plural(r.n,'jogo','jogos')+', '+plural(r.g,'gol','gols')+' e o campeão':FS[est.fase]+' · '+plural(r.n,'jogo','jogos')+' · '+plural(r.g,'gol','gols');
+EL.sub.setAttribute('data-tip',['Como é o campeonato','A 1ª fase tem os 16 clubes em pontos corridos, com 8 jogos para cada um. Os 8 primeiros vão às quartas de final (1º x 8º, 2º x 7º, 3º x 6º e 4º x 5º), em jogo único, assim como a semifinal; a final tem dois jogos. Use os botões de fase para ver só a 1ª fase ou só o mata-mata.'].map(esc).join('||'));
+}
+function montarRodape(){
+EL.rod.innerHTML='<span'+tp('De onde vêm os números','Placar, público, renda e cartões vêm das fontes oficiais da FPF (tabela de jogos, súmula e boletim financeiro). Os totais foram conferidos com o cálculo independente dos indicadores, fase por fase, e com a lista de artilheiros.',linhasTip([['Regras de conferência',String(M.regras)],['Placares iguais à FPF',M.placar[0]+' de '+M.placar[1]]]))+'>Dados: FPF oficial · <b>totais conferidos com o cálculo independente dos indicadores</b></span><span>Projeto independente, sem vínculo com a FPF · escudos são marcas dos clubes</span>';
+}
+function montarAjuda(){
+ajEl.innerHTML='<div class="cx"><h2>Como ler esta tela</h2><div><h3>Passo a passo</h3><ol><li>Em cima: o <b>campeão</b> e o caminho dele, e oito números do campeonato.</li><li>Os botões <b>Todas as fases</b>, <b>1ª fase</b> e <b>Mata-mata</b> mudam os números, o gráfico, o mando, a artilharia e os recordes. O bloco do campeão e a conferência não mudam.</li><li>Passe o mouse nos números, nas barras do gráfico, nos artilheiros e nos recordes para ver os jogos e os detalhes. A dica dos números mostra os três recortes lado a lado.</li><li>Clique no selo de conferência para abrir a tela que mostra como os dados foram conferidos. <b>Limpar</b> ou a tecla Esc voltam para todas as fases.</li></ol></div><div><h3>Palavras que aparecem</h3><dl><dt>Gols por jogo</dt><dd>Gols divididos pelos jogos. Nas barras, é a média de cada rodada, porque as rodadas do mata-mata têm poucos jogos.</dd><dt>Mando</dt><dd>Quem ganha em casa, empata ou perde nos 90 minutos. Pênaltis só decidem quem passa.</dd><dt>Público e renda</dt><dd>Ingressos e arrecadação do boletim financeiro oficial; o ticket médio divide a renda pelos pagantes.</dd><dt>Cartões</dt><dd>Contados pela regra da FPF: todos os amarelos menos os segundos amarelos, mais os vermelhos e os segundos amarelos.</dd><dt>Artilharia</dt><dd>Gols de cada atleta pelo próprio clube, sem gol contra.</dd></dl></div><div class="fe"><button data-act="ajuda-fechar"'+tp('Fechar','Fecha este passo a passo. Também fecham as teclas Esc, Enter e espaço, ou um clique fora da janela.')+'>Entendi</button></div></div>';
+}
+function ajuda(abrir){
+if(abrir===undefined)abrir=!ajEl.classList.contains('on');
+if(abrir)esconderTip();
+ajEl.classList.toggle('on',abrir);
+}
+var PAIN=['p0','p1','p2','p3','p4','p5'];
+function marcarRolagem(e){var w=e.parentNode;if(w&&w.classList)w.classList.toggle('mais',e.scrollHeight-e.scrollTop-e.clientHeight>2)}
+function ajustarRolagem(){var l=raiz.querySelectorAll('.rola');for(var i=0;i<l.length;i++)marcarRolagem(l[i])}
+function atualizar(opc){
+opc=opc||{};
+esconderTip();
+PAIN.forEach(function(p){EL[p].classList.remove('on')});
+controles();cabecalho();
+EL.kpis.innerHTML=kpisHtml();
+EL.p0.innerHTML=bloco0();
+EL.p1.innerHTML=bloco1();
+EL.p2.innerHTML=bloco2();
+EL.p3.innerHTML=bloco3();
+EL.p4.innerHTML=bloco4();
+EL.p5.innerHTML=bloco5();
+ajustarRolagem();
+if(opc.semAnimar){PAIN.forEach(function(p){EL[p].classList.add('on')})}
+else setTimeout(function(){PAIN.forEach(function(p){EL[p].classList.add('on')})},40);
+}
+function ajustar(){
+var w=raiz.clientWidth,h=raiz.clientHeight;if(!w||!h)return;
+var k=Math.min(w/1920,h/1024);
+est.k=k;est.ox=Math.round((w-1920*k)/2);est.oy=Math.round((h-1024*k)/2);
+palco.style.transform='translate('+est.ox+'px,'+est.oy+'px) scale('+k+')';
+}
+window.addEventListener('resize',ajustar);
+if(window.ResizeObserver)new ResizeObserver(ajustar).observe(raiz);
+ajustar();setTimeout(ajustar,60);setTimeout(ajustar,400);
+function pontoPalco(ev){var r=raiz.getBoundingClientRect();return[(ev.clientX-r.left-est.ox)/est.k,(ev.clientY-r.top-est.oy)/est.k]}
+var tipT=null,tipAlvo=null;
+function mostrarTip(alvo,ev){
+var s=alvo.getAttribute('data-tip');if(!s)return;
+tipEl.innerHTML=tipHtml(s);
+tipEl.classList.add('on');
+posTip(ev,alvo);
+}
+function posTip(ev,alvo){
+var pt;
+if(ev&&typeof ev.clientX==='number')pt=pontoPalco(ev);
+else{var r=alvo.getBoundingClientRect(),q=raiz.getBoundingClientRect();pt=[(r.left+r.width/2-q.left-est.ox)/est.k,(r.top+r.height-q.top-est.oy)/est.k-8]}
+var w=tipEl.offsetWidth,h=tipEl.offsetHeight,x=pt[0]+22,y=pt[1]+26;
+if(x+w>1908)x=pt[0]-w-22;
+if(x<12)x=12;
+if(y+h>1012)y=pt[1]-h-18;
+if(y<12)y=12;
+tipEl.style.left=Math.round(x)+'px';tipEl.style.top=Math.round(y)+'px';
+}
+function esconderTip(){clearTimeout(tipT);tipAlvo=null;tipEl.classList.remove('on')}
+function acao(a,id,v){
+if(a==='fase'){if(!Object.prototype.hasOwnProperty.call(FS,v))return;est.fase=v;atualizar({semAnimar:true})}
+else if(a==='limpar'){est.fase='t';atualizar({semAnimar:true})}
+else if(a==='conf'){if(window.PA&&window.PA.ir)window.PA.ir('conf')}
+else if(a==='ajuda')ajuda(true);
+else if(a==='ajuda-fechar')ajuda(false);
+}
+raiz.addEventListener('click',function(ev){
+var alvo=ev.target,t=alvo.closest&&alvo.closest('[data-act]'),dentro=alvo.closest&&alvo.closest('.cx');
+if(ajEl.classList.contains('on')&&!dentro){ajuda(false);return}
+if(!t)return;
+acao(t.getAttribute('data-act'),t.getAttribute('data-id'),t.getAttribute('data-v'));
+esconderTip();
+raiz.focus({preventScroll:true});
+});
+raiz.addEventListener('mouseover',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d!==tipAlvo){tipAlvo=d;clearTimeout(tipT);if(d){tipT=setTimeout(function(){mostrarTip(d,ev)},90)}else tipEl.classList.remove('on')}
+});
+raiz.addEventListener('mousemove',function(ev){if(tipAlvo&&tipEl.classList.contains('on'))posTip(ev,tipAlvo)});
+raiz.addEventListener('mouseleave',esconderTip);
+raiz.addEventListener('scroll',function(ev){var e=ev.target;if(e&&e.classList&&e.classList.contains('rola'))marcarRolagem(e)},true);
+raiz.addEventListener('focusin',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d&&d!==tipAlvo&&ev.target!==raiz){tipAlvo=d;mostrarTip(d,null)}
+});
+raiz.addEventListener('focusout',esconderTip);
+raiz.addEventListener('touchstart',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d&&d!==tipAlvo){tipAlvo=d;var tc=ev.touches&&ev.touches[0];mostrarTip(d,tc?{clientX:tc.clientX,clientY:tc.clientY}:null)}
+else if(!d)esconderTip();
+},{passive:true});
+function tecla(k,ctrl){
+if(k==='?'||(k==='h'&&!ctrl)){ajuda();return true}
+if(ajEl.classList.contains('on')){if(k==='Escape'||k==='Enter'||k===' '){ajuda(false);return true}return false}
+if((k==='Escape'||k==='Backspace')&&est.fase!=='t'){est.fase='t';atualizar({semAnimar:true});return true}
+return false;
+}
+document.addEventListener('keydown',function(ev){
+if(!raiz.offsetParent)return;
+if(tecla(ev.key,ev.ctrlKey||ev.metaKey))ev.preventDefault();
+});
+var goT=null;
+function entrar(){
+clearTimeout(goT);
+raiz.classList.remove('go');
+void raiz.offsetWidth;
+raiz.classList.add('go');
+goT=setTimeout(function(){raiz.classList.remove('go')},1500);
+ajustar();
+atualizar();
+}
+montarAjuda();montarRodape();
+atualizar({semAnimar:true});
+if(window.PA&&window.PA.shell)window.PA.mods.vg={entrar:entrar};
+else entrar();
+if(/[?&]debug/.test(location.search))window.__vgx={D:D,CL:CL,est:est,acao:acao,tecla:tecla,atualizar:atualizar,tipHtml:tipHtml,itensKpi:itensKpi,resumo:resumo,rodadas:rodadas,artilharia:artilharia,recordes:recordes,campeao:campeao,controles:controles};
+})();
+</script>

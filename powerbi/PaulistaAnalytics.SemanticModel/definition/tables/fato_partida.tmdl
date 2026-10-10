@@ -1,0 +1,276 @@
+/// Um jogo por linha: placar, pênaltis, estádio, público e renda (boletim financeiro), arbitragem e horários (súmula). Chave: id_partida. Fonte: FPF, inclusive o placar da disputa de pênaltis do jogo 68.
+table fato_partida
+	lineageTag: eeaa49df-496d-57c0-b789-e7e2504ae4b7
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b81a839-7621-58cd-833b-20538df16b3a
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column numero_jogo
+		dataType: int64
+		formatString: 0
+		lineageTag: 53c07d61-91f9-5524-ab4c-b9cfe5a75641
+		summarizeBy: none
+		sourceColumn: numero_jogo
+
+	column id_competicao
+		dataType: string
+		lineageTag: 5df9a019-bdbe-5e87-8d80-89fde9584b37
+		summarizeBy: none
+		sourceColumn: id_competicao
+
+	column id_fase
+		dataType: int64
+		formatString: 0
+		lineageTag: 465da3f8-3f0e-5b45-b20b-bce6251cfb5d
+		summarizeBy: none
+		sourceColumn: id_fase
+
+	column rodada
+		dataType: int64
+		formatString: 0
+		lineageTag: 95545aab-531d-58c9-8485-97ea57af897b
+		summarizeBy: none
+		sourceColumn: rodada
+
+	column grupo
+		dataType: string
+		lineageTag: fc9e08af-e99f-54c1-ac79-83dd10a7003f
+		summarizeBy: none
+		sourceColumn: grupo
+
+	column data_jogo
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 59c73f8b-9ad2-5775-beea-7844885657cd
+		summarizeBy: none
+		sourceColumn: data_jogo
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hora_programada
+		dataType: string
+		lineageTag: b5787825-8678-5785-8b7e-e96e9add6ac9
+		summarizeBy: none
+		sourceColumn: hora_programada
+
+	column data_hora_programada
+		dataType: dateTime
+		formatString: dd/mm/yyyy hh:mm
+		lineageTag: 48a1a2c1-6640-5b6f-8ada-51c0ffe06d3b
+		summarizeBy: none
+		sourceColumn: data_hora_programada
+
+	column id_clube_mandante
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e4d6f55-9d0d-5b72-8c86-e957416489c8
+		summarizeBy: none
+		sourceColumn: id_clube_mandante
+
+	column id_clube_visitante
+		dataType: int64
+		formatString: 0
+		lineageTag: fc43478a-0d8c-51fb-a9d7-ebbbea47f20f
+		summarizeBy: none
+		sourceColumn: id_clube_visitante
+
+	column gols_mandante
+		dataType: int64
+		formatString: 0
+		lineageTag: 39ab8956-39f9-5c0b-b490-d6573fb5ede4
+		summarizeBy: none
+		sourceColumn: gols_mandante
+
+	column gols_visitante
+		dataType: int64
+		formatString: 0
+		lineageTag: ea8a8c6b-7e43-5a77-b965-c7badd59ed68
+		summarizeBy: none
+		sourceColumn: gols_visitante
+
+	column penaltis_mandante
+		dataType: int64
+		formatString: 0
+		lineageTag: 06dda1d5-cbf0-51fc-b31b-b2145aa07cc0
+		summarizeBy: none
+		sourceColumn: penaltis_mandante
+
+	column penaltis_visitante
+		dataType: int64
+		formatString: 0
+		lineageTag: db34f61b-45f0-55e7-afee-bf21918aa534
+		summarizeBy: none
+		sourceColumn: penaltis_visitante
+
+	column id_estadio
+		dataType: string
+		lineageTag: 6b66addf-7777-5b87-8fa2-5e5754022a19
+		summarizeBy: none
+		sourceColumn: id_estadio
+
+	column publico_boletim
+		dataType: int64
+		formatString: 0
+		lineageTag: 538f7afb-2131-5756-be2d-00787923cbf2
+		summarizeBy: none
+		sourceColumn: publico_boletim
+
+	column publico_pagante
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d0aefb0-d346-5330-acf9-11e6aed1a3ed
+		summarizeBy: none
+		sourceColumn: publico_pagante
+
+	column renda_bruta
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: d8654560-fc56-5e2e-859c-1e761596ab6a
+		summarizeBy: none
+		sourceColumn: renda_bruta
+
+	column despesas_total
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: 284bc0de-0391-556c-8fa4-0c4409fd4567
+		summarizeBy: none
+		sourceColumn: despesas_total
+
+	column renda_liquida
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: ceec9d29-fdab-59ed-a7b4-22b6866e4353
+		summarizeBy: none
+		sourceColumn: renda_liquida
+
+	column publico_espn
+		dataType: int64
+		formatString: 0
+		lineageTag: ddc8bb96-77a4-534c-9877-2497a58ae08b
+		summarizeBy: none
+		sourceColumn: publico_espn
+
+	column id_arbitro
+		dataType: string
+		lineageTag: 73ae712e-bf13-54b4-8bf6-236d99e7fadc
+		summarizeBy: none
+		sourceColumn: id_arbitro
+
+	column id_assistente1
+		dataType: string
+		lineageTag: d36ff15e-c7a8-5ffd-b652-cea7b522a07b
+		summarizeBy: none
+		sourceColumn: id_assistente1
+
+	column id_assistente2
+		dataType: string
+		lineageTag: edca1b40-b0ce-5523-bc2c-fc142e1c8b66
+		summarizeBy: none
+		sourceColumn: id_assistente2
+
+	column id_quarto_arbitro
+		dataType: string
+		lineageTag: 291d6992-46d9-53d0-b539-d0b0a3f17d5d
+		summarizeBy: none
+		sourceColumn: id_quarto_arbitro
+
+	column id_var
+		dataType: string
+		lineageTag: 476c0f7e-0127-5788-bd6a-cfe57bc292db
+		summarizeBy: none
+		sourceColumn: id_var
+
+	column id_avar1
+		dataType: string
+		lineageTag: 3cccbf3e-5120-500c-86cb-1c376a63b94f
+		summarizeBy: none
+		sourceColumn: id_avar1
+
+	column id_avar2
+		dataType: string
+		lineageTag: 7d6dad4a-f257-515a-a633-808ce59d639d
+		summarizeBy: none
+		sourceColumn: id_avar2
+
+	column inicio_1t
+		dataType: string
+		lineageTag: b5ebb6e1-a268-5538-a270-a26c0f4d6a79
+		summarizeBy: none
+		sourceColumn: inicio_1t
+
+	column termino_1t
+		dataType: string
+		lineageTag: d7e7ef33-bbea-58b4-9d57-aaa9263d43ef
+		summarizeBy: none
+		sourceColumn: termino_1t
+
+	column atraso_1t_min
+		dataType: int64
+		formatString: 0
+		lineageTag: 00f77128-e2e9-5685-9d99-437f50b37286
+		summarizeBy: none
+		sourceColumn: atraso_1t_min
+
+	column acrescimo_1t_min
+		dataType: int64
+		formatString: 0
+		lineageTag: 99d0cd24-9762-57b4-beac-ca377d2203aa
+		summarizeBy: none
+		sourceColumn: acrescimo_1t_min
+
+	column inicio_2t
+		dataType: string
+		lineageTag: 1546ba39-9bc3-5f60-8d47-50da0d3c46fb
+		summarizeBy: none
+		sourceColumn: inicio_2t
+
+	column termino_2t
+		dataType: string
+		lineageTag: 46640bb9-50e1-5046-8048-5b235dc7d09f
+		summarizeBy: none
+		sourceColumn: termino_2t
+
+	column atraso_2t_min
+		dataType: int64
+		formatString: 0
+		lineageTag: 15bf3d2a-bffa-5a3e-b18b-a5b9b42a4079
+		summarizeBy: none
+		sourceColumn: atraso_2t_min
+
+	column acrescimo_2t_min
+		dataType: int64
+		formatString: 0
+		lineageTag: 00ff2705-d9ea-5855-b0fe-eee310f9316e
+		summarizeBy: none
+		sourceColumn: acrescimo_2t_min
+
+	column publicada_em
+		dataType: dateTime
+		formatString: dd/mm/yyyy hh:mm
+		lineageTag: 1f2f647b-dd9a-5d52-9712-567b7b3b112b
+		summarizeBy: none
+		sourceColumn: publicada_em
+
+	column id_evento_espn
+		dataType: int64
+		formatString: 0
+		lineageTag: cd4d081a-1f06-5824-95aa-5410b6d63e7d
+		summarizeBy: none
+		sourceColumn: id_evento_espn
+
+	partition fato_partida = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_partida.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_partida", Int64.Type}, {"numero_jogo", Int64.Type}, {"id_competicao", type text}, {"id_fase", Int64.Type}, {"rodada", Int64.Type}, {"grupo", type text}, {"data_jogo", type date}, {"hora_programada", type text}, {"id_clube_mandante", Int64.Type}, {"id_clube_visitante", Int64.Type}, {"gols_mandante", Int64.Type}, {"gols_visitante", Int64.Type}, {"penaltis_mandante", Int64.Type}, {"penaltis_visitante", Int64.Type}, {"id_estadio", type text}, {"publico_boletim", Int64.Type}, {"publico_pagante", Int64.Type}, {"renda_bruta", Currency.Type}, {"despesas_total", Currency.Type}, {"renda_liquida", Currency.Type}, {"publico_espn", Int64.Type}, {"id_arbitro", type text}, {"id_assistente1", type text}, {"id_assistente2", type text}, {"id_quarto_arbitro", type text}, {"id_var", type text}, {"id_avar1", type text}, {"id_avar2", type text}, {"inicio_1t", type text}, {"termino_1t", type text}, {"atraso_1t_min", Int64.Type}, {"acrescimo_1t_min", Int64.Type}, {"inicio_2t", type text}, {"termino_2t", type text}, {"atraso_2t_min", Int64.Type}, {"acrescimo_2t_min", Int64.Type}, {"id_evento_espn", Int64.Type}}, "en-US"),
+				    DatasHoras = Table.TransformColumns(Tipos, {{"data_hora_programada", each if _ = null then null else DateTime.FromText(_, [Format = "yyyy-MM-dd'T'HH:mm", Culture = "en-US"]), type datetime}, {"publicada_em", each if _ = null then null else DateTime.FromText(_, [Format = "dd/MM/yyyy HH:mm", Culture = "pt-BR"]), type datetime}})
+				in
+				    DatasHoras
+

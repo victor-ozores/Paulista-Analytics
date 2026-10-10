@@ -1,0 +1,113 @@
+/// Classificação da 1ª fase calculada em Python pelo Art. 16, uma linha por clube; gabarito das medidas de classificação.
+table ref_classificacao_primeira_fase
+	lineageTag: 453fa58d-5082-5674-8764-f9e0d5eb1987
+
+	column posicao
+		dataType: int64
+		formatString: 0
+		lineageTag: d1a7703e-55e8-5359-bc5a-92cd4e239d30
+		summarizeBy: none
+		sourceColumn: posicao
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: e2cb00bc-7747-5155-a281-49ce18ef9760
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column jogos
+		dataType: int64
+		formatString: 0
+		lineageTag: e4a3915c-027d-50ce-837f-ea9a8b1e9d86
+		summarizeBy: none
+		sourceColumn: jogos
+
+	column vitorias
+		dataType: int64
+		formatString: 0
+		lineageTag: ec33f611-6528-53c0-b7d0-49605415813b
+		summarizeBy: none
+		sourceColumn: vitorias
+
+	column empates
+		dataType: int64
+		formatString: 0
+		lineageTag: 075cec2d-9bc8-527d-b21d-f04f17a47bc9
+		summarizeBy: none
+		sourceColumn: empates
+
+	column derrotas
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c6346ef-fa26-5f6d-b082-76a1e9f98875
+		summarizeBy: none
+		sourceColumn: derrotas
+
+	column gols_pro
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d4e5d0d-7ed4-5a31-8c3f-b9be26af15bb
+		summarizeBy: none
+		sourceColumn: gols_pro
+
+	column gols_contra
+		dataType: int64
+		formatString: 0
+		lineageTag: 695f28aa-0d8b-53e2-8f0d-5f1fa6c2b6c9
+		summarizeBy: none
+		sourceColumn: gols_contra
+
+	column saldo
+		dataType: int64
+		formatString: 0
+		lineageTag: eb053fb0-aeca-5d35-88af-286f0144318e
+		summarizeBy: none
+		sourceColumn: saldo
+
+	column pontos
+		dataType: int64
+		formatString: 0
+		lineageTag: f145bc33-0211-5d4a-b245-4998e887e497
+		summarizeBy: none
+		sourceColumn: pontos
+
+	column aproveitamento
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 52cc838c-4fec-5ee8-9c68-4e2d0fcd38a1
+		summarizeBy: none
+		sourceColumn: aproveitamento
+
+	column amarelos
+		dataType: int64
+		formatString: 0
+		lineageTag: 8ba0447a-478a-5bd7-a601-46a1e58fb8aa
+		summarizeBy: none
+		sourceColumn: amarelos
+
+	column vermelhos
+		dataType: int64
+		formatString: 0
+		lineageTag: a1a2ac78-1349-5b4c-ba07-20f4c4653e0f
+		summarizeBy: none
+		sourceColumn: vermelhos
+
+	column empate_total
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f87bd37-b6cb-5738-8a9e-ce7756004c6f
+		summarizeBy: none
+		sourceColumn: empate_total
+
+	partition ref_classificacao_primeira_fase = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\ref_classificacao_primeira_fase.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"posicao", Int64.Type}, {"id_clube", Int64.Type}, {"jogos", Int64.Type}, {"vitorias", Int64.Type}, {"empates", Int64.Type}, {"derrotas", Int64.Type}, {"gols_pro", Int64.Type}, {"gols_contra", Int64.Type}, {"saldo", Int64.Type}, {"pontos", Int64.Type}, {"aproveitamento", type number}, {"amarelos", Int64.Type}, {"vermelhos", Int64.Type}, {"empate_total", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

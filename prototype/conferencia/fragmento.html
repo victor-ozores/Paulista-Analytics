@@ -1,0 +1,372 @@
+<style>
+#cnx{--disp:"Arial Black","Segoe UI Black","Segoe UI",Arial,sans-serif;--gold:#ffd166;--mut:#9aa6b8;--txt:#e6ecf5;--ver:#2fd47a;--verc:#79e7a6;--verm:#ff5470;--vermc:#ff8a95;--ciano:#4cc9f0;--rox:#b388ff;position:relative;width:100%;height:100%;min-height:320px;overflow:hidden;background:#05070a;color:#fff;font-family:"Segoe UI",Arial,sans-serif;-webkit-user-select:none;user-select:none;outline:0}
+#cnx *{box-sizing:border-box}
+#cnx button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0;text-align:inherit}
+#cnx button:focus-visible,#cnx .oc:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#cnx .palco{position:absolute;left:0;top:0;width:1920px;height:1024px;transform-origin:0 0;overflow:hidden;background:radial-gradient(ellipse 80% 70% at 50% 22%,#171e2b 0,#080a0f 75%)}
+#cnx .fundo{position:absolute;left:0;top:0;width:1920px;height:1024px;background:repeating-linear-gradient(115deg,rgba(255,255,255,.028) 0 2px,transparent 2px 34px)}
+#cnx .faixa{position:absolute;left:0;top:0;width:1010px;height:88px;background:linear-gradient(100deg,#0b2a4d 0,#1560a0 58%,#2f8fe0 100%);clip-path:polygon(0 0,100% 0,calc(100% - 64px) 100%,0 100%)}
+#cnx .faixa::after{content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:radial-gradient(circle,rgba(0,0,0,.26) 1.6px,transparent 2.2px) 0 0/17px 17px;-webkit-mask-image:linear-gradient(90deg,#000,transparent 85%);mask-image:linear-gradient(90deg,#000,transparent 85%)}
+#cnx .tit{position:absolute;left:46px;top:6px;font:italic 900 46px/1.05 var(--disp);text-transform:uppercase;text-shadow:0 5px 0 rgba(0,0,0,.35);white-space:nowrap}
+#cnx .tit b{color:var(--gold)}
+#cnx .sub{position:absolute;left:46px;top:58px;width:900px;font-size:18px;font-weight:700;color:#e6f2ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:help}
+#cnx .ctl{position:absolute;right:46px;top:22px;display:flex;align-items:center;gap:16px;z-index:6}
+#cnx .chp{display:inline-block;transform:skewX(-14deg);padding:7px 20px;font-size:16px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2)}
+#cnx .chp span{display:block;transform:skewX(14deg)}
+#cnx .chp:hover{background:rgba(255,255,255,.14)}
+#cnx .chp.on{background:#fff;color:#12151c;border-color:#fff}
+#cnx .chp.lim{background:rgba(255,84,112,.18);border-color:rgba(255,84,112,.6)}
+#cnx .chp.lim.off{display:none}
+#cnx .chp.sm{padding:3px 10px;letter-spacing:.04em;text-transform:none;font-size:16px}
+#cnx .aju{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.55);border:2px solid rgba(255,255,255,.75);font:900 24px var(--disp);color:#fff}
+#cnx .aju:hover{background:rgba(0,0,0,.8)}
+#cnx .kpis{position:absolute;left:0;top:100px;width:1920px;height:108px}
+#cnx .kpi{position:absolute;top:0;width:250px;height:108px;padding:11px 18px 0;background:linear-gradient(180deg,rgba(19,25,36,.96),rgba(8,10,15,.98));border:1px solid rgba(255,255,255,.14);border-top:4px solid var(--kc);clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,0 100%);cursor:help}
+#cnx .kpi h4{margin:0;font-size:16px;letter-spacing:.1em;color:var(--mut);font-weight:800;text-transform:uppercase;white-space:nowrap}
+#cnx .kpi .v{font:italic 900 38px/1.12 var(--disp);color:#fff;margin-top:2px;white-space:nowrap;text-shadow:0 0 18px var(--kc)}
+#cnx .kpi .v em{font:italic 900 18px var(--disp);color:var(--kc);margin:0 0 0 8px;text-shadow:none}
+#cnx .kpi small{display:block;font-size:16px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cnx .pn{position:absolute;padding:14px 22px 0;background:linear-gradient(180deg,rgba(15,20,29,.94),rgba(7,9,13,.98));border:1px solid rgba(255,255,255,.14);border-top:4px solid #fff;clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%)}
+#cnx .pn h3{margin:0 0 8px;height:30px;display:flex;justify-content:space-between;align-items:center;font:italic 900 24px/1 var(--disp);text-transform:uppercase;white-space:nowrap}
+#cnx .pn h3 span{cursor:help}
+#cnx .pn h3 small{font:700 16px "Segoe UI",Arial,sans-serif;color:var(--mut);text-transform:none;letter-spacing:0}
+#cnx .p1{left:46px;top:220px;width:640px;height:760px}
+#cnx .p2{left:700px;top:220px;width:620px;height:760px}
+#cnx .p3{left:1334px;top:220px;width:540px;height:276px}
+#cnx .p4{left:1334px;top:510px;width:540px;height:280px}
+#cnx .p5{left:1334px;top:804px;width:540px;height:176px}
+#cnx .fl{display:flex;gap:6px;height:30px;margin:0 0 6px}
+#cnx .vazio{display:grid;place-items:center;height:420px;text-align:center;font-size:19px;line-height:1.5;color:var(--mut)}
+#cnx .vazio small{display:block;margin-top:10px;font-size:16px;color:#c3ccda}
+#cnx .tb{height:604px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#3a4558 transparent;padding-right:4px}
+#cnx .rh,#cnx .rr{display:grid;grid-template-columns:54px 1fr 136px;align-items:center;gap:6px}
+#cnx .rh{position:sticky;top:0;z-index:2;height:30px;padding:0 6px;background:#0c1118;font-size:16px;color:var(--mut);font-weight:800;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.14)}
+#cnx .rr{width:100%;min-height:48px;padding:4px 6px;border-bottom:1px solid rgba(255,255,255,.08);font-size:16px;font-weight:700;opacity:0;transition:opacity .35s,background .15s;transition-delay:calc(var(--i)*18ms),0s}
+#cnx .pn.on .rr{opacity:1}
+#cnx .rr:hover{background:rgba(255,255,255,.09)}
+#cnx .rr.sel{background:rgba(76,201,240,.2);box-shadow:inset 3px 0 0 var(--ciano)}
+#cnx .rr .cd{font:italic 900 16px var(--disp);color:var(--mut)}
+#cnx .rr u{text-decoration:none;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;line-height:1.2}
+#cnx .rc{display:block;padding:1px 0;font-size:16px;font-weight:800;white-space:nowrap;text-align:center;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+#cnx .rc.ok{background:rgba(47,212,122,.22);color:var(--verc)}
+#cnx .rc.ex{background:rgba(255,209,102,.22);color:var(--gold)}
+#cnx .rc.ab{background:rgba(255,84,112,.28);color:var(--vermc)}
+#cnx .rc.in{background:rgba(154,166,184,.22);color:#c3ccda}
+#cnx .rc.ac{background:rgba(179,136,255,.26);color:#d9c9ff}
+#cnx .rc.co{background:rgba(76,201,240,.22);color:#9fe3f8}
+#cnx .lo{height:604px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#3a4558 transparent;padding-right:4px}
+#cnx .oc{padding:7px 8px 6px;border-bottom:1px solid rgba(255,255,255,.08);cursor:help;opacity:0;transition:opacity .35s,background .15s;transition-delay:calc(var(--i)*18ms),0s}
+#cnx .pn.on .oc{opacity:1}
+#cnx .oc:hover{background:rgba(255,255,255,.07)}
+#cnx .oc.ab{background:rgba(255,84,112,.1);box-shadow:inset 3px 0 0 var(--verm)}
+#cnx .oc .l1{display:flex;align-items:center;gap:10px;height:26px}
+#cnx .oc .l1 b{font:italic 900 17px var(--disp);flex:none}
+#cnx .oc .l1 .rc{flex:none;width:104px}
+#cnx .oc .l1 u{text-decoration:none;flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:var(--mut);font-weight:700;font-size:16px}
+#cnx .oc .l2{font-size:16px;font-weight:700;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:var(--txt)}
+#cnx .oc .l3{margin-top:3px;font-size:16px;line-height:1.3;color:#ffc2cb;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+#cnx .fo{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:center;height:31px;border-bottom:1px solid rgba(255,255,255,.08);font-size:16px;font-weight:700;cursor:help;opacity:0;transition:opacity .35s,background .15s;transition-delay:calc(var(--i)*55ms),0s}
+#cnx .pn.on .fo{opacity:1}
+#cnx .fo:hover{background:rgba(255,255,255,.07)}
+#cnx .fo u{text-decoration:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#cnx .cm{display:grid;grid-template-columns:24px 1fr auto;gap:6px;align-items:center;height:25px;border-bottom:1px solid rgba(255,255,255,.07);font-size:16px;font-weight:700;cursor:help;opacity:0;transition:opacity .35s,background .15s;transition-delay:calc(var(--i)*55ms),0s}
+#cnx .pn.on .cm{opacity:1}
+#cnx .cm:hover{background:rgba(255,255,255,.07)}
+#cnx .cm i{font-style:normal;color:var(--ver);font-weight:900}
+#cnx .cm u{text-decoration:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#cnx .cm em{font-style:normal;font-weight:800;color:var(--verc);white-space:nowrap}
+#cnx .cr{cursor:help}
+#cnx .cr .c1{display:flex;gap:12px;align-items:baseline;height:26px;overflow:hidden;white-space:nowrap}
+#cnx .cr .c1 b{font:italic 900 17px var(--disp);color:var(--gold)}
+#cnx .cr .c1 u{text-decoration:none;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis}
+#cnx .cr .c2{display:flex;align-items:center;gap:14px;height:40px}
+#cnx .cr .c2 span{display:flex;align-items:baseline;gap:8px;font-size:16px;color:var(--mut);font-weight:700}
+#cnx .cr .c2 span b{font:italic 900 26px var(--disp);color:#fff}
+#cnx .cr .c2 span.nv b{color:var(--verc)}
+#cnx .cr .c2 i{font-style:normal;font-size:22px;color:var(--mut)}
+#cnx .cr .c3{font-size:16px;line-height:1.3;color:var(--mut);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#cnx .rod{position:absolute;left:0;top:988px;width:1920px;height:36px;z-index:12;display:flex;justify-content:space-between;align-items:center;padding:0 46px;font-size:16px;color:var(--mut);background:linear-gradient(0deg,rgba(0,0,0,.55),transparent)}
+#cnx .rod b{color:#c3ccda;font-weight:600}
+#cnx .rod span:first-child{cursor:help}
+#cnx .tip{position:absolute;left:0;top:0;max-width:470px;z-index:60;padding:12px 16px;background:rgba(10,13,19,.97);border:1px solid rgba(255,255,255,.28);border-left:4px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.6);font-size:17px;line-height:1.4;color:var(--txt);opacity:0;pointer-events:none;transition:opacity .12s}
+#cnx .tip.on{opacity:1}
+#cnx .tip b{display:block;color:var(--gold);font-size:19px;margin-bottom:4px}
+#cnx .tip>span{display:block;margin-top:6px}
+#cnx .tip .tv{display:grid;gap:3px;margin-top:4px;padding:8px 12px;background:rgba(255,255,255,.07);border-left:3px solid rgba(255,255,255,.25)}
+#cnx .tip .tv div{display:flex;justify-content:space-between;gap:28px}
+#cnx .tip .tv div em{font-style:normal;font-weight:800;color:#fff;text-align:right}
+#cnx .tip small{display:block;margin-top:8px;font-size:16px;color:var(--mut)}
+#cnx .aj{position:absolute;left:0;top:0;width:1920px;height:1024px;z-index:55;display:none;background:rgba(3,5,8,.84);align-items:center;justify-content:center}
+#cnx .aj.on{display:flex}
+#cnx .aj .cx{width:1400px;padding:34px 44px 28px;background:linear-gradient(180deg,#161c27,#0c1017);border:1px solid rgba(255,255,255,.22);border-top:5px solid var(--gold);display:grid;grid-template-columns:1fr 1fr;gap:20px 52px}
+#cnx .aj h2{grid-column:1 / span 2;margin:0;font:italic 900 34px var(--disp);text-transform:uppercase}
+#cnx .aj h3{margin:0 0 10px;font-size:18px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+#cnx .aj ol{margin:0;padding-left:26px}
+#cnx .aj li{font-size:19px;line-height:1.45;color:var(--txt);margin:0 0 10px}
+#cnx .aj dl{margin:0}
+#cnx .aj dt{font-weight:800;color:#fff;font-size:19px}
+#cnx .aj dd{margin:0 0 9px;font-size:18px;line-height:1.4;color:#c3ccda}
+#cnx .aj .fe{grid-column:1 / span 2;display:flex;justify-content:flex-end;align-items:center}
+#cnx .aj .fe button{padding:10px 26px;font-size:17px;font-weight:800;border:1px solid var(--gold);background:var(--gold);color:#12151c}
+#cnx.go .kpi,#cnx.go .pn{animation:cn-sobe .55s both}
+#cnx.go .kpi:nth-child(2){animation-delay:.06s}
+#cnx.go .kpi:nth-child(3){animation-delay:.12s}
+#cnx.go .kpi:nth-child(4){animation-delay:.18s}
+#cnx.go .kpi:nth-child(5){animation-delay:.24s}
+#cnx.go .kpi:nth-child(6){animation-delay:.3s}
+#cnx.go .kpi:nth-child(7){animation-delay:.36s}
+#cnx.go .p1{animation-delay:.3s}
+#cnx.go .p2{animation-delay:.4s}
+#cnx.go .p3{animation-delay:.5s}
+#cnx.go .p4{animation-delay:.6s}
+#cnx.go .p5{animation-delay:.7s}
+#cnx.rm *{animation:none!important;transition:none!important}
+@keyframes cn-sobe{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+</style>
+<div id="cnx" tabindex="0">
+<div class="palco"><div class="fundo"></div><div class="faixa"></div><div class="tit">Conferência <b>e</b> fontes</div><div class="sub"></div><div class="ctl"></div><div class="kpis"></div><div class="pn p1"></div><div class="pn p2"></div><div class="pn p3"></div><div class="pn p4"></div><div class="pn p5"></div><div class="rod"></div><div class="aj" role="dialog" aria-modal="true" aria-label="Como ler esta tela"></div><div class="tip"></div></div>
+</div>
+<script>
+(function(){
+var D=__DADOS__;
+var raiz=document.getElementById('cnx'),palco=raiz.querySelector('.palco'),tipEl=raiz.querySelector('.tip'),ajEl=raiz.querySelector('.aj');
+var EL={sub:raiz.querySelector('.sub'),ctl:raiz.querySelector('.ctl'),kpis:raiz.querySelector('.kpis'),p1:raiz.querySelector('.p1'),p2:raiz.querySelector('.p2'),p3:raiz.querySelector('.p3'),p4:raiz.querySelector('.p4'),p5:raiz.querySelector('.p5'),rod:raiz.querySelector('.rod')};
+var COR={ciano:'#4cc9f0',verde:'#2fd47a',verdeClaro:'#79e7a6',vermelho:'#ff5470',amarelo:'#ffd166',cinza:'#9aa6b8'};
+var RES={ok:['Sem ocorrência','ok'],explicada:['Explicada','ex'],aberta:['Aberta','ab'],info:['Informativa','in']};
+var STS={aberta:['Aberta','ab'],explicada:['Explicada','ex'],aceita:['Aceita','ac'],corrigida:['Corrigida','co']};
+var ORD_ST=['aberta','explicada','aceita','corrigida'];
+var SEV={alta:'Alta',media:'Média',baixa:'Baixa'};
+var RESPL={ok:'sem ocorrência',explicada:'explicadas',aberta:'abertas',info:'informativas'};
+var BADGE={o:['Oficial','ok'],n:['Não oficial','ex'],p:['Projeto','ac']};
+var M=D.meta,REG={};
+D.reg.forEach(function(r){REG[r.c]=r});
+var est={res:'t',st:'t',sel:null,k:1,ox:0,oy:0};
+var reduzido=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+if(reduzido)raiz.classList.add('rm');
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function num(n){return Number(n).toLocaleString('pt-BR')}
+function pc(a,b){return b>0?Number(100*a/b).toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0})+'%':'—'}
+function dataBR(d){var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
+function plural(n,u,p){return num(n)+' '+(n===1?u:p)}
+function tp(){return' data-tip="'+Array.prototype.slice.call(arguments).map(esc).join('||')+'"'}
+function linhasTip(l){return'@'+l.map(function(x){return x[0]+'::'+x[1]}).join('\n')}
+function tipHtml(s){
+var sec=String(s).split('||'),h='<b>'+esc(sec[0])+'</b>';
+for(var i=1;i<sec.length;i++){
+var x=sec[i];if(!x)continue;
+if(x.charAt(0)==='@')h+='<div class="tv">'+x.slice(1).split('\n').map(function(l){var p=l.split('::');return'<div><span>'+esc(p[0])+'</span><em>'+esc(p[1]===undefined?'':p[1])+'</em></div>'}).join('')+'</div>';
+else if(x.charAt(0)==='~')h+='<small>'+esc(x.slice(1))+'</small>';
+else h+='<span>'+esc(x)+'</span>';
+}
+return h;
+}
+function ocDe(cod){return D.oc.filter(function(o){return o.r===cod})}
+function regrasFiltradas(){return D.reg.filter(function(r){return est.res==='t'||r.r===est.res})}
+function baseOcorr(){return est.sel?ocDe(est.sel):D.oc.filter(function(o){return est.res==='t'||REG[o.r].r===est.res})}
+function ocorrFiltradas(){
+var l=baseOcorr().filter(function(o){return est.st==='t'||o.st===est.st});
+return l.sort(function(a,b){return ORD_ST.indexOf(a.st)-ORD_ST.indexOf(b.st)||(a.i<b.i?-1:a.i>b.i?1:0)});
+}
+function contaRes(){var c={t:D.reg.length};D.reg.forEach(function(r){c[r.r]=(c[r.r]||0)+1});return c}
+function contaSt(){var c={t:0};baseOcorr().forEach(function(o){c.t++;c[o.st]=(c[o.st]||0)+1});return c}
+function temFiltro(){return!!est.sel||est.res!=='t'||est.st!=='t'}
+function limparTudo(){est.sel=null;est.res='t';est.st='t'}
+function itensKpi(){
+var abertas=D.reg.filter(function(r){return r.r==='aberta'}).map(function(r){return r.c}),infos=D.reg.filter(function(r){return r.r==='info'}).map(function(r){return r.c});
+var decididas=M.ocorr-(M.st.aberta||0);
+return[
+{r:'Regras',c:COR.ciano,v:M.regras,s:num(M.itens)+' itens verificados',t:['Regras de conferência','Cada regra compara duas fontes ou confere uma propriedade dos dados: somas que fecham, minutos plausíveis, vínculos sem sobra.',linhasTip([['Regras',num(M.regras)],['Itens verificados',num(M.itens)],['Ocorrências no log',num(M.ocorr)]])]},
+{r:'Sem ocorrência',c:COR.verde,v:M.ok,s:pc(M.ok,M.regras)+' das regras',t:['Sem ocorrência','Regras em que tudo que foi verificado bateu: nenhuma divergência apareceu.']},
+{r:'Explicadas',c:COR.amarelo,v:M.expl,s:plural(decididas,'ocorrência decidida','ocorrências decididas'),t:['Explicadas','Regras que acharam divergências com causa conhecida. Cada caso foi decidido (explicada, aceita ou corrigida) com a explicação escrita; quando as fontes divergem, vale a oficial.',linhasTip(ORD_ST.filter(function(k){return M.st[k]}).map(function(k){return[STS[k][0]+'s',num(M.st[k])]}))]},
+{r:'Em aberto',c:COR.vermelho,v:M.aber,s:abertas.join(' e '),t:['Em aberto','Pendências sem solução com as fontes que existem. Não são erros nos números da tela: são limites conhecidos, listados sem esconder.',linhasTip(abertas.map(function(c){return[c,REG[c].t]}))]},
+{r:'Informativa',c:COR.cinza,v:M.info,s:infos.join(', ')+' · não é erro',t:['Informativa','Regra que só mostra um número para comparação entre fontes e não aponta erro.',linhasTip(infos.map(function(c){return[c,REG[c].t]}))]},
+{r:'Placares × FPF',c:COR.verdeClaro,v:M.placar[0],suf:'de '+M.placar[1],s:'jogos iguais à FPF',t:['Placares × tabela da FPF','O placar final de cada jogo na súmula oficial contra a tabela oficial da FPF.']},
+{r:'Posições × FPF',c:COR.verdeClaro,v:M.classif[0],suf:'de '+M.classif[1],s:'clubes na mesma posição',t:['Posições × classificação da FPF','A ordem da 1ª fase calculada pelo Art. 16 do regulamento contra a posição oficial de cada clube.']}
+];
+}
+function kpisHtml(){
+return itensKpi().map(function(k,i){
+return'<div class="kpi" style="left:'+(46+i*263)+'px;--kc:'+k.c+'"'+tp.apply(null,k.t.concat(['~Resumo de toda a conferência; os filtros da tela não mudam este número.']))+'><h4>'+esc(k.r)+'</h4><div class="v"><span data-i="'+i+'">'+num(k.v)+'</span>'+(k.suf?'<em>'+esc(k.suf)+'</em>':'')+'</div><small>'+esc(k.s)+'</small></div>';
+}).join('');
+}
+function contar(el,alvo,dur){
+if(reduzido||dur<=0){el.textContent=num(alvo);return}
+var t0=performance.now();
+(function f(t){var k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,3);el.textContent=num(Math.round(alvo*e));if(k<1)requestAnimationFrame(f)})(t0);
+}
+function kpis(){
+EL.kpis.innerHTML=kpisHtml();
+if(!reduzido)itensKpi().forEach(function(k,i){var el=EL.kpis.querySelector('span[data-i="'+i+'"]');contar(el,k.v,900)});
+}
+function chip(act,v,rot,on,t){return'<button class="chp sm'+(on?' on':'')+'" data-act="'+act+'" data-v="'+v+'"'+tp.apply(null,t)+'><span>'+esc(rot)+'</span></button>'}
+function painelRegras(){
+var c=contaRes(),lista=regrasFiltradas();
+var h='<h3><span'+tp('As regras','As '+D.reg.length+' regras de conferência, em ordem de código. Clique em uma regra para ver só as ocorrências que ela achou.')+'>As regras</span><small>'+plural(lista.length,'regra','regras')+'</small></h3>';
+h+='<div class="fl">'+[['t','Todas','Todas as regras'],['ok','Sem ocorr.','Regras sem nenhuma divergência'],['explicada','Explicadas','Regras com divergência de causa conhecida'],['aberta','Abertas','Regras com pendência sem solução'],['info','Info','Regras só informativas']].map(function(x){return chip('res',x[0],x[1],est.res===x[0],[x[2],plural(c[x[0]]||0,'regra','regras')])}).join('')+'</div>';
+h+='<div class="tb"><div class="rh"><span>Cód.</span><span>Regra</span><span>Resultado</span></div>';
+lista.forEach(function(r,i){
+var rs=RES[r.r]||[r.r,'in'];
+h+='<button class="rr'+(est.sel===r.c?' sel':'')+'" style="--i:'+i+'" data-act="regra" data-id="'+r.c+'"'+tp(r.c+' · '+r.t,linhasTip([['Resultado',rs[0]],['Itens verificados',num(r.v)],['Ocorrências',r.o?num(r.o):'nenhuma'],['Gravidade',SEV[r.s]||r.s]]),r.x?'Resumo: '+r.x:'','~Clique para ver só as ocorrências desta regra.')+'><span class="cd">'+r.c+'</span><u>'+esc(r.t)+'</u><span class="rc '+rs[1]+'">'+rs[0]+(r.o?' · '+r.o:'')+'</span></button>';
+});
+return h+'</div>';
+}
+function textoOcorr(o){return D.tx[o.x]}
+function ocLinha(o,i){
+var st=STS[o.st]||[o.st,'in'],r=REG[o.r],ab=o.st==='aberta';
+var ctx=[o.j,o.d].filter(function(x){return x}).join(' · ');
+var tt=o.b.length?[['Fonte A',o.a[0]+': '+o.a[1]],['Fonte B',o.b[0]+': '+o.b[1]]]:[['Dado',o.a[0]+': '+o.a[1]]];
+if(o.d)tt.push(['Detalhe',o.d]);
+if(o.j)tt.push(['Jogo',o.j]);
+tt.push(['Status',st[0]],['Gravidade',SEV[o.sv]||o.sv]);
+return'<div class="oc'+(ab?' ab':'')+'" tabindex="0" style="--i:'+i+'"'+tp(o.i+' · '+(r?r.t:o.r),linhasTip(tt),textoOcorr(o),'~'+(ab?'Pendência aberta: ainda sem solução com as fontes disponíveis.':'Decidida: a explicação acima registra o critério.'))+'><div class="l1"><b>'+esc(o.i)+'</b><span class="rc '+st[1]+'">'+st[0]+'</span><u>'+esc(ctx||(r?r.t:''))+'</u></div><div class="l2">'+esc(o.a[0]+': '+o.a[1]+(o.b.length?'  ×  '+o.b[0]+': '+o.b[1]:''))+'</div>'+(ab?'<div class="l3">'+esc(textoOcorr(o))+'</div>':'')+'</div>';
+}
+function painelOcorr(){
+var c=contaSt(),lista=ocorrFiltradas(),r=est.sel?REG[est.sel]:null;
+var h='<h3><span'+tp('As ocorrências','Cada ocorrência é um caso em que as fontes divergem ou um dado falta, com o que cada fonte diz, a decisão e a explicação. As abertas vêm primeiro.')+'>As ocorrências</span><small>'+plural(lista.length,'ocorrência','ocorrências')+(r?' · regra '+esc(r.c):est.res!=='t'?' · regras '+RESPL[est.res]:'')+'</small></h3>';
+h+='<div class="fl">'+[['t','Todas','Todas as ocorrências'],['aberta','Abertas','Sem solução com as fontes que existem'],['explicada','Explicadas','Causa conhecida; vale a fonte oficial'],['aceita','Aceitas','Limitação conhecida, aceita'],['corrigida','Corrigidas','Valor corrigido com fonte documentada']].map(function(x){return chip('st',x[0],x[1],est.st===x[0],[x[2],plural(c[x[0]]||0,'ocorrência','ocorrências')+(r?' nesta regra':est.res!=='t'?' nestas regras':'')])}).join('')+'</div>';
+if(!lista.length){
+if(r&&!ocDe(r.c).length)return h+'<div class="vazio"><div>Regra '+esc(r.c)+' sem ocorrência.<br>'+(r.v===1?'O item verificado bateu.':'Os '+num(r.v)+' itens verificados bateram.')+(r.x?'<small>'+esc(r.x)+'</small>':'')+'</div></div>';
+if(!r&&!baseOcorr().length)return h+'<div class="vazio"><div>As regras '+RESPL[est.res]+' não têm ocorrência.<br>Tudo que elas verificaram bateu.</div></div>';
+return h+'<div class="vazio"><div>Nenhuma ocorrência com este status'+(r?' nesta regra':est.res!=='t'?' nestas regras':'')+'.<br>Use Todas ou Limpar.</div></div>';
+}
+return h+'<div class="lo">'+lista.map(ocLinha).join('')+'</div>';
+}
+function painelFontes(){
+var h='<h3><span'+tp('De onde vem cada dado','Quem é a fonte de quê. A FPF oficial é a verdade; a ESPN só entra rotulada, com poucas informações; categorias e grupos são do projeto.')+'>De onde vem cada dado</span></h3>';
+D.fon.forEach(function(f,i){var b=BADGE[f.k];h+='<div class="fo" style="--i:'+i+'"'+tp(f.f,f.d)+'><span class="rc '+b[1]+'">'+b[0]+'</span><u>'+esc(f.t)+'</u></div>'});
+return h;
+}
+function painelCamadas(){
+var h='<h3><span'+tp('Camadas de conferência','Os números passam por camadas independentes de conferência, da fonte até o Power BI. Passe o mouse em uma camada para ver como foi feita e quando.')+'>Camadas de conferência</span></h3>';
+D.cam.forEach(function(c,i){h+='<div class="cm" style="--i:'+i+'"'+tp(c.n,c.d,c.q?'~Conferido em '+c.q+'.':'~Repetido a cada mudança no projeto.')+'><i>✔</i><u>'+esc(c.n)+'</u><em>'+esc(c.r)+'</em></div>'});
+return h;
+}
+function painelCorrecao(){
+var h='<h3><span'+tp('Correção documentada','Quando uma fonte oficial tem um erro evidente, o valor é corrigido na base com fontes citadas e o valor original continua à vista. O PDF da súmula nunca é alterado.')+'>Correção documentada</span></h3>';
+D.cor.forEach(function(c){
+h+='<div class="cr"'+tp(c.i+' · '+c.t,c.x,'~A correção está aplicada e rastreável: a conferência confirma o valor corrigido na base e o original na súmula.')+'><div class="c1"><b>'+esc(c.i)+'</b><u>'+esc(c.t)+'</u></div><div class="c2"><span>Súmula<b>'+esc(c.de)+'\'</b></span><i>→</i><span class="nv">Base tratada<b>'+esc(c.para)+'\'</b></span></div><div class="c3">'+esc(c.d)+' · conferido em '+esc(c.f.join(', '))+'</div></div>';
+});
+return h;
+}
+function controles(){
+EL.ctl.innerHTML='<button class="chp lim'+(temFiltro()?'':' off')+'" data-act="limpar"'+tp('Limpar','Solta a regra escolhida e volta os dois filtros para Todas.')+'><span>Limpar</span></button><button class="aju" data-act="ajuda"'+tp('Como ler esta tela','Passo a passo e significado das palavras. Atalho: ? ou h.')+'>?</button>';
+}
+function cabecalho(){
+EL.sub.textContent='PDFs oficiais coletados em '+dataBR(M.pdf)+' · tabela da FPF de '+dataBR(M.fpf)+' · ESPN de '+dataBR(M.espn);
+EL.sub.setAttribute('data-tip',['Quando os dados foram coletados','Súmulas e boletins oficiais (PDF) coletados em '+dataBR(M.pdf)+'. Tabela de jogos e classificação do portal da FPF atualizadas em '+dataBR(M.fpf)+'. Dados da ESPN coletados em '+dataBR(M.espn)+'. A competição está encerrada: os dados dela não mudam mais.'].map(esc).join('||'));
+}
+function montarRodape(){
+EL.rod.innerHTML='<span'+tp('Como os dados foram conferidos','Esta tela é o detalhe da conferência: as regras, as ocorrências e as camadas.',linhasTip([['Regras de conferência',M.regras],['Sem divergência',M.ok],['Divergência explicada',M.expl],['Em aberto',M.aber],['Informativa',M.info]]))+'>Dados: súmulas e boletins oficiais da FPF · <b>conferidos por '+M.regras+' regras</b> ('+M.aber+' pendências abertas)</span><span>Projeto independente, sem vínculo com a FPF nem com a ESPN</span>';
+}
+function montarAjuda(){
+ajEl.innerHTML='<div class="cx"><h2>Como ler esta tela</h2><div><h3>Passo a passo</h3><ol><li>Os sete quadros de cima resumem o resultado das '+M.regras+' regras de conferência.</li><li>Em <b>As regras</b>, escolha o resultado (Todas, Sem ocorrência, Explicadas, Abertas ou Info): as duas listas passam a mostrar só essas regras e as ocorrências delas. Clique em uma regra para ver só o que ela achou; clique de novo para soltar.</li><li>Em <b>As ocorrências</b>, escolha o status. As pendências abertas vêm primeiro. Passe o mouse em uma linha para ler o que cada fonte diz, a decisão e a explicação.</li><li>Os sete quadros de cima resumem toda a conferência e não mudam com os filtros. À direita: de onde vem cada dado, as camadas de conferência e a correção documentada. Limpar (ou a tecla Esc) solta a regra e os filtros.</li></ol></div><div><h3>Palavras que aparecem</h3><dl><dt>Regra</dt><dd>Uma conferência automática: compara duas fontes ou confere uma propriedade dos dados.</dd><dt>Item verificado</dt><dd>Cada jogo, clube, evento ou linha que a regra olhou.</dd><dt>Ocorrência</dt><dd>Um caso em que as fontes divergem ou um dado falta.</dd><dt>Explicada, aceita, corrigida</dt><dd>Explicada: causa conhecida, vale a fonte oficial. Aceita: limitação conhecida. Corrigida: valor ajustado na base com fonte citada.</dd><dt>Aberta</dt><dd>Sem solução com as fontes que existem. Não é erro nos números da tela.</dd><dt>Informativa</dt><dd>Mostra um número para comparação; não aponta erro.</dd><dt>Oficial, não oficial, projeto</dt><dd>Oficial é da FPF. Não oficial é da ESPN. Projeto é classificação feita aqui.</dd></dl></div><div class="fe"><button data-act="ajuda-fechar"'+tp('Fechar','Fecha este passo a passo. Também fecham as teclas Esc, Enter e espaço, ou um clique fora da janela.')+'>Entendi</button></div></div>';
+}
+function ajuda(abrir){
+if(abrir===undefined)abrir=!ajEl.classList.contains('on');
+if(abrir)esconderTip();
+ajEl.classList.toggle('on',abrir);
+}
+var PAIN=['p1','p2','p3','p4','p5'];
+function atualizar(opc){
+opc=opc||{};
+esconderTip();
+var tb=EL.p1.querySelector('.tb'),rolo=opc.manterRolo&&tb?tb.scrollTop:0;
+PAIN.forEach(function(p){EL[p].classList.remove('on')});
+controles();cabecalho();kpis();
+EL.p1.innerHTML=painelRegras();
+EL.p2.innerHTML=painelOcorr();
+EL.p3.innerHTML=painelFontes();
+EL.p4.innerHTML=painelCamadas();
+EL.p5.innerHTML=painelCorrecao();
+var novo=EL.p1.querySelector('.tb');if(novo&&rolo)novo.scrollTop=rolo;
+if(opc.semAnimar){PAIN.forEach(function(p){EL[p].classList.add('on')})}
+else setTimeout(function(){PAIN.forEach(function(p){EL[p].classList.add('on')})},40);
+}
+function ajustar(){
+var w=raiz.clientWidth,h=raiz.clientHeight;if(!w||!h)return;
+var k=Math.min(w/1920,h/1024);
+est.k=k;est.ox=Math.round((w-1920*k)/2);est.oy=Math.round((h-1024*k)/2);
+palco.style.transform='translate('+est.ox+'px,'+est.oy+'px) scale('+k+')';
+}
+window.addEventListener('resize',ajustar);
+if(window.ResizeObserver)new ResizeObserver(ajustar).observe(raiz);
+ajustar();setTimeout(ajustar,60);setTimeout(ajustar,400);
+function pontoPalco(ev){var r=raiz.getBoundingClientRect();return[(ev.clientX-r.left-est.ox)/est.k,(ev.clientY-r.top-est.oy)/est.k]}
+var tipT=null,tipAlvo=null;
+function mostrarTip(alvo,ev){
+var s=alvo.getAttribute('data-tip');if(!s)return;
+tipEl.innerHTML=tipHtml(s);
+tipEl.classList.add('on');
+posTip(ev,alvo);
+}
+function posTip(ev,alvo){
+var pt;
+if(ev&&typeof ev.clientX==='number')pt=pontoPalco(ev);
+else{var r=alvo.getBoundingClientRect(),q=raiz.getBoundingClientRect();pt=[(r.left+r.width/2-q.left-est.ox)/est.k,(r.top+r.height-q.top-est.oy)/est.k-8]}
+var w=tipEl.offsetWidth,h=tipEl.offsetHeight,x=pt[0]+22,y=pt[1]+26;
+if(x+w>1908)x=pt[0]-w-22;
+if(x<12)x=12;
+if(y+h>1012)y=pt[1]-h-18;
+if(y<12)y=12;
+tipEl.style.left=Math.round(x)+'px';tipEl.style.top=Math.round(y)+'px';
+}
+function esconderTip(){clearTimeout(tipT);tipAlvo=null;tipEl.classList.remove('on')}
+function acao(a,id,v){
+if(a==='res'){est.res=v;if(est.sel&&v!=='t'&&REG[est.sel].r!==v)est.sel=null;atualizar({semAnimar:true})}
+else if(a==='st'){est.st=v;atualizar({semAnimar:true,manterRolo:true})}
+else if(a==='regra'){if(!REG[id]||(est.res!=='t'&&REG[id].r!==est.res))return;est.sel=est.sel===id?null:id;est.st='t';atualizar({semAnimar:true,manterRolo:true})}
+else if(a==='limpar'){limparTudo();atualizar()}
+else if(a==='ajuda')ajuda(true);
+else if(a==='ajuda-fechar')ajuda(false);
+}
+raiz.addEventListener('click',function(ev){
+var alvo=ev.target,t=alvo.closest&&alvo.closest('[data-act]'),dentro=alvo.closest&&alvo.closest('.cx');
+if(ajEl.classList.contains('on')&&!dentro){ajuda(false);return}
+if(!t)return;
+acao(t.getAttribute('data-act'),t.getAttribute('data-id'),t.getAttribute('data-v'));
+esconderTip();
+raiz.focus({preventScroll:true});
+});
+raiz.addEventListener('mouseover',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d!==tipAlvo){tipAlvo=d;clearTimeout(tipT);if(d){tipT=setTimeout(function(){mostrarTip(d,ev)},90)}else tipEl.classList.remove('on')}
+});
+raiz.addEventListener('mousemove',function(ev){if(tipAlvo&&tipEl.classList.contains('on'))posTip(ev,tipAlvo)});
+raiz.addEventListener('mouseleave',esconderTip);
+raiz.addEventListener('focusin',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d&&d!==tipAlvo&&ev.target!==raiz){tipAlvo=d;mostrarTip(d,null)}
+});
+raiz.addEventListener('focusout',esconderTip);
+raiz.addEventListener('touchstart',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d&&d!==tipAlvo){tipAlvo=d;var tc=ev.touches&&ev.touches[0];mostrarTip(d,tc?{clientX:tc.clientX,clientY:tc.clientY}:null)}
+else if(!d)esconderTip();
+},{passive:true});
+function tecla(k,ctrl){
+if(k==='?'||(k==='h'&&!ctrl)){ajuda();return true}
+if(ajEl.classList.contains('on')){if(k==='Escape'||k==='Enter'||k===' '){ajuda(false);return true}return false}
+if((k==='Escape'||k==='Backspace')&&temFiltro()){if(est.sel)est.sel=null;else{est.res='t';est.st='t'}atualizar({semAnimar:true,manterRolo:true});return true}
+return false;
+}
+document.addEventListener('keydown',function(ev){
+if(!raiz.offsetParent)return;
+if(tecla(ev.key,ev.ctrlKey||ev.metaKey))ev.preventDefault();
+});
+var goT=null;
+function entrar(){
+clearTimeout(goT);
+raiz.classList.remove('go');
+void raiz.offsetWidth;
+raiz.classList.add('go');
+goT=setTimeout(function(){raiz.classList.remove('go')},1500);
+ajustar();
+atualizar();
+}
+montarAjuda();montarRodape();
+atualizar({semAnimar:true});
+if(window.PA&&window.PA.shell)window.PA.mods.conf={entrar:entrar};
+else entrar();
+if(/[?&]debug/.test(location.search))window.__cnx={D:D,REG:REG,est:est,RES:RES,STS:STS,acao:acao,tecla:tecla,atualizar:atualizar,tipHtml:tipHtml,itensKpi:itensKpi,kpisHtml:kpisHtml,regrasFiltradas:regrasFiltradas,ocorrFiltradas:ocorrFiltradas,contaRes:contaRes,contaSt:contaSt,temFiltro:temFiltro,limparTudo:limparTudo,painelRegras:painelRegras,painelOcorr:painelOcorr,controles:controles};
+})();
+</script>

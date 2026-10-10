@@ -1,0 +1,59 @@
+/// Atletas da súmula oficial: nome como a FPF escreve, apelido de quem fez gol, nome curto e clube na temporada. Chave: id_atleta (identificador do nome completo). Fonte: súmulas da FPF.
+table dim_atleta
+	lineageTag: fc65c9c2-c820-5f5c-97bc-6fa5b7369fbc
+
+	column id_atleta
+		dataType: string
+		lineageTag: f08c5acc-ebe6-5087-a430-5aaed64354ee
+		summarizeBy: none
+		sourceColumn: id_atleta
+
+	column nome
+		dataType: string
+		lineageTag: d00b23a6-b0e5-5e48-9b19-9cd29bc3ee59
+		summarizeBy: none
+		sourceColumn: nome
+
+	column nome_truncado
+		dataType: int64
+		formatString: 0
+		lineageTag: 54b3dd76-ec83-568a-ac33-6bccfac337a7
+		summarizeBy: none
+		sourceColumn: nome_truncado
+
+	column apelido
+		dataType: string
+		lineageTag: a28291e3-0401-51c8-b62a-a846c96f5aae
+		summarizeBy: none
+		sourceColumn: apelido
+
+	column nome_curto
+		dataType: string
+		lineageTag: 6e705450-8817-53c0-bc65-f18a88238e58
+		summarizeBy: none
+		sourceColumn: nome_curto
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c246fcd-ca6b-5816-a303-ca978e922856
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column registros
+		dataType: string
+		lineageTag: 4550f2a7-4cb4-54dd-8edf-5e6bd7ea6f1c
+		summarizeBy: none
+		sourceColumn: registros
+
+	partition dim_atleta = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\dim_atleta.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_atleta", type text}, {"nome", type text}, {"nome_truncado", Int64.Type}, {"apelido", type text}, {"nome_curto", type text}, {"id_clube", Int64.Type}, {"registros", type text}}, "en-US")
+				in
+				    Tipos
+

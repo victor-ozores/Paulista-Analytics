@@ -1,0 +1,112 @@
+/// Clubes: nome, sigla, cores e o escudo oficial reduzido em base64 (escudo_base64). Escudo e nomes: FPF; sigla e cor provisórias: ESPN (não oficial).
+table dim_clube
+	lineageTag: 77ec3b9c-34ed-54f2-9fc1-6be83159c553
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: da1927e7-2143-56a0-8cac-0d8fd4ebc258
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column nome_popular
+		dataType: string
+		lineageTag: 3d14fe98-6705-5332-b255-6bbae8244c2d
+		summarizeBy: none
+		sourceColumn: nome_popular
+
+	column nome_oficial
+		dataType: string
+		lineageTag: 525161b5-e956-5676-b456-510a430b9d6c
+		summarizeBy: none
+		sourceColumn: nome_oficial
+
+	column sigla
+		dataType: string
+		lineageTag: 8a2a1577-21b4-5b48-a447-52de796aa439
+		summarizeBy: none
+		sourceColumn: sigla
+
+	column cor_hex
+		dataType: string
+		lineageTag: ab084a61-f971-5a42-8af1-10c6042d8687
+		summarizeBy: none
+		sourceColumn: cor_hex
+
+	column cor_espn
+		dataType: string
+		lineageTag: 3a122377-77e9-5a7d-af7e-f89410a6abd9
+		summarizeBy: none
+		sourceColumn: cor_espn
+
+	column cor_alternativa_espn
+		dataType: string
+		lineageTag: 704c7cb7-f3bc-5665-8862-cee524e84307
+		summarizeBy: none
+		sourceColumn: cor_alternativa_espn
+
+	column id_espn
+		dataType: int64
+		formatString: 0
+		lineageTag: c351b812-16d8-5b8c-b958-87eb4ece13a1
+		summarizeBy: none
+		sourceColumn: id_espn
+
+	column url_escudo
+		dataType: string
+		lineageTag: 4a921cdb-9ff4-5a90-ac13-77fec2c18830
+		summarizeBy: none
+		sourceColumn: url_escudo
+
+	column arquivo_escudo
+		dataType: string
+		lineageTag: b15491cf-3349-5723-9349-05af7bc41fc1
+		summarizeBy: none
+		sourceColumn: arquivo_escudo
+
+	column escudo_largura
+		dataType: int64
+		formatString: 0
+		lineageTag: b9656bac-b68d-59bc-8935-58c5a9b7ca99
+		summarizeBy: none
+		sourceColumn: escudo_largura
+
+	column escudo_altura
+		dataType: int64
+		formatString: 0
+		lineageTag: b146a6c5-2afc-5511-8f3e-9c133a706c7e
+		summarizeBy: none
+		sourceColumn: escudo_altura
+
+	column escudo_bytes
+		dataType: int64
+		formatString: 0
+		lineageTag: ee5f3a95-ddea-588a-befb-924501a7b0dc
+		summarizeBy: none
+		sourceColumn: escudo_bytes
+
+	column tem_escudo
+		dataType: int64
+		formatString: 0
+		lineageTag: 050b61c7-442b-59c8-b8f8-f43c9ab9bf03
+		summarizeBy: none
+		sourceColumn: tem_escudo
+
+	column escudo_base64
+		dataType: string
+		lineageTag: 12e55eb6-4731-5531-9651-f4ca5627ff7a
+		summarizeBy: none
+		sourceColumn: escudo_base64
+
+	partition dim_clube = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\dim_clube.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_clube", Int64.Type}, {"nome_popular", type text}, {"nome_oficial", type text}, {"sigla", type text}, {"cor_hex", type text}, {"cor_espn", type text}, {"cor_alternativa_espn", type text}, {"id_espn", Int64.Type}, {"url_escudo", type text}, {"arquivo_escudo", type text}, {"escudo_largura", Int64.Type}, {"escudo_altura", Int64.Type}, {"escudo_bytes", Int64.Type}, {"tem_escudo", Int64.Type}}, "en-US"),
+				    Escudos = Table.AddColumn(Tipos, "escudo_base64", each Binary.ToText(File.Contents(CaminhoDados & "\" & Text.Replace([arquivo_escudo], "/", "\")), BinaryEncoding.Base64), type text)
+				in
+				    Escudos
+

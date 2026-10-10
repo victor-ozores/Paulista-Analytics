@@ -1,0 +1,467 @@
+<style>
+#glx{--disp:"Arial Black","Segoe UI Black","Segoe UI",Arial,sans-serif;--gold:#ffd166;--mut:#9aa6b8;--txt:#e6ecf5;--ver:#2fd47a;--verc:#79e7a6;--verm:#ff5470;--vermc:#ff8a95;--ciano:#4cc9f0;--rs:#ff6fa3;--rox:#b388ff;position:relative;width:100%;height:100%;min-height:320px;overflow:hidden;background:#05070a;color:#fff;font-family:"Segoe UI",Arial,sans-serif;-webkit-user-select:none;user-select:none;outline:0}
+#glx *{box-sizing:border-box}
+#glx button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0;text-align:inherit}
+#glx button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#glx img{display:block}
+#glx .palco{position:absolute;left:0;top:0;width:1920px;height:1024px;transform-origin:0 0;overflow:hidden;background:radial-gradient(ellipse 80% 70% at 50% 22%,#241420 0,#0a070a 75%)}
+#glx .fundo{position:absolute;left:0;top:0;width:1920px;height:1024px;background:repeating-linear-gradient(115deg,rgba(255,255,255,.028) 0 2px,transparent 2px 34px)}
+#glx .faixa{position:absolute;left:0;top:0;width:1010px;height:88px;background:linear-gradient(100deg,#3a0f2a 0,#8c1f5a 58%,#e0457b 100%);clip-path:polygon(0 0,100% 0,calc(100% - 64px) 100%,0 100%)}
+#glx .faixa::after{content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:radial-gradient(circle,rgba(0,0,0,.26) 1.6px,transparent 2.2px) 0 0/17px 17px;-webkit-mask-image:linear-gradient(90deg,#000,transparent 85%);mask-image:linear-gradient(90deg,#000,transparent 85%)}
+#glx .tit{position:absolute;left:46px;top:6px;font:italic 900 46px/1.05 var(--disp);text-transform:uppercase;text-shadow:0 5px 0 rgba(0,0,0,.35);white-space:nowrap}
+#glx .tit b{color:var(--gold)}
+#glx .sub{position:absolute;left:46px;top:58px;width:900px;font-size:18px;font-weight:700;color:#ffe3ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:help}
+#glx .ctl{position:absolute;right:46px;top:22px;display:flex;align-items:center;gap:14px;z-index:6}
+#glx .chp{display:inline-block;transform:skewX(-14deg);padding:7px 20px;font-size:16px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2)}
+#glx .chp span{display:block;transform:skewX(14deg)}
+#glx .chp:hover{background:rgba(255,255,255,.14)}
+#glx .chp.on{background:var(--gold);color:#12151c;border-color:var(--gold)}
+#glx .chp.lim{background:rgba(255,84,112,.18);border-color:rgba(255,84,112,.6)}
+#glx .chp.lim.off{display:none}
+#glx .aju{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.55);border:2px solid rgba(255,255,255,.75);font:900 24px var(--disp);color:#fff}
+#glx .aju:hover{background:rgba(0,0,0,.8)}
+#glx .kpis{position:absolute;left:46px;top:100px;width:1828px;height:108px}
+#glx .kpi{position:absolute;top:0;width:290px;height:108px;padding:11px 18px 0;background:linear-gradient(180deg,rgba(26,18,24,.96),rgba(10,7,10,.98));border:1px solid rgba(255,255,255,.14);border-top:4px solid var(--kc);clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,0 100%);cursor:help}
+#glx .kpi h4{margin:0;font-size:16px;letter-spacing:.1em;color:var(--mut);font-weight:800;text-transform:uppercase;white-space:nowrap}
+#glx .kpi .v{font:italic 900 38px/1.12 var(--disp);color:#fff;margin-top:2px;white-space:nowrap;text-shadow:0 0 18px var(--kc)}
+#glx .kpi small{display:block;font-size:16px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#glx .pn{position:absolute;padding:14px 22px 0;background:linear-gradient(180deg,rgba(22,15,20,.94),rgba(9,6,8,.98));border:1px solid rgba(255,255,255,.14);border-top:4px solid #fff;clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%)}
+#glx .pn h3{margin:0 0 8px;height:30px;display:flex;justify-content:space-between;align-items:center;font:italic 900 24px/1 var(--disp);text-transform:uppercase;white-space:nowrap}
+#glx .pn h3 span{cursor:help}
+#glx .pn h3 small{font:700 16px "Segoe UI",Arial,sans-serif;color:var(--mut);text-transform:none;letter-spacing:0;cursor:help}
+#glx .p1{left:46px;top:224px;width:1054px;height:308px}
+#glx .p2{left:1114px;top:224px;width:760px;height:308px}
+#glx .p3{left:46px;top:548px;width:580px;height:432px}
+#glx .p4{left:640px;top:548px;width:620px;height:432px}
+#glx .p5{left:1274px;top:548px;width:600px;height:432px}
+#glx .campo{position:relative;width:1010px;height:236px}
+#glx .campo svg{display:block;overflow:visible}
+#glx .campo text{font-family:"Segoe UI",Arial,sans-serif;font-size:16px;font-weight:700;fill:var(--mut);pointer-events:none}
+#glx .campo text.cn{font:italic 900 40px "Arial Black","Segoe UI Black",Arial,sans-serif;fill:#fff}
+#glx .campo text.cp{font-size:17px;font-weight:800;fill:#ffe3ee}
+#glx .campo text.ct{font-size:18px;font-weight:800;fill:#fff}
+#glx .campo .zona{cursor:help;transition:opacity .15s}
+#glx .campo .zona:hover{opacity:.82}
+#glx .campo .lin{fill:none;stroke:rgba(255,255,255,.32);stroke-width:2;pointer-events:none}
+#glx .campo .col{fill:none;stroke:rgba(255,255,255,.4);stroke-width:2;pointer-events:none}
+#glx .jgs{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+#glx .jgs h4{margin:0 0 2px;font-size:16px;letter-spacing:.1em;color:var(--mut);font-weight:800;text-transform:uppercase;white-space:nowrap}
+#glx .jg{display:grid;grid-template-columns:40px 1fr;gap:0 8px;align-items:center;height:40px;border-bottom:1px solid rgba(255,255,255,.08);cursor:help}
+#glx .jg:hover{background:rgba(255,255,255,.06)}
+#glx .jg .pl{font:italic 900 28px var(--disp);text-align:center;color:var(--gold)}
+#glx .jg .tx{min-width:0}
+#glx .jg .tx b{display:block;font-size:16px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#glx .jg .tx small{display:block;font-size:16px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#glx .rw{position:relative}
+#glx .rw::after{content:"";position:absolute;left:0;right:0;bottom:0;height:30px;background:linear-gradient(transparent,rgba(9,6,8,.96));pointer-events:none;opacity:0;transition:opacity .15s}
+#glx .rw.mais::after{opacity:1}
+#glx .rola{padding-right:14px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#ff6fa3 rgba(255,255,255,.1)}
+#glx .ar{display:grid;grid-template-columns:36px 30px 1fr 46px;gap:0 10px;align-items:center;width:100%;height:31px;border-bottom:1px solid rgba(255,255,255,.08)}
+#glx .ar:hover{background:rgba(255,255,255,.07)}
+#glx .ar.sel{background:rgba(76,201,240,.2);box-shadow:inset 0 0 0 1px var(--ciano)}
+#glx .ar.sem{opacity:.42}
+#glx .ar .ps{font:italic 900 19px var(--disp);text-align:center;color:var(--mut)}
+#glx .ar .esc{width:30px;height:30px;display:grid;place-items:center}
+#glx .ar .esc img{width:26px;height:26px;object-fit:contain}
+#glx .ar .esc .sg{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:900;color:#10141b}
+#glx .ar .tx{min-width:0}
+#glx .ar .tx b{display:block;font-size:18px;line-height:20px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#glx .ar .tx b small{font-size:16px;font-weight:700;color:var(--mut)}
+#glx .ar .bb{display:flex;height:6px;margin-top:2px;background:rgba(255,255,255,.07)}
+#glx .ar .bb i{display:block;height:6px}
+#glx .ar .bb .g{background:var(--verc)}
+#glx .ar .bb .p{background:var(--gold)}
+#glx .ar .bb .f{background:var(--ciano)}
+#glx .ar .gl{font:italic 900 24px var(--disp);text-align:right}
+#glx .lg2{display:flex;gap:22px;margin-top:8px;font-size:16px;font-weight:700;color:var(--mut)}
+#glx .lg2 span::before{content:"";display:inline-block;width:14px;height:14px;margin-right:8px;vertical-align:-2px}
+#glx .lg2 .g::before{background:var(--verc)}
+#glx .lg2 .p::before{background:var(--gold)}
+#glx .lg2 .f::before{background:var(--ciano)}
+#glx .lg2 .a::before{background:var(--vermc)}
+#glx .lg2 .b::before{background:var(--verc)}
+#glx .pch{display:grid;grid-template-columns:22px 54px 36px 1fr 1fr 36px;gap:0 6px;height:24px;align-items:center;font-size:16px;font-weight:800;color:var(--mut);text-transform:uppercase}
+#glx .pch .r{text-align:right}
+#glx .pc{display:grid;grid-template-columns:22px 54px 36px 1fr 1fr 36px;gap:0 6px;align-items:center;width:100%;height:21px;font-size:16px;font-weight:700}
+#glx .pc:hover{background:rgba(255,255,255,.08)}
+#glx .pc.sel{background:rgba(76,201,240,.24);box-shadow:inset 0 0 0 1px var(--ciano)}
+#glx .pc.sem{opacity:.4}
+#glx .pc .esc{width:22px;height:21px;display:grid;place-items:center}
+#glx .pc .esc img{width:18px;height:18px;object-fit:contain}
+#glx .pc .esc .sg{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;font-size:16px;font-weight:900;color:#10141b;line-height:1}
+#glx .pc .nc,#glx .pc .np{font-weight:900;font-variant-numeric:tabular-nums}
+#glx .pc .nc{text-align:right;color:var(--vermc)}
+#glx .pc .np{text-align:left;color:var(--verc)}
+#glx .pc .bc,#glx .pc .bp{display:flex;height:12px;background:rgba(255,255,255,.05)}
+#glx .pc .bc{justify-content:flex-end}
+#glx .pc .bc i{display:block;height:12px;background:var(--verm)}
+#glx .pc .bp i{display:block;height:12px;background:var(--ver)}
+#glx .pl2{display:grid;grid-template-columns:104px 1fr 50px;gap:0 12px;align-items:center;height:56px;border-bottom:1px solid rgba(255,255,255,.08);cursor:help}
+#glx .pl2:hover{background:rgba(255,255,255,.06)}
+#glx .pl2 .sc{font:italic 900 28px var(--disp);white-space:nowrap}
+#glx .pl2 .tx{min-width:0}
+#glx .pl2 .tx small{display:block;font-size:16px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#glx .pl2 .bb{height:12px;background:rgba(255,255,255,.07);margin-bottom:4px}
+#glx .pl2 .bb i{display:block;height:12px;background:var(--rox)}
+#glx .pl2 .ct2{font:italic 900 28px var(--disp);text-align:right}
+#glx .nota{margin-top:10px;font-size:16px;color:var(--mut);line-height:1.35}
+#glx .rod{position:absolute;left:0;top:988px;width:1920px;height:36px;z-index:12;display:flex;justify-content:space-between;align-items:center;padding:0 46px;font-size:16px;color:var(--mut);background:linear-gradient(0deg,rgba(0,0,0,.55),transparent)}
+#glx .rod b{color:#c3ccda;font-weight:600}
+#glx .rod span:first-child{cursor:help}
+#glx .tip{position:absolute;left:0;top:0;max-width:470px;z-index:60;padding:12px 16px;background:rgba(10,13,19,.97);border:1px solid rgba(255,255,255,.28);border-left:4px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.6);font-size:17px;line-height:1.4;color:var(--txt);opacity:0;pointer-events:none;transition:opacity .12s}
+#glx .tip.on{opacity:1}
+#glx .tip b{display:block;color:var(--gold);font-size:19px;margin-bottom:4px}
+#glx .tip>span{display:block;margin-top:6px}
+#glx .tip .tv{display:grid;gap:3px;margin-top:4px;padding:8px 12px;background:rgba(255,255,255,.07);border-left:3px solid rgba(255,255,255,.25)}
+#glx .tip .tv div{display:flex;justify-content:space-between;gap:28px}
+#glx .tip .tv div em{font-style:normal;font-weight:800;color:#fff;text-align:right}
+#glx .tip small{display:block;margin-top:8px;font-size:16px;color:var(--mut)}
+#glx .aj{position:absolute;left:0;top:0;width:1920px;height:1024px;z-index:55;display:none;background:rgba(3,5,8,.84);align-items:center;justify-content:center}
+#glx .aj.on{display:flex}
+#glx .aj .cx{width:1400px;padding:34px 44px 28px;background:linear-gradient(180deg,#1b1219,#0e090c);border:1px solid rgba(255,255,255,.22);border-top:5px solid var(--gold);display:grid;grid-template-columns:1fr 1fr;gap:20px 52px}
+#glx .aj h2{grid-column:1 / span 2;margin:0;font:italic 900 34px var(--disp);text-transform:uppercase}
+#glx .aj h3{margin:0 0 10px;font-size:18px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+#glx .aj ol{margin:0;padding-left:26px}
+#glx .aj li{font-size:19px;line-height:1.45;color:var(--txt);margin:0 0 10px}
+#glx .aj dl{margin:0}
+#glx .aj dt{font-weight:800;color:#fff;font-size:19px}
+#glx .aj dd{margin:0 0 9px;font-size:18px;line-height:1.4;color:#c3ccda}
+#glx .aj .fe{grid-column:1 / span 2;display:flex;justify-content:flex-end;align-items:center}
+#glx .aj .fe button{padding:10px 26px;font-size:17px;font-weight:800;border:1px solid var(--gold);background:var(--gold);color:#12151c}
+#glx.go .kpi,#glx.go .pn{animation:gl-sobe .55s both}
+#glx.go .kpi:nth-child(2){animation-delay:.05s}
+#glx.go .kpi:nth-child(3){animation-delay:.1s}
+#glx.go .kpi:nth-child(4){animation-delay:.15s}
+#glx.go .kpi:nth-child(5){animation-delay:.2s}
+#glx.go .kpi:nth-child(6){animation-delay:.25s}
+#glx.go .p1{animation-delay:.3s}
+#glx.go .p2{animation-delay:.38s}
+#glx.go .p3{animation-delay:.46s}
+#glx.go .p4{animation-delay:.54s}
+#glx.go .p5{animation-delay:.62s}
+#glx.rm *{animation:none!important;transition:none!important}
+@keyframes gl-sobe{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+</style>
+<div id="glx" tabindex="0">
+<div class="palco"><div class="fundo"></div><div class="faixa"></div><div class="tit">Gols <b>e</b> artilharia</div><div class="sub"></div><div class="ctl"></div><div class="kpis"></div><div class="pn p1"></div><div class="pn p2"></div><div class="pn p3"></div><div class="pn p4"></div><div class="pn p5"></div><div class="rod"></div><div class="aj" role="dialog" aria-modal="true" aria-label="Como ler esta tela"></div><div class="tip"></div></div>
+</div>
+<script>
+(function(){
+var D=__DADOS__;
+var raiz=document.getElementById('glx'),palco=raiz.querySelector('.palco'),tipEl=raiz.querySelector('.tip'),ajEl=raiz.querySelector('.aj');
+var EL={sub:raiz.querySelector('.sub'),ctl:raiz.querySelector('.ctl'),kpis:raiz.querySelector('.kpis'),p1:raiz.querySelector('.p1'),p2:raiz.querySelector('.p2'),p3:raiz.querySelector('.p3'),p4:raiz.querySelector('.p4'),p5:raiz.querySelector('.p5'),rod:raiz.querySelector('.rod')};
+var COR={ciano:'#4cc9f0',verde:'#2fd47a',verdeClaro:'#79e7a6',vermelho:'#ff5470',amarelo:'#ffd166',roxo:'#b388ff',rosa:'#ff6fa3',cinza:'#9aa6b8'};
+var CL={},LG={},IJ={};
+D.clubes.forEach(function(c){CL[c.id]=c});
+D.jogos.forEach(function(j){IJ[j.n]=j});
+if(window.PA&&window.PA.clubes)window.PA.clubes.forEach(function(c){LG[c.id]=c.logo});
+var FS={t:'Todas as fases',p:'1ª fase',m:'Mata-mata'};
+var FASE={1:'1ª fase',2:'Quartas de final',3:'Semifinal',4:'Final'};
+var FX={t:function(){return true},p:function(j){return j.f===1},m:function(j){return j.f>1}};
+var FAIXAS=['01-15','16-30','31-45','46-60','61-75','76-90+'];
+var FAIXA_NOME=['1 a 15','16 a 30','31 a 45','46 a 60','61 a 75','76 a 90 e acréscimos'];
+var TIPO={g:'de jogo corrido',p:'de pênalti',f:'de falta',c:'gol contra'};
+var est={fase:'t',clube:null,k:1,ox:0,oy:0};
+var reduzido=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+if(reduzido)raiz.classList.add('rm');
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function num(n){return Number(n).toLocaleString('pt-BR')}
+function dec(n,c){return Number(n).toLocaleString('pt-BR',{minimumFractionDigits:c,maximumFractionDigits:c})}
+function pc(a,b){return b>0?dec(100*a/b,1)+'%':'—'}
+function sinal(n){return n>0?'+'+num(n):n<0?'−'+num(-n):'0'}
+function dataBR(d){var p=d.split('-');return p[2]+'/'+p[1]}
+function dataLonga(d){var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
+function plural(n,u,p){return num(n)+' '+(n===1?u:p)}
+function tp(){return' data-tip="'+Array.prototype.slice.call(arguments).map(esc).join('||')+'"'}
+function linhasTip(l){return'@'+l.map(function(x){return x[0]+'::'+x[1]}).join('\n')}
+function tipHtml(s){
+var sec=String(s).split('||'),h='<b>'+esc(sec[0])+'</b>';
+for(var i=1;i<sec.length;i++){
+var x=sec[i];if(!x)continue;
+if(x.charAt(0)==='@')h+='<div class="tv">'+x.slice(1).split('\n').map(function(l){var p=l.split('::');return'<div><span>'+esc(p[0])+'</span><em>'+esc(p[1]===undefined?'':p[1])+'</em></div>'}).join('')+'</div>';
+else if(x.charAt(0)==='~')h+='<small>'+esc(x.slice(1))+'</small>';
+else h+='<span>'+esc(x)+'</span>';
+}
+return h;
+}
+function nome(id){return CL[id].curto}
+function logo(id,t){
+var c=CL[id];
+if(LG[id])return'<img src="'+LG[id]+'" alt=""'+(t?' style="width:'+t+'px;height:'+t+'px"':'')+'>';
+return'<span class="sg" style="background:'+c.cor+(t?';width:'+t+'px;height:'+t+'px':'')+'">'+esc(c.sigla.charAt(0))+'</span>';
+}
+function nosJogos(f,c){return D.jogos.filter(function(j){return FX[f](j)&&(c===null||j.m===c||j.v===c)})}
+function dosGols(f,c){return D.gols.filter(function(g){var j=IJ[g.j];return FX[f](j)&&(c===null||j.m===c||j.v===c)})}
+function faixaDe(mn){return mn<=15?0:mn<=30?1:mn<=45?2:mn<=60?3:mn<=75?4:5}
+function resumo(f,c){
+var js=nosJogos(f,c),gs=dosGols(f,c);
+var meus=c===null?gs:gs.filter(function(g){return g.c===c}),sof=c===null?[]:gs.filter(function(g){return g.c!==c});
+var fx=[0,0,0,0,0,0],fs=[0,0,0,0,0,0],ft=[{g:0,p:0,f:0,c:0},{g:0,p:0,f:0,c:0},{g:0,p:0,f:0,c:0},{g:0,p:0,f:0,c:0},{g:0,p:0,f:0,c:0},{g:0,p:0,f:0,c:0}];
+meus.forEach(function(g){var i=faixaDe(g.mn);fx[i]++;ft[i][g.t]++});
+sof.forEach(function(g){fs[faixaDe(g.mn)]++});
+var q=function(t){return meus.filter(function(g){return g.t===t}).length};
+var n=js.length;
+return{n:n,g:meus.length,sof:sof.length,pen:q('p'),fal:q('f'),aut:q('c'),sem:js.filter(function(j){return j.gm+j.gv===0}).length,gpj:n?meus.length/n:0,fx:fx,fs:fs,ft:ft};
+}
+function porFase(fn){return[['Todas as fases',fn(resumo('t',est.clube))],['1ª fase',fn(resumo('p',est.clube))],['Mata-mata',fn(resumo('m',est.clube))]]}
+function jogoTxt(j){return nome(j.m)+' '+j.gm+' × '+j.gv+' '+nome(j.v)}
+function quemFaz(j){return j.f===1?'1ª fase · rodada '+j.r:FASE[j.f]}
+function itensKpi(){
+var c=est.clube,r=resumo(est.fase,c),com=c!==null;
+var nota='~Este número muda com o filtro de fase'+(com?' e é o do clube escolhido':'; com um clube escolhido ele passa a ser só dos gols desse clube')+'.';
+return[
+{r:'Gols',c:COR.rosa,v:num(r.g),s:com?'marcados · sofreu '+num(r.sof):'em '+plural(r.n,'jogo','jogos'),t:['Gols',com?'Gols marcados pelo clube nos jogos do recorte. Os sofridos aparecem no subtítulo.':'Gols do placar, contando pênalti convertido no jogo, gol de falta e gol contra (que vale para o adversário de quem fez). Cobranças da disputa de pênaltis não são gols.',linhasTip(porFase(function(x){return num(x.g)})),nota]},
+{r:'Gols por jogo',c:COR.amarelo,v:dec(r.gpj,2),s:com?'marcados por jogo':'média do recorte',t:['Gols por jogo','Gols divididos pelos jogos do recorte.',linhasTip(porFase(function(x){return dec(x.gpj,2)})),nota]},
+{r:'De pênalti',c:COR.ciano,v:num(r.pen),s:pc(r.pen,r.g)+' dos gols',t:['Gols de pênalti','Pênaltis convertidos durante o jogo. As cobranças da disputa de pênaltis não entram.',linhasTip(porFase(function(x){return num(x.pen)})),nota]},
+{r:'De falta',c:COR.verde,v:num(r.fal),s:pc(r.fal,r.g)+' dos gols',t:['Gols de falta','Gols marcados direto de cobrança de falta.',linhasTip(porFase(function(x){return num(x.fal)})),nota]},
+{r:'Gols contra',c:COR.vermelho,v:num(r.aut),s:com?'a favor do clube':'autogols',t:['Gols contra','Gols feitos por um jogador contra o próprio time; valem para o adversário e não entram na artilharia.',linhasTip(porFase(function(x){return num(x.aut)})),nota]},
+{r:'Jogos sem gols',c:COR.roxo,v:num(r.sem),s:pc(r.sem,r.n)+' dos jogos',t:['Jogos sem gols','Jogos que terminaram 0 x 0 no tempo regulamentar.',linhasTip(porFase(function(x){return num(x.sem)})),nota]}
+];
+}
+function kpisHtml(){
+return itensKpi().map(function(k,i){
+return'<div class="kpi" style="left:'+(i*307.6).toFixed(1)+'px;--kc:'+k.c+'"'+tp.apply(null,k.t)+'><h4>'+esc(k.r)+'</h4><div class="v">'+esc(k.v)+'</div><small>'+esc(k.s)+'</small></div>';
+}).join('');
+}
+function campo(){
+var r=resumo(est.fase,est.clube),com=est.clube!==null,W=1010,zw=W/6,max=Math.max.apply(null,r.fx.concat([1]));
+var t1=r.fx[0]+r.fx[1]+r.fx[2],t2=r.fx[3]+r.fx[4]+r.fx[5];
+var s='<svg viewBox="0 0 '+W+' 236" width="'+W+'" height="236">';
+s+='<text class="ct" x="'+(1.5*zw)+'" y="20" text-anchor="middle">1º tempo · '+plural(t1,'gol','gols')+' ('+pc(t1,r.g)+')</text><text class="ct" x="'+(4.5*zw)+'" y="20" text-anchor="middle">2º tempo · '+plural(t2,'gol','gols')+' ('+pc(t2,r.g)+')</text>';
+s+='<path class="col" d="M8 32H'+(3*zw-8)+'M'+(3*zw+8)+' 32H'+(W-8)+'"/>';
+for(var i=0;i<6;i++){
+var a=.1+.62*r.fx[i]/max,t=r.ft[i];
+var lin=[['Gols',num(r.fx[i])],['Parte dos gols',pc(r.fx[i],r.g)],['De jogo corrido',num(t.g)],['De pênalti',num(t.p)],['De falta',num(t.f)],['Gol contra',num(t.c)]];
+if(com)lin.push(['Sofridos nesta faixa',num(r.fs[i])]);
+s+='<g class="zona"'+tp('Minutos '+FAIXA_NOME[i],linhasTip(lin),'~O acréscimo conta na faixa do tempo: 45+2 vira 31-45 e 90+3 vira 76-90+.')+'><rect x="'+(i*zw).toFixed(1)+'" y="44" width="'+zw.toFixed(1)+'" height="150" fill="rgba(255,111,163,'+a.toFixed(3)+')"/>';
+s+='<text class="cn" x="'+((i+.5)*zw).toFixed(1)+'" y="'+(com?116:126)+'" text-anchor="middle">'+r.fx[i]+'</text><text class="cp" x="'+((i+.5)*zw).toFixed(1)+'" y="'+(com?142:152)+'" text-anchor="middle">'+pc(r.fx[i],r.g)+'</text>';
+if(com)s+='<text x="'+((i+.5)*zw).toFixed(1)+'" y="172" text-anchor="middle">sofridos '+r.fs[i]+'</text>';
+s+='</g>';
+}
+s+='<rect class="lin" x="1" y="45" width="'+(W-2)+'" height="148"/><path class="lin" d="M'+(W/2)+' 45V193"/><circle class="lin" cx="'+(W/2)+'" cy="119" r="34"/><rect class="lin" x="1" y="79" width="64" height="80"/><rect class="lin" x="'+(W-65)+'" y="79" width="64" height="80"/>';
+for(var j=0;j<6;j++)s+='<text x="'+((j+.5)*zw).toFixed(1)+'" y="218" text-anchor="middle">'+FAIXAS[j]+' min</text>';
+return s+'</svg>';
+}
+function bloco1(){
+var r=resumo(est.fase,est.clube);
+return'<h3><span'+tp('Gols por faixa de minuto','Quantos gols saíram em cada faixa de 15 minutos. Quanto mais forte a cor, mais gols. O meio do campo é o intervalo: à esquerda o 1º tempo, à direita o 2º. Passe o mouse em uma faixa para ver o tipo dos gols.')+'>Gols por faixa de minuto</span><small>'+esc(est.clube===null?FS[est.fase]:nome(est.clube)+' · '+FS[est.fase])+' · '+plural(r.g,'gol','gols')+'</small></h3><div class="campo">'+campo()+'</div>';
+}
+function ordenar(js,k1,k2){
+return js.slice().sort(function(a,b){return k1(b)-k1(a)||k2(b)-k2(a)||(a.d<b.d?-1:a.d>b.d?1:0)||a.n-b.n});
+}
+function golsDoJogo(j){
+return D.gols.filter(function(g){return g.j===j.n}).map(function(g){
+var a=D.atl[g.a].a,t=g.t==='p'?' (pênalti)':g.t==='f'?' (falta)':g.t==='c'?' (gol contra)':'';
+return[g.mn+"'",a+' · '+nome(g.k)+t];
+});
+}
+function dicaJogo(j,nota){
+return[jogoTxt(j),linhasTip([['Jogo',String(j.n)+' · '+dataLonga(j.d)],['Fase',quemFaz(j)],['Placar',jogoTxt(j)]]),golsDoJogo(j).length?linhasTip(golsDoJogo(j)):'Sem gols.',nota];
+}
+function colunaJogos(titulo,lista,valor,sufixo,tituloTip,rotulo){
+var h='<div><h4'+tp(tituloTip[0],tituloTip[1])+'>'+esc(titulo)+'</h4><div class="rw"><div class="rola" data-r="'+rotulo+'" style="max-height:220px">';
+if(!lista.length)h+='<div class="nota">Sem jogos neste recorte.</div>';
+lista.forEach(function(j){h+='<div class="jg"'+tp.apply(null,dicaJogo(j,'~'+sufixo(j)))+'><span class="pl">'+valor(j)+'</span><div class="tx"><b>'+esc(jogoTxt(j))+'</b><small>'+esc(dataBR(j.d)+' · '+quemFaz(j))+'</small></div></div>'});
+return h+'</div></div></div>';
+}
+function bloco2(){
+var js=nosJogos(est.fase,est.clube),dif=function(j){return Math.abs(j.gm-j.gv)},tot=function(j){return j.gm+j.gv};
+var h='<h3><span'+tp('Jogos para ver','As maiores goleadas (maior diferença de gols) e os jogos com mais gols do recorte escolhido. Passe o mouse em um jogo para ver os gols, minuto a minuto. Todos os jogos do recorte estão nas listas; role para ver os demais.')+'>Jogos para ver</span><small>'+esc(est.clube===null?FS[est.fase]:nome(est.clube)+' · '+FS[est.fase])+' · '+plural(js.length,'jogo','jogos')+'</small></h3><div class="jgs">';
+h+=colunaJogos('Maiores goleadas',ordenar(js,dif,tot),dif,function(j){return'Diferença de '+plural(dif(j),'gol','gols')+'.'},['Maiores goleadas','Jogos com a maior diferença de gols. Em caso de empate na diferença, vale quem teve mais gols no jogo e, depois, o jogo mais antigo.'],'jg0');
+h+=colunaJogos('Mais gols no jogo',ordenar(js,tot,dif),tot,function(j){return plural(tot(j),'gol','gols')+' no jogo.'},['Jogos com mais gols','Jogos com o maior total de gols dos dois times. Em caso de empate no total, vale a maior diferença e, depois, o jogo mais antigo.'],'jg1');
+return h+'</div>';
+}
+function artilheiros(){
+var gs=dosGols(est.fase,est.clube).filter(function(g){return g.t!=='c'&&(est.clube===null||g.c===est.clube)});
+var m={};
+gs.forEach(function(g){var a=m[g.a]||(m[g.a]={i:g.a,k:g.k,g:0,p:0,f:0,tot:0});a[g.t]++;a.tot++});
+var todos={};
+D.gols.forEach(function(g){if(g.t!=='c')todos[g.a]=(todos[g.a]||0)+1});
+var l=Object.keys(m).map(function(k){return m[k]}).sort(function(x,y){return y.tot-x.tot||(D.atl[x.i].p<D.atl[y.i].p?-1:D.atl[x.i].p>D.atl[y.i].p?1:0)});
+return{lista:l,todos:todos};
+}
+function bloco3(){
+var ar=artilheiros(),l=ar.lista,max=l.length?l[0].tot:1;
+var h='<h3><span'+tp('Artilharia','Gols de cada atleta pelo próprio clube, contando pênalti convertido e gol de falta. Gol contra não conta. Todos os que marcaram no recorte escolhido, do que mais marcou para o que menos marcou; role a lista para ver os demais. Clique em uma linha para escolher o clube do atleta.')+'>Artilharia</span><small>'+esc(est.clube===null?FS[est.fase]:nome(est.clube)+' · '+FS[est.fase])+' · '+plural(l.length,'atleta','atletas')+'</small></h3><div class="rw"><div class="rola" data-r="ar" style="max-height:326px">';
+l.forEach(function(a,i){
+var at=D.atl[a.i],cl=a.k===est.clube?' sel':est.clube===null?'':' sem';
+var lin=[['Gols no recorte',String(a.tot)],['De jogo corrido',String(a.g)],['De pênalti',String(a.p)],['De falta',String(a.f)],['Gols no campeonato todo',String(ar.todos[a.i])]];
+h+='<button class="ar'+cl+'" data-act="clube" data-id="'+a.k+'"'+tp(at.p+' · '+nome(a.k),linhasTip(lin),'~Clique para escolher o clube do atleta. Gol contra não entra na artilharia.')+'><span class="ps">'+(i+1)+'</span><span class="esc">'+logo(a.k,26)+'</span><div class="tx"><b>'+esc(at.a)+' <small>'+esc(CL[a.k].sigla)+'</small></b><div class="bb"><i class="g" style="width:'+(100*a.g/max)+'%"></i><i class="p" style="width:'+(100*a.p/max)+'%"></i><i class="f" style="width:'+(100*a.f/max)+'%"></i></div></div><span class="gl">'+a.tot+'</span></button>';
+});
+if(!l.length)h+='<div class="nota">Nenhum gol de atleta neste recorte.</div>';
+return h+'</div></div><div class="lg2"><span class="g">De jogo corrido</span><span class="p">Pênalti</span><span class="f">Falta</span></div>';
+}
+function proContra(){
+var js=nosJogos(est.fase,null),m={};
+js.forEach(function(j){
+var a=m[j.m]||(m[j.m]={c:j.m,pro:0,con:0,n:0}),b=m[j.v]||(m[j.v]={c:j.v,pro:0,con:0,n:0});
+a.pro+=j.gm;a.con+=j.gv;a.n++;b.pro+=j.gv;b.con+=j.gm;b.n++;
+});
+return Object.keys(m).map(function(k){return m[k]}).sort(function(x,y){return y.pro-x.pro||x.con-y.con||(nome(x.c)<nome(y.c)?-1:nome(x.c)>nome(y.c)?1:0)});
+}
+function bloco4(){
+var l=proContra(),max=Math.max.apply(null,l.map(function(x){return Math.max(x.pro,x.con)}).concat([1]));
+var h='<h3><span'+tp('Gols pró e contra por clube','Para cada clube, os gols que fez (verde, à direita) e os que levou (vermelho, à esquerda) nos jogos do recorte escolhido. Em ordem de gols feitos. Clique em um clube para escolhê-lo.')+'>Gols pró × contra</span><small>'+esc(FS[est.fase])+' · '+plural(l.length,'clube','clubes')+'</small></h3>';
+h+='<div class="pch"><span></span><span></span><span></span><span class="r">contra</span><span>pró</span><span></span></div>';
+l.forEach(function(x){
+var cl=x.c===est.clube?' sel':est.clube===null?'':' sem';
+var lin=[['Gols marcados',String(x.pro)],['Gols sofridos',String(x.con)],['Saldo',sinal(x.pro-x.con)],['Jogos',String(x.n)],['Marcados por jogo',dec(x.pro/x.n,2)]];
+h+='<button class="pc'+cl+'" data-act="clube" data-id="'+x.c+'"'+tp(nome(x.c)+' · gols pró e contra',linhasTip(lin),'~Clique para escolher este clube.')+'><span class="esc">'+logo(x.c,18)+'</span><span>'+esc(CL[x.c].sigla)+'</span><span class="nc">'+x.con+'</span><div class="bc"><i style="width:'+(100*x.con/max)+'%"></i></div><div class="bp"><i style="width:'+(100*x.pro/max)+'%"></i></div><span class="np">'+x.pro+'</span></button>';
+});
+return h;
+}
+function placares(){
+var js=nosJogos(est.fase,est.clube),m={};
+js.forEach(function(j){
+var hi=Math.max(j.gm,j.gv),lo=Math.min(j.gm,j.gv),k=hi+'x'+lo,a=m[k]||(m[k]={hi:hi,lo:lo,n:0,mand:0,vis:0,emp:0,js:[]});
+a.n++;a.js.push(j);
+if(j.gm>j.gv)a.mand++;else if(j.gm<j.gv)a.vis++;else a.emp++;
+});
+return Object.keys(m).map(function(k){return m[k]}).sort(function(x,y){return y.n-x.n||(x.hi+x.lo)-(y.hi+y.lo)||y.hi-x.hi});
+}
+function bloco5(){
+var l=placares(),max=l.length?l[0].n:1,n=nosJogos(est.fase,est.clube).length;
+var h='<h3><span'+tp('Placares mais comuns','Os resultados que mais se repetiram no recorte escolhido. Um 1 x 0 vale tanto para quem venceu em casa quanto para quem venceu fora; a dica separa os dois. Em caso de empate na contagem, vale o placar com menos gols. Todos os placares do recorte estão na lista; role para ver os menos comuns.')+'>Placares comuns</span><small>'+esc(est.clube===null?FS[est.fase]:nome(est.clube)+' · '+FS[est.fase])+'</small></h3><div class="rw"><div class="rola" data-r="pl" style="max-height:308px">';
+if(!l.length)h+='<div class="nota">Sem jogos neste recorte.</div>';
+l.forEach(function(x){
+var sub=x.hi===x.lo?'empate':'de mandante '+x.mand+' · de visitante '+x.vis;
+var lin=x.js.slice(0,8).map(function(j){return[dataBR(j.d),jogoTxt(j)]});
+h+='<div class="pl2"'+tp('Placar '+x.hi+' × '+x.lo,plural(x.n,'jogo','jogos')+' ('+pc(x.n,n)+' do recorte)',linhasTip(x.hi===x.lo?[['Empates com este placar',String(x.emp)]]:[['Vitórias do mandante',String(x.mand)],['Vitórias do visitante',String(x.vis)]]),linhasTip(lin),x.js.length>8?(x.js.length-8===1?'~e mais 1 jogo não listado.':'~e mais '+(x.js.length-8)+' jogos não listados.'):'~Jogos com este placar.')+'><span class="sc">'+x.hi+' × '+x.lo+'</span><div class="tx"><div class="bb"><i style="width:'+(100*x.n/max)+'%"></i></div><small>'+esc(sub)+'</small></div><span class="ct2">'+x.n+'</span></div>';
+});
+return h+'</div></div><div class="nota">'+plural(l.length,'placar diferente','placares diferentes')+' no recorte. O placar vale para os dois lados: 1 × 0 inclui vitória em casa e fora.</div>';
+}
+function controles(){
+var ch=['t','p','m'].map(function(f){return'<button class="chp'+(est.fase===f?' on':'')+'" data-act="fase" data-v="'+f+'"'+tp(FS[f],f==='t'?plural(nosJogos('t',null).length,'jogo','jogos')+' do campeonato.':f==='p'?plural(nosJogos('p',null).length,'jogo','jogos')+' da 1ª fase, em pontos corridos.':plural(nosJogos('m',null).length,'jogo','jogos')+' de quartas, semifinais e final.','~Se o clube escolhido não jogou na fase, a escolha dele é solta.')+'><span>'+esc(FS[f])+'</span></button>'}).join('');
+EL.ctl.innerHTML=ch+'<button class="chp lim'+(est.fase!=='t'||est.clube!==null?'':' off')+'" data-act="limpar"'+tp('Limpar','Volta para todas as fases e solta o clube escolhido.')+'><span>Limpar</span></button><button class="aju" data-act="ajuda"'+tp('Como ler esta tela','Passo a passo e significado das palavras. Atalho: ? ou h.')+'>?</button>';
+}
+function cabecalho(){
+var r=resumo(est.fase,est.clube);
+EL.sub.textContent=est.clube===null?(est.fase==='t'?'Quando e como saem os gols, e quem os faz · ':FS[est.fase]+' · ')+plural(r.n,'jogo','jogos')+' · '+plural(r.g,'gol','gols'):nome(est.clube)+' · '+FS[est.fase]+' · '+plural(r.n,'jogo','jogos')+' · '+plural(r.g,'gol marcado','gols marcados')+' e '+num(r.sof)+' sofridos';
+EL.sub.setAttribute('data-tip',['Como usar','Os botões de fase mudam todos os blocos. Clicar em um clube na artilharia ou na lista de gols pró e contra mostra os números só dele (os gols que fez e os que levou); clicar de novo, Limpar ou Esc soltam. O bloco de gols pró e contra continua mostrando os 16 clubes, com o escolhido em destaque.'].map(esc).join('||'));
+}
+function montarRodape(){
+EL.rod.innerHTML='<span'+tp('De onde vêm os números','Os gols vêm das súmulas oficiais da FPF, um a um (jogo, minuto, tipo e atleta). Eles foram conferidos com os placares de todos os jogos, com os indicadores de gols por faixa de minuto, por fase e de pênalti, e com a lista de artilheiros.',linhasTip([['Gols conferidos',num(D.gols.length)],['Jogos',num(D.jogos.length)]]))+'>Dados: súmulas oficiais da FPF · <b>gols conferidos com os placares e os indicadores</b></span><span>Projeto independente, sem vínculo com a FPF · escudos são marcas dos clubes</span>';
+}
+function montarAjuda(){
+ajEl.innerHTML='<div class="cx"><h2>Como ler esta tela</h2><div><h3>Passo a passo</h3><ol><li>Em cima: seis números dos gols (total, por jogo, de pênalti, de falta, contra e jogos sem gols).</li><li>O <b>campo</b> mostra quantos gols saíram em cada faixa de 15 minutos; o meio é o intervalo.</li><li>Os botões <b>Todas as fases</b>, <b>1ª fase</b> e <b>Mata-mata</b> mudam todos os blocos.</li><li>Clique em um clube na <b>artilharia</b> ou na lista de <b>gols pró e contra</b> para ver só os gols dele (os que fez e os que levou). Clique de novo, use <b>Limpar</b> ou a tecla Esc para soltar (Esc solta primeiro o clube e depois a fase).</li></ol></div><div><h3>Palavras que aparecem</h3><dl><dt>Gol contra</dt><dd>Gol feito por um jogador no próprio time. Vale para o adversário e não conta na artilharia.</dd><dt>Faixa de minuto</dt><dd>De 15 em 15 minutos. O acréscimo conta na faixa do tempo: 45+2 entra em 31-45 e 90+3 entra em 76-90+.</dd><dt>Pró e contra</dt><dd>Gols feitos e gols sofridos pelo clube.</dd><dt>Placar comum</dt><dd>O placar vale para os dois lados: 1 × 0 inclui vitória em casa e fora.</dd><dt>Disputa de pênaltis</dt><dd>As cobranças da disputa não são gols e não entram em nenhum número.</dd></dl></div><div class="fe"><button data-act="ajuda-fechar"'+tp('Fechar','Fecha este passo a passo. Também fecham as teclas Esc, Enter e espaço, ou um clique fora da janela.')+'>Entendi</button></div></div>';
+}
+function ajuda(abrir){
+if(abrir===undefined)abrir=!ajEl.classList.contains('on');
+if(abrir)esconderTip();
+ajEl.classList.toggle('on',abrir);
+}
+var PAIN=['p1','p2','p3','p4','p5'];
+function marcarRolagem(e){var w=e.parentNode;if(w&&w.classList)w.classList.toggle('mais',e.scrollHeight-e.scrollTop-e.clientHeight>2)}
+function ajustarRolagem(){var l=raiz.querySelectorAll('.rola');for(var i=0;i<l.length;i++)marcarRolagem(l[i])}
+function atualizar(){
+esconderTip();
+controles();cabecalho();
+EL.kpis.innerHTML=kpisHtml();
+EL.p1.innerHTML=bloco1();
+EL.p2.innerHTML=bloco2();
+EL.p3.innerHTML=bloco3();
+EL.p4.innerHTML=bloco4();
+EL.p5.innerHTML=bloco5();
+ajustarRolagem();
+}
+function ajustar(){
+var w=raiz.clientWidth,h=raiz.clientHeight;if(!w||!h)return;
+var k=Math.min(w/1920,h/1024);
+est.k=k;est.ox=Math.round((w-1920*k)/2);est.oy=Math.round((h-1024*k)/2);
+palco.style.transform='translate('+est.ox+'px,'+est.oy+'px) scale('+k+')';
+}
+window.addEventListener('resize',ajustar);
+if(window.ResizeObserver)new ResizeObserver(ajustar).observe(raiz);
+ajustar();setTimeout(ajustar,60);setTimeout(ajustar,400);
+function pontoPalco(ev){var r=raiz.getBoundingClientRect();return[(ev.clientX-r.left-est.ox)/est.k,(ev.clientY-r.top-est.oy)/est.k]}
+var tipT=null,tipAlvo=null;
+function mostrarTip(alvo,ev){
+var s=alvo.getAttribute('data-tip');if(!s)return;
+tipEl.innerHTML=tipHtml(s);
+tipEl.classList.add('on');
+posTip(ev,alvo);
+}
+function posTip(ev,alvo){
+var pt;
+if(ev&&typeof ev.clientX==='number')pt=pontoPalco(ev);
+else{var r=alvo.getBoundingClientRect(),q=raiz.getBoundingClientRect();pt=[(r.left+r.width/2-q.left-est.ox)/est.k,(r.top+r.height-q.top-est.oy)/est.k-8]}
+var w=tipEl.offsetWidth,h=tipEl.offsetHeight,x=pt[0]+22,y=pt[1]+26;
+if(x+w>1908)x=pt[0]-w-22;
+if(x<12)x=12;
+if(y+h>1012)y=pt[1]-h-18;
+if(y<12)y=12;
+tipEl.style.left=Math.round(x)+'px';tipEl.style.top=Math.round(y)+'px';
+}
+function esconderTip(){clearTimeout(tipT);tipAlvo=null;tipEl.classList.remove('on')}
+function acao(a,id,v){
+if(a==='fase'){
+if(!Object.prototype.hasOwnProperty.call(FS,v))return;
+est.fase=v;
+if(est.clube!==null&&!nosJogos(v,est.clube).length)est.clube=null;
+atualizar();
+}
+else if(a==='clube'){
+var n=Number(id);
+if(!CL[n]||!nosJogos(est.fase,n).length)return;
+est.clube=est.clube===n?null:n;
+atualizar();
+}
+else if(a==='limpar'){est.fase='t';est.clube=null;atualizar()}
+else if(a==='ajuda')ajuda(true);
+else if(a==='ajuda-fechar')ajuda(false);
+}
+raiz.addEventListener('click',function(ev){
+var alvo=ev.target,t=alvo.closest&&alvo.closest('[data-act]'),dentro=alvo.closest&&alvo.closest('.cx');
+if(ajEl.classList.contains('on')&&!dentro){ajuda(false);return}
+if(!t)return;
+acao(t.getAttribute('data-act'),t.getAttribute('data-id'),t.getAttribute('data-v'));
+esconderTip();
+raiz.focus({preventScroll:true});
+});
+raiz.addEventListener('mouseover',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d!==tipAlvo){tipAlvo=d;clearTimeout(tipT);if(d){tipT=setTimeout(function(){mostrarTip(d,ev)},90)}else tipEl.classList.remove('on')}
+});
+raiz.addEventListener('mousemove',function(ev){if(tipAlvo&&tipEl.classList.contains('on'))posTip(ev,tipAlvo)});
+raiz.addEventListener('mouseleave',esconderTip);
+raiz.addEventListener('scroll',function(ev){var e=ev.target;if(e&&e.classList&&e.classList.contains('rola'))marcarRolagem(e)},true);
+raiz.addEventListener('focusin',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d&&d!==tipAlvo&&ev.target!==raiz){tipAlvo=d;mostrarTip(d,null)}
+});
+raiz.addEventListener('focusout',esconderTip);
+raiz.addEventListener('touchstart',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d&&d!==tipAlvo){tipAlvo=d;var tc=ev.touches&&ev.touches[0];mostrarTip(d,tc?{clientX:tc.clientX,clientY:tc.clientY}:null)}
+else if(!d)esconderTip();
+},{passive:true});
+function tecla(k,ctrl){
+if(k==='?'||(k==='h'&&!ctrl)){ajuda();return true}
+if(ajEl.classList.contains('on')){if(k==='Escape'||k==='Enter'||k===' '){ajuda(false);return true}return false}
+if(k==='Escape'||k==='Backspace'){
+if(est.clube!==null){est.clube=null;atualizar();return true}
+if(est.fase!=='t'){est.fase='t';atualizar();return true}
+}
+return false;
+}
+document.addEventListener('keydown',function(ev){
+if(!raiz.offsetParent)return;
+if(tecla(ev.key,ev.ctrlKey||ev.metaKey))ev.preventDefault();
+});
+var goT=null;
+function entrar(){
+clearTimeout(goT);
+raiz.classList.remove('go');
+void raiz.offsetWidth;
+raiz.classList.add('go');
+goT=setTimeout(function(){raiz.classList.remove('go')},1500);
+ajustar();
+atualizar();
+}
+montarAjuda();montarRodape();
+atualizar();
+if(window.PA&&window.PA.shell)window.PA.mods.gl={entrar:entrar};
+else entrar();
+if(/[?&]debug/.test(location.search))window.__glx={D:D,CL:CL,est:est,acao:acao,tecla:tecla,atualizar:atualizar,tipHtml:tipHtml,itensKpi:itensKpi,resumo:resumo,artilheiros:artilheiros,proContra:proContra,placares:placares,nosJogos:nosJogos,ordenar:ordenar};
+})();
+</script>

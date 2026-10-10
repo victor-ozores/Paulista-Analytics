@@ -1,0 +1,347 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 390.66665649414063,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1589.1973812937661,
+            "y": 0
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "e4007454-ca24-400d-8aa4-c4c1144cc5cb",
+          "size": {
+            "height": 901.66666666666674,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1848.1973812937661,
+            "y": 0
+          },
+          "nodeIndex": "aux_dashboard",
+          "nodeLineageTag": "ac7098fd-1790-5d7d-9e30-8c6784ad5ec7",
+          "size": {
+            "height": 901.66666666666674,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 2112.1973812937663,
+            "y": 0
+          },
+          "nodeIndex": "aux_config",
+          "nodeLineageTag": "7f49fa91-3238-5d6e-bbb9-1b4b525ed661",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1074.6691538148143
+          },
+          "nodeIndex": "dim_arbitro",
+          "nodeLineageTag": "8b02398f-1816-5959-9c03-0b90f5e1baad",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 709.16108094472474
+          },
+          "nodeIndex": "dim_calendario",
+          "nodeLineageTag": "cc39bdd4-c73b-55e3-ada5-ede4e1982600",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1126.4187659305321,
+            "y": 947.12499325122553
+          },
+          "nodeIndex": "dim_clube",
+          "nodeLineageTag": "77ec3b9c-34ed-54f2-9fc1-6be83159c553",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1296.8640479604326,
+            "y": 699.66208279966042
+          },
+          "nodeIndex": "dim_clube_alias",
+          "nodeLineageTag": "1f82108b-4547-52f2-bc90-3acdb6edab43",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dim_competicao",
+          "nodeLineageTag": "447c627b-98a1-5e99-bfd9-e111b24fc80e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1381.7252697862173
+          },
+          "nodeIndex": "dim_estadio",
+          "nodeLineageTag": "ebbe926c-7e09-500b-9902-47b97016b69e",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 398.36190648973479
+          },
+          "nodeIndex": "dim_fase",
+          "nodeLineageTag": "5175ce40-e821-5cd7-8a82-52200ebcb1c0",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 489.12374981934613,
+            "y": 188.53008791285984
+          },
+          "nodeIndex": "fato_classificacao_oficial",
+          "nodeLineageTag": "b1ee1c45-0c05-586e-8199-dd90c9f1a853",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 739.44098666892023,
+            "y": 557.21321408544088
+          },
+          "nodeIndex": "fato_estatistica_time",
+          "nodeLineageTag": "d83b1970-b74e-5a66-82c9-c67104f609e9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 833.355384372984,
+            "y": 1341.7583247274233
+          },
+          "nodeIndex": "fato_evento",
+          "nodeLineageTag": "a1a5addd-a8e2-5ddf-a159-16acb52c9ea1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 451.77926223185762,
+            "y": 1354.8667231449451
+          },
+          "nodeIndex": "fato_inconsistencia",
+          "nodeLineageTag": "9a32cd59-9ec8-5516-a71c-15a5d899cf46",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 455.11913484399344,
+            "y": 934.21743839666715
+          },
+          "nodeIndex": "fato_partida",
+          "nodeLineageTag": "eeaa49df-496d-57c0-b789-e7e2504ae4b7",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 1131.7584707537126,
+            "y": 1446.7157164539892
+          },
+          "nodeIndex": "ref_classificacao_primeira_fase",
+          "nodeLineageTag": "453fa58d-5082-5674-8764-f9e0d5eb1987",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 2365.7529029409015,
+            "y": 0
+          },
+          "nodeIndex": "ref_indicadores",
+          "nodeLineageTag": "01a0c80c-a172-5f7b-9e83-fb30b716ffaf",
+          "size": {
+            "height": 256.33333333333331,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 447.18847256496372,
+            "y": 1735.7555836711933
+          },
+          "nodeIndex": "resultado_regra",
+          "nodeLineageTag": "f2f641a0-6b3d-5a84-bea0-b7a95df86608",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 1560,
+            "y": 1000
+          },
+          "nodeIndex": "dim_atleta",
+          "nodeLineageTag": "fc65c9c2-c820-5f5c-97bc-6fa5b7369fbc",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 1820,
+            "y": 1000
+          },
+          "nodeIndex": "fato_escalacao",
+          "nodeLineageTag": "cac1657c-96a8-5258-a1ab-d9fee45d3039",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 2080,
+            "y": 1000
+          },
+          "nodeIndex": "fato_substituicao",
+          "nodeLineageTag": "5e579d03-c07c-52fb-95e7-e5ebc13594f9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 2340,
+            "y": 1000
+          },
+          "nodeIndex": "fato_comissao",
+          "nodeLineageTag": "bd60f1c9-7efe-54c9-8925-d32bfe73d67d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 1554,
+            "y": 1362
+          },
+          "nodeIndex": "fato_ingresso",
+          "nodeLineageTag": "bce38e9a-947c-5087-92bc-a8dd7696633d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 1820,
+            "y": 1350
+          },
+          "nodeIndex": "fato_despesa",
+          "nodeLineageTag": "73a33230-b3b7-589d-8d70-e88b1d7555ab",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 25
+        },
+        {
+          "location": {
+            "x": 2080,
+            "y": 1350
+          },
+          "nodeIndex": "fato_rateio",
+          "nodeLineageTag": "abe09193-5093-5d31-a670-395a561c2bc1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 26
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 50,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

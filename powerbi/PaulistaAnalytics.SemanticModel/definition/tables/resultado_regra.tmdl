@@ -1,0 +1,87 @@
+/// Resultado de cada regra de conferência: código, título, itens verificados, ocorrências e resultado (ok, explicada, aberta ou info).
+table resultado_regra
+	lineageTag: f2f641a0-6b3d-5a84-bea0-b7a95df86608
+
+	column codigo
+		dataType: string
+		lineageTag: faead630-bbb5-51e7-acb3-b5f70ffcde0e
+		summarizeBy: none
+		sourceColumn: codigo
+
+	column titulo
+		dataType: string
+		lineageTag: 3fcb7527-b688-556a-a12f-b45adb73960a
+		summarizeBy: none
+		sourceColumn: titulo
+
+	column severidade
+		dataType: string
+		lineageTag: 57bfc403-cf65-5aca-8ff3-d2960c5d770e
+		summarizeBy: none
+		sourceColumn: severidade
+
+	column verificados
+		dataType: int64
+		formatString: 0
+		lineageTag: 53f8c16c-657e-5b81-b8b2-5fd8dada7982
+		summarizeBy: none
+		sourceColumn: verificados
+
+	column ocorrencias
+		dataType: int64
+		formatString: 0
+		lineageTag: a9a304c1-d664-575c-b920-d351f8946bc3
+		summarizeBy: none
+		sourceColumn: ocorrencias
+
+	column abertas
+		dataType: int64
+		formatString: 0
+		lineageTag: 37cc12bc-e4f5-5d0d-b6eb-908bf7dc0bdd
+		summarizeBy: none
+		sourceColumn: abertas
+
+	column explicadas
+		dataType: int64
+		formatString: 0
+		lineageTag: 5aa261f3-986a-59d5-8dd5-c32bf38b6190
+		summarizeBy: none
+		sourceColumn: explicadas
+
+	column corrigidas
+		dataType: int64
+		formatString: 0
+		lineageTag: 07b76a39-1cde-5342-be3a-6accbe31fb13
+		summarizeBy: none
+		sourceColumn: corrigidas
+
+	column aceitas
+		dataType: int64
+		formatString: 0
+		lineageTag: 938518db-57b1-5c75-bba9-c381d47242c5
+		summarizeBy: none
+		sourceColumn: aceitas
+
+	column resultado
+		dataType: string
+		lineageTag: bfbfc08f-6c07-52ad-8620-aac86f22f537
+		summarizeBy: none
+		sourceColumn: resultado
+
+	column resumo
+		dataType: string
+		lineageTag: d53f4fc7-d9d6-54ba-b1e0-e17057fddb52
+		summarizeBy: none
+		sourceColumn: resumo
+
+	partition resultado_regra = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\resultado_regra.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"codigo", type text}, {"titulo", type text}, {"severidade", type text}, {"verificados", Int64.Type}, {"ocorrencias", Int64.Type}, {"abertas", Int64.Type}, {"explicadas", Int64.Type}, {"corrigidas", Int64.Type}, {"aceitas", Int64.Type}, {"resultado", type text}, {"resumo", type text}}, "en-US")
+				in
+				    Tipos
+

@@ -1,0 +1,73 @@
+id_jogo;numero;rodada;fase;grupo;data;horario;id_clube_mandante;mandante;gols_mandante;id_clube_visitante;visitante;gols_visitante;estadio;municipio;adiado
+81338;1;1;PRIMEIRA FASE;UNICO;10/01/2026;15h00;3388;São Bernardo FC;4;58;Capivariano;0;Estádio Municipal Primeiro de Maio;São Bernardo do Campo;0
+81339;2;1;PRIMEIRA FASE;UNICO;10/01/2026;16h00;3383;Santos;2;9541;Grêmio Novorizontino;1;Estádio Urbano Caldeira;Santos;0
+81340;3;1;PRIMEIRA FASE;UNICO;10/01/2026;18h30;242;Guarani;1;15915;Primavera SAF;1;Estádio Brinco de Ouro da Princesa;Campinas;0
+81341;4;1;PRIMEIRA FASE;UNICO;10/01/2026;20h30;3347;Portuguesa SAF;0;3320;Palmeiras;1;Estádio Dr. Oswaldo Teixeira Duarte;São Paulo;0
+81342;5;1;PRIMEIRA FASE;UNICO;11/01/2026;16h00;78;Corinthians;3;3344;Ponte Preta;0;Neo Química Arena;São Paulo;0
+81343;6;1;PRIMEIRA FASE;UNICO;11/01/2026;17h00;3448;Velo Clube;0;42;Botafogo;0;Estádio Benito Agnelo Castellano;Rio Claro;0
+81344;7;1;PRIMEIRA FASE;UNICO;11/01/2026;18h15;3303;Noroeste;0;45;Red Bull Bragantino;1;Estádio Doutor Alfredo de Castilho;Bauru;0
+81345;8;1;PRIMEIRA FASE;UNICO;11/01/2026;20h30;3293;Mirassol;3;3395;São Paulo;0;Estádio Municipal José Maria de Campos Maia;Mirassol;0
+81346;9;2;PRIMEIRA FASE;UNICO;13/01/2026;19h00;9541;Grêmio Novorizontino;2;242;Guarani;0;Estádio Dr. Jorge Ismael de Biasi;Novo Horizonte;0
+81347;10;2;PRIMEIRA FASE;UNICO;13/01/2026;21h30;58;Capivariano;1;3347;Portuguesa SAF;0;Estádio Municipal Carlos Colnaghi;Capivari;0
+81348;11;2;PRIMEIRA FASE;UNICO;14/01/2026;19h00;15915;Primavera SAF;3;3293;Mirassol;1;Estádio Ítalo Mário Limongi;Indaiatuba;0
+81349;12;2;PRIMEIRA FASE;UNICO;14/01/2026;19h30;3320;Palmeiras;1;3383;Santos;0;Estádio Mun. Orlando Batista Novelli;Barueri;0
+81350;13;2;PRIMEIRA FASE;UNICO;14/01/2026;21h00;3344;Ponte Preta;0;3448;Velo Clube;1;Estádio Moisés Lucarelli;Campinas;0
+81351;14;2;PRIMEIRA FASE;UNICO;15/01/2026;19h00;42;Botafogo;1;3303;Noroeste;1;Estádio Santa Cruz/Arena NicNet;Ribeirão Preto;0
+81352;15;2;PRIMEIRA FASE;UNICO;15/01/2026;19h30;45;Red Bull Bragantino;3;78;Corinthians;0;Estádio Municipal Cícero de Souza Marques;Bragança Paulista;0
+81353;16;2;PRIMEIRA FASE;UNICO;15/01/2026;21h45;3395;São Paulo;1;3388;São Bernardo FC;0;MorumBIS;São Paulo;0
+81354;17;3;PRIMEIRA FASE;UNICO;17/01/2026;16h00;15915;Primavera SAF;3;9541;Grêmio Novorizontino;4;Estádio Ítalo Mário Limongi;Indaiatuba;0
+81355;18;3;PRIMEIRA FASE;UNICO;17/01/2026;17h00;3347;Portuguesa SAF;2;3448;Velo Clube;0;Estádio Dr. Oswaldo Teixeira Duarte;São Paulo;0
+81356;19;3;PRIMEIRA FASE;UNICO;17/01/2026;18h30;58;Capivariano;2;3344;Ponte Preta;0;Estádio Municipal Carlos Colnaghi;Capivari;0
+81357;20;3;PRIMEIRA FASE;UNICO;17/01/2026;20h30;3320;Palmeiras;1;3293;Mirassol;0;Estádio Mun. Orlando Batista Novelli;Barueri;0
+81358;21;3;PRIMEIRA FASE;UNICO;18/01/2026;16h00;78;Corinthians;1;3395;São Paulo;1;Neo Química Arena;São Paulo;0
+81359;22;3;PRIMEIRA FASE;UNICO;18/01/2026;15h00;3388;São Bernardo FC;1;3303;Noroeste;1;Estádio Municipal Primeiro de Maio;São Bernardo do Campo;0
+81360;23;3;PRIMEIRA FASE;UNICO;18/01/2026;18h15;45;Red Bull Bragantino;5;42;Botafogo;0;Estádio Municipal Cícero de Souza Marques;Bragança Paulista;0
+81361;24;3;PRIMEIRA FASE;UNICO;18/01/2026;20h30;242;Guarani;1;3383;Santos;1;Estádio Brinco de Ouro da Princesa;Campinas;0
+81362;25;4;PRIMEIRA FASE;UNICO;20/01/2026;20h00;9541;Grêmio Novorizontino;4;3320;Palmeiras;0;Estádio Dr. Jorge Ismael de Biasi;Novo Horizonte;0
+81363;26;4;PRIMEIRA FASE;UNICO;21/01/2026;19h00;3303;Noroeste;1;58;Capivariano;1;Estádio Doutor Alfredo de Castilho;Bauru;0
+81364;27;4;PRIMEIRA FASE;UNICO;21/01/2026;19h30;3395;São Paulo;2;3347;Portuguesa SAF;3;MorumBIS;São Paulo;0
+81365;28;4;PRIMEIRA FASE;UNICO;21/01/2026;20h00;3293;Mirassol;0;45;Red Bull Bragantino;0;Estádio Municipal José Maria de Campos Maia;Mirassol;0
+81366;29;4;PRIMEIRA FASE;UNICO;21/01/2026;21h30;3344;Ponte Preta;0;3388;São Bernardo FC;1;Estádio Moisés Lucarelli;Campinas;0
+81367;30;4;PRIMEIRA FASE;UNICO;22/01/2026;19h30;3383;Santos;1;78;Corinthians;1;Estádio Urbano Caldeira;Santos;0
+81368;31;4;PRIMEIRA FASE;UNICO;22/01/2026;20h00;42;Botafogo;1;15915;Primavera SAF;0;Estádio Santa Cruz/Arena NicNet;Ribeirão Preto;0
+81369;32;4;PRIMEIRA FASE;UNICO;22/01/2026;21h30;3448;Velo Clube;0;242;Guarani;1;Estádio Benito Agnelo Castellano;Rio Claro;0
+81370;33;5;PRIMEIRA FASE;UNICO;24/01/2026;15h00;3388;São Bernardo FC;0;3293;Mirassol;4;Estádio Municipal Primeiro de Maio;São Bernardo do Campo;0
+81371;34;5;PRIMEIRA FASE;UNICO;24/01/2026;17h00;3344;Ponte Preta;2;3303;Noroeste;2;Estádio Moisés Lucarelli;Campinas;0
+81372;35;5;PRIMEIRA FASE;UNICO;24/01/2026;18h30;3320;Palmeiras;3;3395;São Paulo;1;Estádio Mun. Orlando Batista Novelli;Barueri;0
+81373;36;5;PRIMEIRA FASE;UNICO;25/01/2026;16h00;3383;Santos;0;45;Red Bull Bragantino;0;Neo Química Arena;São Paulo;0
+81374;37;5;PRIMEIRA FASE;UNICO;25/01/2026;17h00;58;Capivariano;1;15915;Primavera SAF;2;Estádio Municipal Carlos Colnaghi;Capivari;0
+81375;38;5;PRIMEIRA FASE;UNICO;25/01/2026;18h30;9541;Grêmio Novorizontino;2;42;Botafogo;0;Estádio Dr. Jorge Ismael de Biasi;Novo Horizonte;0
+81376;39;5;PRIMEIRA FASE;UNICO;25/01/2026;20h30;3448;Velo Clube;0;78;Corinthians;1;Estádio Benito Agnelo Castellano;Rio Claro;0
+81377;40;5;PRIMEIRA FASE;UNICO;26/01/2026;20h00;3347;Portuguesa SAF;0;242;Guarani;1;Estádio Dr. Oswaldo Teixeira Duarte;São Paulo;0
+81378;41;6;PRIMEIRA FASE;UNICO;31/01/2026;16h00;242;Guarani;1;3344;Ponte Preta;0;Estádio Brinco de Ouro da Princesa;Campinas;0
+81379;42;6;PRIMEIRA FASE;UNICO;31/01/2026;20h30;15915;Primavera SAF;1;3347;Portuguesa SAF;2;Estádio Ítalo Mário Limongi;Indaiatuba;0
+81380;43;6;PRIMEIRA FASE;UNICO;31/01/2026;20h30;3395;São Paulo;2;3383;Santos;0;MorumBIS;São Paulo;0
+81381;44;6;PRIMEIRA FASE;UNICO;05/02/2026;20h30;78;Corinthians;3;58;Capivariano;0;Neo Química Arena;São Paulo;0
+81382;45;6;PRIMEIRA FASE;UNICO;01/02/2026;19h30;3303;Noroeste;2;3448;Velo Clube;0;Estádio Doutor Alfredo de Castilho;Bauru;0
+81383;46;6;PRIMEIRA FASE;UNICO;01/02/2026;18h15;45;Red Bull Bragantino;1;3388;São Bernardo FC;1;Estádio Municipal Cícero de Souza Marques;Bragança Paulista;0
+81384;47;6;PRIMEIRA FASE;UNICO;01/02/2026;18h30;3293;Mirassol;1;9541;Grêmio Novorizontino;1;Estádio Municipal José Maria de Campos Maia;Mirassol;0
+81385;48;6;PRIMEIRA FASE;UNICO;01/02/2026;20h30;42;Botafogo;1;3320;Palmeiras;0;Estádio Santa Cruz/Arena NicNet;Ribeirão Preto;0
+81386;49;7;PRIMEIRA FASE;UNICO;07/02/2026;16h00;3347;Portuguesa SAF;2;3344;Ponte Preta;0;Estádio Dr. Oswaldo Teixeira Duarte;São Paulo;0
+81387;50;7;PRIMEIRA FASE;UNICO;07/02/2026;18h30;242;Guarani;0;42;Botafogo;2;Estádio Brinco de Ouro da Princesa;Campinas;0
+81388;51;7;PRIMEIRA FASE;UNICO;07/02/2026;18h30;9541;Grêmio Novorizontino;2;3388;São Bernardo FC;1;Estádio Dr. Jorge Ismael de Biasi;Novo Horizonte;0
+81389;52;7;PRIMEIRA FASE;UNICO;07/02/2026;20h30;3395;São Paulo;2;15915;Primavera SAF;1;MorumBIS;São Paulo;0
+81390;53;7;PRIMEIRA FASE;UNICO;08/02/2026;16h00;3303;Noroeste;1;3383;Santos;2;Estádio Doutor Alfredo de Castilho;Bauru;0
+81391;54;7;PRIMEIRA FASE;UNICO;08/02/2026;18h30;58;Capivariano;1;3293;Mirassol;0;Estádio Municipal Carlos Colnaghi;Capivari;0
+81392;55;7;PRIMEIRA FASE;UNICO;08/02/2026;18h30;3448;Velo Clube;1;45;Red Bull Bragantino;1;Estádio Benito Agnelo Castellano;Rio Claro;0
+81393;56;7;PRIMEIRA FASE;UNICO;08/02/2026;20h30;78;Corinthians;0;3320;Palmeiras;1;Neo Química Arena;São Paulo;0
+81394;57;8;PRIMEIRA FASE;UNICO;15/02/2026;20h30;42;Botafogo;0;58;Capivariano;1;Estádio Santa Cruz/Arena NicNet;Ribeirão Preto;0
+81395;58;8;PRIMEIRA FASE;UNICO;15/02/2026;20h30;15915;Primavera SAF;3;3303;Noroeste;3;Estádio Ítalo Mário Limongi;Indaiatuba;0
+81396;59;8;PRIMEIRA FASE;UNICO;15/02/2026;20h30;3293;Mirassol;1;3347;Portuguesa SAF;2;Estádio Municipal José Maria de Campos Maia;Mirassol;0
+81397;60;8;PRIMEIRA FASE;UNICO;15/02/2026;20h30;3320;Palmeiras;1;242;Guarani;1;Estádio Mun. Orlando Batista Novelli;Barueri;0
+81398;61;8;PRIMEIRA FASE;UNICO;15/02/2026;20h30;3344;Ponte Preta;1;3395;São Paulo;2;Estádio Moisés Lucarelli;Campinas;0
+81399;62;8;PRIMEIRA FASE;UNICO;15/02/2026;20h30;45;Red Bull Bragantino;3;9541;Grêmio Novorizontino;0;Estádio Municipal Cícero de Souza Marques;Bragança Paulista;0
+81400;63;8;PRIMEIRA FASE;UNICO;15/02/2026;20h30;3383;Santos;6;3448;Velo Clube;0;Estádio Urbano Caldeira;Santos;0
+81401;64;8;PRIMEIRA FASE;UNICO;15/02/2026;20h30;3388;São Bernardo FC;0;78;Corinthians;1;Estádio Municipal Primeiro de Maio;São Bernardo do Campo;0
+82338;65;9;QUARTAS DE FINAL;C;21/02/2026;18h30;45;Red Bull Bragantino;1;3395;São Paulo;2;Estádio Municipal Cícero de Souza Marques;Bragança Paulista;0
+82339;66;9;QUARTAS DE FINAL;B;21/02/2026;20h30;3320;Palmeiras;4;58;Capivariano;0;Estádio Mun. Orlando Batista Novelli;Barueri;0
+82340;67;9;QUARTAS DE FINAL;A;22/02/2026;16h00;9541;Grêmio Novorizontino;2;3383;Santos;1;Estádio Dr. Jorge Ismael de Biasi;Novo Horizonte;0
+82341;68;9;QUARTAS DE FINAL;D;22/02/2026;20h30;3347;Portuguesa SAF;1;78;Corinthians;1;Estádio Dr. Oswaldo Teixeira Duarte;São Paulo;0
+82422;69;10;SEMIFINAL;E;28/02/2026;20h30;9541;Grêmio Novorizontino;1;78;Corinthians;0;Estádio Dr. Jorge Ismael de Biasi;Novo Horizonte;0
+82423;70;10;SEMIFINAL;F;01/03/2026;20h30;3320;Palmeiras;2;3395;São Paulo;1;Estádio Mun. Orlando Batista Novelli;Barueri;0
+82816;71;11;FINAL;G;04/03/2026;20h00;3320;Palmeiras;1;9541;Grêmio Novorizontino;0;Estádio Mun. Orlando Batista Novelli;Barueri;0
+82817;72;12;FINAL;G;08/03/2026;20h30;9541;Grêmio Novorizontino;1;3320;Palmeiras;2;Estádio Dr. Jorge Ismael de Biasi;Novo Horizonte;0

@@ -1,0 +1,27 @@
+/// Parâmetros da carga: versão do pipeline, datas da coleta e da atualização da FPF e hashes dos arquivos de referência.
+table aux_config
+	lineageTag: 7f49fa91-3238-5d6e-bbb9-1b4b525ed661
+
+	column chave
+		dataType: string
+		lineageTag: c134fe13-de43-5ad0-9a92-0af1c2bd47df
+		summarizeBy: none
+		sourceColumn: chave
+
+	column valor
+		dataType: string
+		lineageTag: 9c6af08e-c646-5cd7-95cd-7e9053322b2c
+		summarizeBy: none
+		sourceColumn: valor
+
+	partition aux_config = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\aux_config.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"chave", type text}, {"valor", type text}}, "en-US")
+				in
+				    Tipos
+

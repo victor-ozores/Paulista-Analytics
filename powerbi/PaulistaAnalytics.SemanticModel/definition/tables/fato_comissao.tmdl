@@ -1,0 +1,54 @@
+/// Comissão técnica de cada clube em cada jogo: técnico, auxiliar, médico, massagista, preparador físico e treinador de goleiros. Cargo sem nome na súmula não entra. Fonte: súmulas da FPF.
+table fato_comissao
+	lineageTag: bd60f1c9-7efe-54c9-8925-d32bfe73d67d
+
+	column id_comissao
+		dataType: string
+		lineageTag: 899eaaba-f983-53b6-8825-0742ff0d2372
+		summarizeBy: none
+		sourceColumn: id_comissao
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: 2da47e85-5883-5f16-8090-7a2e494fa525
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f18a120-dc05-5c44-bbaf-b902f46c8dce
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column funcao
+		dataType: string
+		lineageTag: c206915d-3c58-5427-9d85-f16c07c4abd7
+		summarizeBy: none
+		sourceColumn: funcao
+
+	column nome
+		dataType: string
+		lineageTag: 80da9a08-9212-5749-8e71-232d3c323975
+		summarizeBy: none
+		sourceColumn: nome
+
+	column nome_truncado
+		dataType: int64
+		formatString: 0
+		lineageTag: f20b4824-eb5c-504b-a8f9-8d8d8955139d
+		summarizeBy: none
+		sourceColumn: nome_truncado
+
+	partition fato_comissao = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_comissao.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_comissao", type text}, {"id_partida", Int64.Type}, {"id_clube", Int64.Type}, {"funcao", type text}, {"nome", type text}, {"nome_truncado", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

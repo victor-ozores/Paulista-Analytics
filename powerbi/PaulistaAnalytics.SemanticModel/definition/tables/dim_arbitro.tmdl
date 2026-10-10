@@ -1,0 +1,55 @@
+/// Pessoas da arbitragem (árbitro, assistentes, quarto árbitro, VAR e AVAR), com a quantidade de jogos em cada papel. Fonte: súmulas da FPF.
+table dim_arbitro
+	lineageTag: 8b02398f-1816-5959-9c03-0b90f5e1baad
+
+	column id_arbitro
+		dataType: string
+		lineageTag: 7c68f4bb-c3ef-5826-8ba5-7ba422bfb435
+		summarizeBy: none
+		sourceColumn: id_arbitro
+
+	column nome
+		dataType: string
+		lineageTag: 5c073547-24cb-5a5a-ac67-bed418b5bf28
+		summarizeBy: none
+		sourceColumn: nome
+
+	column jogos_arbitro
+		dataType: int64
+		formatString: 0
+		lineageTag: 01f7999a-5703-559f-9db1-b34d890e8cd9
+		summarizeBy: none
+		sourceColumn: jogos_arbitro
+
+	column jogos_assistente
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b603541-0315-5311-9349-7bd31ffcb6ba
+		summarizeBy: none
+		sourceColumn: jogos_assistente
+
+	column jogos_quarto_arbitro
+		dataType: int64
+		formatString: 0
+		lineageTag: 49bc2352-60da-5ef1-ae43-00577597d801
+		summarizeBy: none
+		sourceColumn: jogos_quarto_arbitro
+
+	column jogos_var
+		dataType: int64
+		formatString: 0
+		lineageTag: 12dd7a6b-038c-59f5-bc51-ce7187242669
+		summarizeBy: none
+		sourceColumn: jogos_var
+
+	partition dim_arbitro = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\dim_arbitro.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_arbitro", type text}, {"nome", type text}, {"jogos_arbitro", Int64.Type}, {"jogos_assistente", Int64.Type}, {"jogos_quarto_arbitro", Int64.Type}, {"jogos_var", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

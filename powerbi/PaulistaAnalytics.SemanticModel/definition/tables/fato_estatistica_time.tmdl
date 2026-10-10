@@ -1,0 +1,141 @@
+/// Estatísticas de cada time em cada jogo: posse de bola, finalizações, faltas, escanteios e outras. Fonte: ESPN (não oficial).
+table fato_estatistica_time
+	lineageTag: d83b1970-b74e-5a66-82c9-c67104f609e9
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: 3abe6c48-27c0-5d80-a8c4-5f3c51e23a34
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: bd9c6018-8aa5-50ad-bdf4-bc5a71b69ecc
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column posse_pct
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 8a5ce38f-10e8-577a-a9c3-c6f7fe08ee5e
+		summarizeBy: none
+		sourceColumn: posse_pct
+
+	column finalizacoes
+		dataType: int64
+		formatString: 0
+		lineageTag: ac28b589-6934-5973-b661-cdd855bab00e
+		summarizeBy: none
+		sourceColumn: finalizacoes
+
+	column finalizacoes_no_alvo
+		dataType: int64
+		formatString: 0
+		lineageTag: 340f59a0-0ae5-585e-9772-f9a58e58bd21
+		summarizeBy: none
+		sourceColumn: finalizacoes_no_alvo
+
+	column finalizacoes_bloqueadas
+		dataType: int64
+		formatString: 0
+		lineageTag: e3b55a4d-1811-5624-b200-12145a7c7bb6
+		summarizeBy: none
+		sourceColumn: finalizacoes_bloqueadas
+
+	column faltas
+		dataType: int64
+		formatString: 0
+		lineageTag: e47915cf-d091-5d40-9c1d-0b55b5aeccdf
+		summarizeBy: none
+		sourceColumn: faltas
+
+	column escanteios
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b25a0d2-8439-513b-ab48-6d51034f8a3c
+		summarizeBy: none
+		sourceColumn: escanteios
+
+	column impedimentos
+		dataType: int64
+		formatString: 0
+		lineageTag: 33839314-3a3c-5381-8db3-2b719df8b332
+		summarizeBy: none
+		sourceColumn: impedimentos
+
+	column passes
+		dataType: int64
+		formatString: 0
+		lineageTag: 4bec0744-877f-5357-a54f-0430244cea59
+		summarizeBy: none
+		sourceColumn: passes
+
+	column passes_certos
+		dataType: int64
+		formatString: 0
+		lineageTag: ce443eca-5a91-5df5-8609-124dc6fe4f58
+		summarizeBy: none
+		sourceColumn: passes_certos
+
+	column cruzamentos
+		dataType: int64
+		formatString: 0
+		lineageTag: 0f53f0ac-8835-576e-ad03-5b977e233b79
+		summarizeBy: none
+		sourceColumn: cruzamentos
+
+	column cruzamentos_certos
+		dataType: int64
+		formatString: 0
+		lineageTag: a96c2b83-1c8e-56ae-84d2-799a47ce4d43
+		summarizeBy: none
+		sourceColumn: cruzamentos_certos
+
+	column desarmes
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b626bbd-26ed-57a8-9094-f2ce9c7fb868
+		summarizeBy: none
+		sourceColumn: desarmes
+
+	column desarmes_certos
+		dataType: int64
+		formatString: 0
+		lineageTag: aef6cc32-e340-549b-8260-513648da4d0f
+		summarizeBy: none
+		sourceColumn: desarmes_certos
+
+	column interceptacoes
+		dataType: int64
+		formatString: 0
+		lineageTag: c24bc942-c521-54c0-ad2b-e96de14fc83c
+		summarizeBy: none
+		sourceColumn: interceptacoes
+
+	column cortes
+		dataType: int64
+		formatString: 0
+		lineageTag: 8077d1af-f851-546b-883c-9d9c773d087a
+		summarizeBy: none
+		sourceColumn: cortes
+
+	column defesas_goleiro
+		dataType: int64
+		formatString: 0
+		lineageTag: ce20c3bb-79b6-5e12-9e9b-9064225f7073
+		summarizeBy: none
+		sourceColumn: defesas_goleiro
+
+	partition fato_estatistica_time = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_estatistica_time.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_partida", Int64.Type}, {"id_clube", Int64.Type}, {"posse_pct", type number}, {"finalizacoes", Int64.Type}, {"finalizacoes_no_alvo", Int64.Type}, {"finalizacoes_bloqueadas", Int64.Type}, {"faltas", Int64.Type}, {"escanteios", Int64.Type}, {"impedimentos", Int64.Type}, {"passes", Int64.Type}, {"passes_certos", Int64.Type}, {"cruzamentos", Int64.Type}, {"cruzamentos_certos", Int64.Type}, {"desarmes", Int64.Type}, {"desarmes_certos", Int64.Type}, {"interceptacoes", Int64.Type}, {"cortes", Int64.Type}, {"defesas_goleiro", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

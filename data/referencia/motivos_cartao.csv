@@ -1,0 +1,9 @@
+ordem_regra;categoria;ordem_exibicao;condicao;expressao;explicacao
+1;Conduta violenta ou força excessiva;6;texto;forca excessiva|jogo brusco grave|conduta violenta|cotovelada|travas da chuteira|carrinho|desferir|dar um chute;Jogo brusco grave e conduta violenta: chuteira nas pernas do adversário, cotovelada, carrinho ou chute com força excessiva. São quase todos cartões vermelhos.
+2;Impedir ataque promissor ou gol;2;texto;ataque promissor|oportunidade (clara|de gol|manifesta)|clara oportunidade;Falta para parar um ataque promissor (cartão amarelo) ou para tirar uma clara chance de gol (cartão vermelho).
+3;Ação temerária;1;texto;temerari;Ação temerária: entrada ou uso dos braços sem cuidado com o adversário na disputa da bola. É o motivo mais comum.
+4;Reclamar ou desrespeitar a arbitragem;4;texto;discord|reclam|protest|proferi|palavras|apita essa|aplaud|palmas|abandon;Discordar das decisões da arbitragem com palavras ou gestos, inclusive palavras ofensivas e protestos vindos do banco.
+5;Retardar o jogo;5;texto;retard;Demorar para repor a bola, para sair do campo na substituição ou para reiniciar o jogo.
+6;Infração repetida;7;texto;persistent;Infringir persistentemente as regras do jogo, isto é, várias faltas do mesmo atleta.
+7;Atitude antidesportiva;3;texto;antidesport|anti desport|antideport|segur|agarr|empurr|simula|comemora|celebr|confront|desrespeit|acinto|multi ?bol|puxar|chut|camiseta|area tecnica|banco de suplentes|inconvenien|incoviniente;Atitude antidesportiva: segurar ou agarrar o adversário de forma acintosa, empurrar com o jogo parado, simular, chutar a bola, tirar a camisa ou chutar a bandeira na comemoração, invadir a área técnica.
+8;Outros;8;resto;;O que nenhuma das regras acima pegou.

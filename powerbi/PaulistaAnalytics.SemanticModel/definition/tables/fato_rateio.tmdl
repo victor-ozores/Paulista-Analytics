@@ -1,0 +1,76 @@
+/// Divisão da renda líquida de cada jogo (dois clubes por jogo): percentual, valor, deduções e líquido a receber. Em 2026 o mandante fica com 100%. Fonte: boletins da FPF.
+table fato_rateio
+	lineageTag: abe09193-5093-5d31-a670-395a561c2bc1
+
+	column id_rateio
+		dataType: string
+		lineageTag: ea3b7502-e44b-5c5f-a7c7-98cc7dae6d9e
+		summarizeBy: none
+		sourceColumn: id_rateio
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: 2a168fe1-87da-5530-8a43-fe96d4e2a760
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: b91da6ef-9d5f-530b-8789-79a16d5cbabe
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column lado
+		dataType: string
+		lineageTag: 02de6772-9ec4-5a3f-972a-519033247084
+		summarizeBy: none
+		sourceColumn: lado
+
+	column percentual
+		dataType: double
+		formatString: #,0.00
+		lineageTag: a877c9c2-f77a-5767-8a7f-75b94c48f036
+		summarizeBy: none
+		sourceColumn: percentual
+
+	column valor
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: 5af2b75f-8aa0-5a02-94fb-aaeb6ec5a672
+		summarizeBy: none
+		sourceColumn: valor
+
+	column deducao_inss
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: a2d43287-5d27-5298-baf5-13d8954eb657
+		summarizeBy: none
+		sourceColumn: deducao_inss
+
+	column deducao_outras
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: 6b7f6646-b9c3-5a79-ba09-b535523df16b
+		summarizeBy: none
+		sourceColumn: deducao_outras
+
+	column liquido
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: 52eadecc-47cf-5d84-92ec-f73574e865c1
+		summarizeBy: none
+		sourceColumn: liquido
+
+	partition fato_rateio = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_rateio.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_rateio", type text}, {"id_partida", Int64.Type}, {"id_clube", Int64.Type}, {"lado", type text}, {"percentual", type number}, {"valor", Currency.Type}, {"deducao_inss", Currency.Type}, {"deducao_outras", Currency.Type}, {"liquido", Currency.Type}}, "en-US")
+				in
+				    Tipos
+

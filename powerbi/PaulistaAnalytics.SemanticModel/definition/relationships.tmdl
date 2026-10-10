@@ -1,0 +1,167 @@
+relationship dim_fase_id_competicao_dim_competicao_id_competicao
+	fromColumn: dim_fase.id_competicao
+	toColumn: dim_competicao.id_competicao
+
+relationship fato_partida_id_fase_dim_fase_id_fase
+	fromColumn: fato_partida.id_fase
+	toColumn: dim_fase.id_fase
+
+relationship fato_partida_data_jogo_dim_calendario_data
+	fromColumn: fato_partida.data_jogo
+	toColumn: dim_calendario.data
+
+relationship fato_partida_id_estadio_dim_estadio_id_estadio
+	fromColumn: fato_partida.id_estadio
+	toColumn: dim_estadio.id_estadio
+
+relationship fato_partida_id_arbitro_dim_arbitro_id_arbitro
+	fromColumn: fato_partida.id_arbitro
+	toColumn: dim_arbitro.id_arbitro
+
+relationship fato_evento_id_partida_fato_partida_id_partida
+	fromColumn: fato_evento.id_partida
+	toColumn: fato_partida.id_partida
+
+relationship fato_evento_id_clube_dim_clube_id_clube
+	fromColumn: fato_evento.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship fato_estatistica_time_id_partida_fato_partida_id_partida
+	fromColumn: fato_estatistica_time.id_partida
+	toColumn: fato_partida.id_partida
+
+relationship fato_estatistica_time_id_clube_dim_clube_id_clube
+	fromColumn: fato_estatistica_time.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship dim_clube_alias_id_clube_dim_clube_id_clube
+	fromColumn: dim_clube_alias.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship fato_classificacao_oficial_id_clube_dim_clube_id_clube
+	fromColumn: fato_classificacao_oficial.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship fato_classificacao_oficial_id_fase_dim_fase_id_fase
+	fromColumn: fato_classificacao_oficial.id_fase
+	toColumn: dim_fase.id_fase
+
+relationship ref_classificacao_primeira_fase_id_clube_dim_clube_id_clube
+	fromColumn: ref_classificacao_primeira_fase.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship fato_inconsistencia_id_clube_dim_clube_id_clube
+	fromColumn: fato_inconsistencia.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship fato_inconsistencia_id_partida_fato_partida_id_partida
+	fromColumn: fato_inconsistencia.id_partida
+	toColumn: fato_partida.id_partida
+
+relationship fato_inconsistencia_codigo_regra_resultado_regra_codigo
+	fromColumn: fato_inconsistencia.codigo_regra
+	toColumn: resultado_regra.codigo
+
+relationship fato_partida_id_clube_mandante_dim_clube_id_clube
+	isActive: false
+	fromColumn: fato_partida.id_clube_mandante
+	toColumn: dim_clube.id_clube
+
+relationship fato_partida_id_clube_visitante_dim_clube_id_clube
+	isActive: false
+	fromColumn: fato_partida.id_clube_visitante
+	toColumn: dim_clube.id_clube
+
+relationship fato_partida_id_assistente1_dim_arbitro_id_arbitro
+	isActive: false
+	fromColumn: fato_partida.id_assistente1
+	toColumn: dim_arbitro.id_arbitro
+
+relationship fato_partida_id_assistente2_dim_arbitro_id_arbitro
+	isActive: false
+	fromColumn: fato_partida.id_assistente2
+	toColumn: dim_arbitro.id_arbitro
+
+relationship fato_partida_id_quarto_arbitro_dim_arbitro_id_arbitro
+	isActive: false
+	fromColumn: fato_partida.id_quarto_arbitro
+	toColumn: dim_arbitro.id_arbitro
+
+relationship fato_partida_id_var_dim_arbitro_id_arbitro
+	isActive: false
+	fromColumn: fato_partida.id_var
+	toColumn: dim_arbitro.id_arbitro
+
+relationship fato_partida_id_avar1_dim_arbitro_id_arbitro
+	isActive: false
+	fromColumn: fato_partida.id_avar1
+	toColumn: dim_arbitro.id_arbitro
+
+relationship fato_partida_id_avar2_dim_arbitro_id_arbitro
+	isActive: false
+	fromColumn: fato_partida.id_avar2
+	toColumn: dim_arbitro.id_arbitro
+
+relationship fato_evento_id_clube_creditado_dim_clube_id_clube
+	isActive: false
+	fromColumn: fato_evento.id_clube_creditado
+	toColumn: dim_clube.id_clube
+
+relationship fato_escalacao_id_partida_fato_partida_id_partida
+	fromColumn: fato_escalacao.id_partida
+	toColumn: fato_partida.id_partida
+
+relationship fato_escalacao_id_clube_dim_clube_id_clube
+	fromColumn: fato_escalacao.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship fato_escalacao_id_atleta_dim_atleta_id_atleta
+	fromColumn: fato_escalacao.id_atleta
+	toColumn: dim_atleta.id_atleta
+
+relationship fato_substituicao_id_partida_fato_partida_id_partida
+	fromColumn: fato_substituicao.id_partida
+	toColumn: fato_partida.id_partida
+
+relationship fato_substituicao_id_clube_dim_clube_id_clube
+	fromColumn: fato_substituicao.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship fato_substituicao_id_atleta_entrou_dim_atleta_id_atleta
+	fromColumn: fato_substituicao.id_atleta_entrou
+	toColumn: dim_atleta.id_atleta
+
+relationship fato_substituicao_id_atleta_saiu_dim_atleta_id_atleta
+	isActive: false
+	fromColumn: fato_substituicao.id_atleta_saiu
+	toColumn: dim_atleta.id_atleta
+
+relationship fato_comissao_id_partida_fato_partida_id_partida
+	fromColumn: fato_comissao.id_partida
+	toColumn: fato_partida.id_partida
+
+relationship fato_comissao_id_clube_dim_clube_id_clube
+	fromColumn: fato_comissao.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship fato_ingresso_id_partida_fato_partida_id_partida
+	fromColumn: fato_ingresso.id_partida
+	toColumn: fato_partida.id_partida
+
+relationship fato_despesa_id_partida_fato_partida_id_partida
+	fromColumn: fato_despesa.id_partida
+	toColumn: fato_partida.id_partida
+
+relationship fato_rateio_id_partida_fato_partida_id_partida
+	fromColumn: fato_rateio.id_partida
+	toColumn: fato_partida.id_partida
+
+relationship fato_rateio_id_clube_dim_clube_id_clube
+	fromColumn: fato_rateio.id_clube
+	toColumn: dim_clube.id_clube
+
+relationship dim_atleta_id_clube_dim_clube_id_clube
+	isActive: false
+	fromColumn: dim_atleta.id_clube
+	toColumn: dim_clube.id_clube
+

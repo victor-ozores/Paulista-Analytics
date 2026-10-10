@@ -1,0 +1,118 @@
+/// Gols, cartões e cobranças da disputa de pênaltis, com minuto, camisa, pessoa e motivo do cartão. Gols e cartões vêm da súmula da FPF; as 15 cobranças da disputa, da ESPN (o placar da disputa é o da súmula). Tem uma correção documentada (C01).
+table fato_evento
+	lineageTag: a1a5addd-a8e2-5ddf-a159-16acb52c9ea1
+
+	column id_evento
+		dataType: string
+		lineageTag: 691b8516-3842-5e18-aad2-5d41597dd4a3
+		summarizeBy: none
+		sourceColumn: id_evento
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: 05348253-a65d-57e8-ab50-34844774d1cf
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a09f4d9-61bd-53b2-ae3f-8dde775b2b3a
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column id_clube_creditado
+		dataType: int64
+		formatString: 0
+		lineageTag: 46e53a74-12a0-521e-9cd8-4110e7166c7f
+		summarizeBy: none
+		sourceColumn: id_clube_creditado
+
+	column tipo_evento
+		dataType: string
+		lineageTag: a88c5e1f-8835-5b34-8492-e3d28bfa0220
+		summarizeBy: none
+		sourceColumn: tipo_evento
+
+	column funcao
+		dataType: string
+		lineageTag: 1e0f4c5e-989c-55de-a338-d325cf60aa11
+		summarizeBy: none
+		sourceColumn: funcao
+
+	column numero_camisa
+		dataType: int64
+		formatString: 0
+		lineageTag: 6236e898-491f-599b-a1ca-1be5fb754410
+		summarizeBy: none
+		sourceColumn: numero_camisa
+
+	column pessoa
+		dataType: string
+		lineageTag: abc7c3c2-34fb-5d2b-9a3a-eec0d1505af5
+		summarizeBy: none
+		sourceColumn: pessoa
+
+	column apelido
+		dataType: string
+		lineageTag: 01a833ec-2fb7-5c2f-ad5f-a76dc95e5bfa
+		summarizeBy: none
+		sourceColumn: apelido
+
+	column minuto
+		dataType: int64
+		formatString: 0
+		lineageTag: 04ded824-cb93-51f9-b09b-cad33be3e720
+		summarizeBy: none
+		sourceColumn: minuto
+
+	column acrescimo
+		dataType: int64
+		formatString: 0
+		lineageTag: 64184d2c-8ac9-5eaa-91ab-f4e908df4e7a
+		summarizeBy: none
+		sourceColumn: acrescimo
+
+	column minuto_total
+		dataType: int64
+		formatString: 0
+		lineageTag: e5fb834d-2e83-5f50-8cce-465eae3b1575
+		summarizeBy: none
+		sourceColumn: minuto_total
+
+	column periodo
+		dataType: string
+		lineageTag: b6593d66-3cdb-5830-93a0-963611952f19
+		summarizeBy: none
+		sourceColumn: periodo
+
+	column motivo
+		dataType: string
+		lineageTag: 840e4a66-0bd7-5f14-8da3-40fb7109d76f
+		summarizeBy: none
+		sourceColumn: motivo
+
+	column fonte
+		dataType: string
+		lineageTag: c2d95b8c-16ee-54c1-b21a-8aaa5cfe1604
+		summarizeBy: none
+		sourceColumn: fonte
+
+	column id_correcao
+		dataType: string
+		lineageTag: e0648113-e590-5df8-bf45-c3351014e03b
+		summarizeBy: none
+		sourceColumn: id_correcao
+
+	partition fato_evento = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_evento.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_evento", type text}, {"id_partida", Int64.Type}, {"id_clube", Int64.Type}, {"id_clube_creditado", Int64.Type}, {"tipo_evento", type text}, {"funcao", type text}, {"numero_camisa", Int64.Type}, {"pessoa", type text}, {"apelido", type text}, {"minuto", Int64.Type}, {"acrescimo", Int64.Type}, {"minuto_total", Int64.Type}, {"periodo", type text}, {"motivo", type text}, {"fonte", type text}, {"id_correcao", type text}}, "en-US")
+				in
+				    Tipos
+

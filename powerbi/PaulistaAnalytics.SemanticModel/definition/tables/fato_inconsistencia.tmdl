@@ -1,0 +1,102 @@
+/// Log de conferência: uma linha por divergência achada pelas regras, com as duas fontes, o status (aberta, explicada, aceita ou corrigida) e a explicação.
+table fato_inconsistencia
+	lineageTag: 9a32cd59-9ec8-5516-a71c-15a5d899cf46
+
+	column id_inconsistencia
+		dataType: string
+		lineageTag: 1a9cefd1-33f6-5e36-b2b9-cbe688e1c31b
+		summarizeBy: none
+		sourceColumn: id_inconsistencia
+
+	column codigo_regra
+		dataType: string
+		lineageTag: d2f91f48-a968-5c3f-9410-896c24ac87ee
+		summarizeBy: none
+		sourceColumn: codigo_regra
+
+	column titulo_regra
+		dataType: string
+		lineageTag: 25dba1b0-f7b3-582f-9057-f2c452ed2fde
+		summarizeBy: none
+		sourceColumn: titulo_regra
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a9e496b-c5ac-5ae5-87bb-e2d209ab3ddc
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column numero_jogo
+		dataType: int64
+		formatString: 0
+		lineageTag: 64c1eb38-8cb9-50e7-9441-9f85ccdc7ae5
+		summarizeBy: none
+		sourceColumn: numero_jogo
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ba7b101-3ecb-589f-bde8-9b87552d1462
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column fonte_a
+		dataType: string
+		lineageTag: e9c826a6-2100-5482-81ef-cecbe3d9a8c2
+		summarizeBy: none
+		sourceColumn: fonte_a
+
+	column valor_a
+		dataType: string
+		lineageTag: ebb2b65b-f199-5686-8af9-9ec87ae958df
+		summarizeBy: none
+		sourceColumn: valor_a
+
+	column fonte_b
+		dataType: string
+		lineageTag: b5819b53-d327-5e3a-a827-4fe62bff0b70
+		summarizeBy: none
+		sourceColumn: fonte_b
+
+	column valor_b
+		dataType: string
+		lineageTag: 5aaec6cd-2342-59cb-9508-79b31c79394f
+		summarizeBy: none
+		sourceColumn: valor_b
+
+	column detalhe
+		dataType: string
+		lineageTag: 57ac6835-815c-53b5-95ea-25f092fda3c4
+		summarizeBy: none
+		sourceColumn: detalhe
+
+	column severidade
+		dataType: string
+		lineageTag: 1a93e63c-7273-5d13-88fe-a39acd1f1993
+		summarizeBy: none
+		sourceColumn: severidade
+
+	column status
+		dataType: string
+		lineageTag: d5a24177-a654-56fb-9c63-a1ea8a79a649
+		summarizeBy: none
+		sourceColumn: status
+
+	column explicacao
+		dataType: string
+		lineageTag: 2382a39e-1772-5f71-9afd-9acff2872046
+		summarizeBy: none
+		sourceColumn: explicacao
+
+	partition fato_inconsistencia = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_inconsistencia.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_inconsistencia", type text}, {"codigo_regra", type text}, {"titulo_regra", type text}, {"id_partida", Int64.Type}, {"numero_jogo", Int64.Type}, {"id_clube", Int64.Type}, {"fonte_a", type text}, {"valor_a", type text}, {"fonte_b", type text}, {"valor_b", type text}, {"detalhe", type text}, {"severidade", type text}, {"status", type text}, {"explicacao", type text}}, "en-US")
+				in
+				    Tipos
+

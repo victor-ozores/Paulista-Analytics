@@ -1,0 +1,140 @@
+/// Classificação oficial da FPF por fase. Serve para conferir a classificação calculada pelas medidas.
+table fato_classificacao_oficial
+	lineageTag: b1ee1c45-0c05-586e-8199-dd90c9f1a853
+
+	column id_fase
+		dataType: int64
+		formatString: 0
+		lineageTag: 3823c016-f145-5460-8fb5-f5659d7b6cdc
+		summarizeBy: none
+		sourceColumn: id_fase
+
+	column fase
+		dataType: string
+		lineageTag: e17b89e8-2fff-561c-a9aa-399dde797418
+		summarizeBy: none
+		sourceColumn: fase
+
+	column grupo
+		dataType: string
+		lineageTag: abdf8e52-4f9f-5dc7-997d-6b79000b4b46
+		summarizeBy: none
+		sourceColumn: grupo
+
+	column posicao
+		dataType: int64
+		formatString: 0
+		lineageTag: 89f5b9ff-8f90-58d1-9912-a69f64e43a31
+		summarizeBy: none
+		sourceColumn: posicao
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: d74a7d80-142c-5688-bf31-fa3be7d9dc42
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column pontos
+		dataType: int64
+		formatString: 0
+		lineageTag: a3314bdd-4683-5515-8abf-13aa63dd30ad
+		summarizeBy: none
+		sourceColumn: pontos
+
+	column jogos
+		dataType: int64
+		formatString: 0
+		lineageTag: c82310ab-f1c0-50da-a7de-2d310006dce4
+		summarizeBy: none
+		sourceColumn: jogos
+
+	column vitorias
+		dataType: int64
+		formatString: 0
+		lineageTag: 2131b2b4-c717-52f7-9e5b-b661ff28ccae
+		summarizeBy: none
+		sourceColumn: vitorias
+
+	column empates
+		dataType: int64
+		formatString: 0
+		lineageTag: 87c9e5ce-2559-502a-aa62-07584c720b6b
+		summarizeBy: none
+		sourceColumn: empates
+
+	column derrotas
+		dataType: int64
+		formatString: 0
+		lineageTag: 6244e341-6693-509a-90cf-9d88fdd5f7f5
+		summarizeBy: none
+		sourceColumn: derrotas
+
+	column gols_pro
+		dataType: int64
+		formatString: 0
+		lineageTag: 36672dd8-56d3-5761-9d86-9a4da31302f9
+		summarizeBy: none
+		sourceColumn: gols_pro
+
+	column gols_contra
+		dataType: int64
+		formatString: 0
+		lineageTag: f7c6070e-d3be-5145-a204-268fd936aab1
+		summarizeBy: none
+		sourceColumn: gols_contra
+
+	column saldo
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f5b4319-f18a-54ed-bc8b-678180b7a772
+		summarizeBy: none
+		sourceColumn: saldo
+
+	column vp
+		dataType: int64
+		formatString: 0
+		lineageTag: 9002e0c0-7d2b-5e07-b168-c37ff29e1bd3
+		summarizeBy: none
+		sourceColumn: vp
+
+	column dp
+		dataType: int64
+		formatString: 0
+		lineageTag: b0527f7a-8631-5a84-aa87-c93d746931d3
+		summarizeBy: none
+		sourceColumn: dp
+
+	column amarelos
+		dataType: int64
+		formatString: 0
+		lineageTag: b10961b4-4436-5145-9157-f312786036dd
+		summarizeBy: none
+		sourceColumn: amarelos
+
+	column vermelhos
+		dataType: int64
+		formatString: 0
+		lineageTag: 34581e47-c27c-59af-9334-41e737559685
+		summarizeBy: none
+		sourceColumn: vermelhos
+
+	column atualizado_em
+		dataType: dateTime
+		formatString: dd/mm/yyyy hh:mm
+		lineageTag: 0983a468-52e2-5fee-a800-76e8478df821
+		summarizeBy: none
+		sourceColumn: atualizado_em
+
+	partition fato_classificacao_oficial = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_classificacao_oficial.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_fase", Int64.Type}, {"fase", type text}, {"grupo", type text}, {"posicao", Int64.Type}, {"id_clube", Int64.Type}, {"pontos", Int64.Type}, {"jogos", Int64.Type}, {"vitorias", Int64.Type}, {"empates", Int64.Type}, {"derrotas", Int64.Type}, {"gols_pro", Int64.Type}, {"gols_contra", Int64.Type}, {"saldo", Int64.Type}, {"vp", Int64.Type}, {"dp", Int64.Type}, {"amarelos", Int64.Type}, {"vermelhos", Int64.Type}}, "en-US"),
+				    DatasHoras = Table.TransformColumns(Tipos, {{"atualizado_em", each if _ = null then null else DateTime.FromText(_, [Format = "yyyy-MM-dd'T'HH:mm:ss", Culture = "en-US"]), type datetime}})
+				in
+				    DatasHoras
+

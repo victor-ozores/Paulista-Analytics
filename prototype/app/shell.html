@@ -1,0 +1,57 @@
+<style>
+#pa{--disp:"Arial Black","Segoe UI Black","Segoe UI",Arial,sans-serif;--gold:#ffd166;--mut:#9aa6b8;position:relative;width:100%;height:100vh;min-height:320px;overflow:hidden;background:#05070a;color:#fff;font-family:"Segoe UI",Arial,sans-serif}
+#pa *{box-sizing:border-box}
+#pa button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0;text-align:inherit}
+#pa button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#pa .barra{position:absolute;left:0;top:0;width:100%;height:56px;z-index:100;display:flex;align-items:center;gap:26px;padding:0 46px;background:linear-gradient(180deg,#10151f,#080b11);border-bottom:2px solid rgba(255,209,102,.6)}
+#pa .marca{display:flex;align-items:baseline;gap:14px;white-space:nowrap}
+#pa .marca b{font:italic 900 24px var(--disp);letter-spacing:.03em;text-transform:uppercase}
+#pa .marca b i{font-style:inherit;color:var(--gold)}
+#pa .nav{display:flex;flex:none;gap:8px;margin-left:10px}
+#pa .nav button{display:inline-block;transform:skewX(-14deg);padding:9px 16px;font-size:16px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2)}
+#pa .nav button span{display:block;transform:skewX(14deg)}
+#pa .nav button:hover{background:rgba(255,255,255,.15)}
+#pa .nav button.on{background:var(--gold);color:#12151c;border-color:var(--gold)}
+#pa .selo{margin-left:auto;flex:none;font-size:16px;font-weight:700;color:var(--mut);white-space:nowrap;cursor:help}
+#pa .selo b{color:#2fd47a}
+#pa .selo:hover{color:#fff;text-decoration:underline}
+#pa .tipb{position:absolute;left:0;top:0;max-width:430px;z-index:120;padding:10px 14px;background:rgba(10,13,19,.97);border:1px solid rgba(255,255,255,.28);border-left:4px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.6);font-size:16px;line-height:1.4;color:#e9edf2;opacity:0;pointer-events:none;transition:opacity .12s}
+#pa .tipb.on{opacity:1}
+#pa .tipb b{display:block;color:var(--gold);font-size:18px;margin-bottom:3px}
+#pa .mods{position:absolute;left:0;top:56px;right:0;bottom:0}
+#pa .mod{position:absolute;left:0;top:0;right:0;bottom:0;display:none}
+#pa .mod.on{display:block}
+</style>
+<script>window.PA=window.PA||{};window.PA.shell=true;window.PA.mods={};</script>
+<div id="pa">
+<div class="barra"><div class="marca"><b>Paulista <i>Analytics</i></b></div><nav class="nav" aria-label="Telas do dashboard"><button data-mod="vg" class="on" aria-current="page"><span>Visão geral</span></button><button data-mod="vs"><span>Duelo</span></button><button data-mod="clas"><span>Classificação</span></button><button data-mod="gl"><span>Gols</span></button><button data-mod="ds"><span>Disciplina</span></button><button data-mod="jg"><span>Jogos</span></button><button data-mod="fin"><span>Público e renda</span></button><button data-mod="conf"><span>Conferência</span></button></nav><button class="selo" data-mod="conf" title="Número de regras de conferência dos dados e de pendências que continuam abertas. Clique para ver a tela de conferência."><b>✔</b> __SELO__</button></div>
+<div class="tipb" id="pa-tip"></div>
+<div class="mods"><section class="mod" id="mod-vs">__MOD_VS__</section><section class="mod on" id="mod-vg">__MOD_VG__</section><section class="mod" id="mod-clas">__MOD_CLAS__</section><section class="mod" id="mod-gl">__MOD_GL__</section><section class="mod" id="mod-ds">__MOD_DS__</section><section class="mod" id="mod-jg">__MOD_JG__</section><section class="mod" id="mod-fin">__MOD_FIN__</section><section class="mod" id="mod-conf">__MOD_CONF__</section></div>
+</div>
+<script>
+(function(){
+var pa=document.getElementById('pa'),botoes=pa.querySelectorAll('.nav button'),mods={vg:document.getElementById('mod-vg'),vs:document.getElementById('mod-vs'),clas:document.getElementById('mod-clas'),gl:document.getElementById('mod-gl'),ds:document.getElementById('mod-ds'),jg:document.getElementById('mod-jg'),fin:document.getElementById('mod-fin'),conf:document.getElementById('mod-conf')};
+function ir(nome){
+if(!mods[nome])return;
+for(var k in mods)mods[k].classList.toggle('on',k===nome);
+for(var i=0;i<botoes.length;i++){var on=botoes[i].getAttribute('data-mod')===nome;botoes[i].classList.toggle('on',on);if(on)botoes[i].setAttribute('aria-current','page');else botoes[i].removeAttribute('aria-current')}
+var m=window.PA.mods&&window.PA.mods[nome];if(m&&m.entrar)m.entrar();
+}
+pa.querySelector('.barra').addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('button[data-mod]');if(b)ir(b.getAttribute('data-mod'))});
+window.PA.ir=ir;
+var tipb=document.getElementById('pa-tip'),nav=pa.querySelector('.nav'),tt=null;
+var TIPS={vg:['Visão geral','O campeonato em uma olhada: campeão e caminho, os oito números, gols por rodada, mando de campo, artilharia e recordes.'],vs:['Duelo de clubes','Escolha dois clubes e veja o comparativo, o confronto direto e a campanha de cada um.'],clas:['Classificação e chave','A tabela da 1ª fase com o desempate do Art. 16, o chaveamento do mata-mata e a posição de cada clube rodada a rodada.'],gl:['Gols e artilharia','Quando e como saem os gols, quem os faz e os placares mais comuns.'],ds:['Disciplina e arbitragem','Cartões por minuto, por motivo, por clube e por atleta, e os árbitros do campeonato.'],jg:['Jogos e escalações','Os 72 jogos, um por um: linha do jogo, escalações, lances, público e renda, arbitragem e estatísticas.'],fin:['Público e renda','Quanto público e quanto dinheiro o campeonato fez: ingressos, renda, despesas e o resultado de cada jogo.'],conf:['Conferência e fontes','Como os dados foram conferidos: as regras, as ocorrências, as camadas de conferência e de onde vem cada dado.']};
+function esconderTip(){clearTimeout(tt);if(tipb)tipb.classList.remove('on')}
+function mostrarTip(b){var d=TIPS[b.getAttribute('data-mod')];if(!d||!tipb)return;tipb.innerHTML='<b>'+d[0]+'</b>'+d[1];tipb.classList.add('on');var r=b.getBoundingClientRect(),q=pa.getBoundingClientRect(),w=tipb.offsetWidth,x=r.left-q.left;if(x+w>q.width-12)x=q.width-w-12;if(x<12)x=12;tipb.style.left=Math.round(x)+'px';tipb.style.top=Math.round(r.bottom-q.top+10)+'px'}
+if(nav&&tipb){
+nav.addEventListener('mouseover',function(ev){var b=ev.target.closest&&ev.target.closest('button[data-mod]');clearTimeout(tt);if(b)tt=setTimeout(function(){mostrarTip(b)},90);else esconderTip()});
+nav.addEventListener('mouseleave',esconderTip);
+nav.addEventListener('focusin',function(ev){var b=ev.target.closest&&ev.target.closest('button[data-mod]');if(b)mostrarTip(b)});
+nav.addEventListener('focusout',esconderTip);
+nav.addEventListener('click',esconderTip);
+}
+var h=(location.hash||'').replace('#','');
+if(!mods[h])h='vg';
+setTimeout(function(){ir(h)},0);
+})();
+</script>

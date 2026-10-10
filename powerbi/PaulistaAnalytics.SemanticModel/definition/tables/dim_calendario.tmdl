@@ -1,0 +1,85 @@
+/// Calendário de 2026, um dia por linha, com dia da semana, trimestre e se houve jogo no dia.
+table dim_calendario
+	lineageTag: cc39bdd4-c73b-55e3-ada5-ede4e1982600
+
+	column data
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 1e382fc1-40f4-5bcb-adc5-d97ae85f1f3e
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a13830e-82c2-59db-9f8c-1a67c9096c62
+		summarizeBy: none
+		sourceColumn: ano
+
+	column mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 92d56b8b-bbd5-5036-a077-851abc573307
+		summarizeBy: none
+		sourceColumn: mes
+
+	column nome_mes
+		dataType: string
+		lineageTag: 18bebb3a-99fc-5c8d-a91d-fb8589b4cb72
+		summarizeBy: none
+		sourceColumn: nome_mes
+
+	column dia
+		dataType: int64
+		formatString: 0
+		lineageTag: c5f85f43-9c18-556b-b5ae-edcbda2f73a1
+		summarizeBy: none
+		sourceColumn: dia
+
+	column dia_semana
+		dataType: int64
+		formatString: 0
+		lineageTag: 2291357c-a209-54a8-b346-bd1fcc6f042b
+		summarizeBy: none
+		sourceColumn: dia_semana
+
+	column nome_dia_semana
+		dataType: string
+		lineageTag: 3154aad7-21fb-52cf-9c5b-b43fb852d996
+		summarizeBy: none
+		sourceColumn: nome_dia_semana
+
+	column semana_iso
+		dataType: int64
+		formatString: 0
+		lineageTag: 92a6591d-57e7-5cd8-85f7-7eacc1812340
+		summarizeBy: none
+		sourceColumn: semana_iso
+
+	column trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: 09c9f8e0-f446-5a9d-bc57-2b19bd7bce1a
+		summarizeBy: none
+		sourceColumn: trimestre
+
+	column dia_de_jogo
+		dataType: int64
+		formatString: 0
+		lineageTag: b063214b-b6c1-5558-a65d-3a4525619cc0
+		summarizeBy: none
+		sourceColumn: dia_de_jogo
+
+	partition dim_calendario = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\dim_calendario.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"data", type date}, {"ano", Int64.Type}, {"mes", Int64.Type}, {"nome_mes", type text}, {"dia", Int64.Type}, {"dia_semana", Int64.Type}, {"nome_dia_semana", type text}, {"semana_iso", Int64.Type}, {"trimestre", Int64.Type}, {"dia_de_jogo", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

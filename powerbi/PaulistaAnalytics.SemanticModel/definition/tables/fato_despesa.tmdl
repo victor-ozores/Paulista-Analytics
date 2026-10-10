@@ -1,0 +1,66 @@
+/// Rubricas de despesa de cada jogo nos blocos B1, B2 e B3 do boletim, com o grupo do projeto (agrupamento não oficial) e o valor. Fonte: boletins da FPF.
+table fato_despesa
+	lineageTag: 73a33230-b3b7-589d-8d70-e88b1d7555ab
+
+	column id_despesa
+		dataType: string
+		lineageTag: c81b88f7-480a-5d08-8908-bd234e28c435
+		summarizeBy: none
+		sourceColumn: id_despesa
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: 240c4841-3ec1-5243-9de3-ccf2f724207d
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column bloco_codigo
+		dataType: string
+		lineageTag: cc6defee-daf8-5f7b-95d3-14d53e0166d4
+		summarizeBy: none
+		sourceColumn: bloco_codigo
+
+	column bloco
+		dataType: string
+		lineageTag: 138b58f2-fee4-58fb-8953-be2a2bc90ed4
+		summarizeBy: none
+		sourceColumn: bloco
+
+	column ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: 6742cd08-8dac-549d-b58e-559924234146
+		summarizeBy: none
+		sourceColumn: ordem
+
+	column rubrica
+		dataType: string
+		lineageTag: 43f9e6e0-4564-5ea6-96f7-16e73085e319
+		summarizeBy: none
+		sourceColumn: rubrica
+
+	column grupo
+		dataType: string
+		lineageTag: 720712af-5cf4-5930-98f5-1939e6ed4860
+		summarizeBy: none
+		sourceColumn: grupo
+
+	column valor
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: 96bdaad2-f8a7-5bd2-aa29-8d87c3203b60
+		summarizeBy: none
+		sourceColumn: valor
+
+	partition fato_despesa = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_despesa.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_despesa", type text}, {"id_partida", Int64.Type}, {"bloco_codigo", type text}, {"bloco", type text}, {"ordem", Int64.Type}, {"rubrica", type text}, {"grupo", type text}, {"valor", Currency.Type}}, "en-US")
+				in
+				    Tipos
+

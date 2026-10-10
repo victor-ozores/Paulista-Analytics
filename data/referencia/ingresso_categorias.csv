@@ -1,0 +1,7 @@
+ordem_regra;categoria;ordem_exibicao;condicao;expressao;explicacao
+1;Gratuidade por lei;5;preco_zero;;Ingressos de preço zero. Todos citam uma lei de gratuidade no nome do setor, por exemplo menores de 2 anos (lei estadual 18.159) e leis municipais.
+2;Sócio-torcedor;3;texto;socio|fiel torcedor|avanti|carne|palmeiras pay|\bst\b|carteirinha|superficiaria;Ingressos de programas de sócio dos clubes: Sócio, Fiel Torcedor, Avanti, Carnê, Palmeiras Pay, Carteirinha e ST. Se o nome diz sócio, conta aqui mesmo que também diga meia ou inteira.
+3;Meia-entrada;2;texto;meia;Ingressos de meia-entrada, inclusive a meia por lei para menores de 12 anos.
+4;Inteira;1;texto;inteira;Ingressos de preço cheio, chamados de inteira no boletim.
+5;Cadeira e camarote;4;texto;camarote|vitalicia|proprietario|tc10|area restrita|tribuna|business|suite|venda proibida;Cadeiras de proprietário ou vitalícias, TC10, camarotes, tribuna, suítes, áreas restritas e vendas proibidas. Só conta aqui quando o nome não diz sócio, meia nem inteira.
+6;Outros;6;resto;;O que nenhuma regra pegou (acompanhante de PCD, passaporte e PCR): menos de 0,1% dos ingressos.

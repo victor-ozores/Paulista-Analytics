@@ -1,0 +1,5 @@
+expression CaminhoDados = "C:\Users\VICTOR\Desktop\Workspaces\Paulista Analytics\data\processed" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 94a84cbd-0547-59fe-bc1f-d4f625219a02
+
+	annotation PBI_ResultType = Text
+

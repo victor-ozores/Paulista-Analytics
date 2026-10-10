@@ -1,0 +1,93 @@
+/// Competição: Paulistão A1 2026 (campeonato 73 e categoria 39 da FPF), com datas de início e fim e total de jogos. Fonte: FPF.
+table dim_competicao
+	lineageTag: 447c627b-98a1-5e99-bfd9-e111b24fc80e
+
+	column id_competicao
+		dataType: string
+		lineageTag: 9e5479a7-c6b1-5a8b-a520-d39bc9566dd6
+		summarizeBy: none
+		sourceColumn: id_competicao
+
+	column id_campeonato_fpf
+		dataType: int64
+		formatString: 0
+		lineageTag: e5311615-e74c-58eb-964a-8d015e6122f1
+		summarizeBy: none
+		sourceColumn: id_campeonato_fpf
+
+	column id_categoria_fpf
+		dataType: int64
+		formatString: 0
+		lineageTag: faafbc98-34e4-50d5-9522-a569f1491c63
+		summarizeBy: none
+		sourceColumn: id_categoria_fpf
+
+	column exercicio
+		dataType: int64
+		formatString: 0
+		lineageTag: 99d04bf8-79a9-5e4f-b5e0-0531df1bf947
+		summarizeBy: none
+		sourceColumn: exercicio
+
+	column nome
+		dataType: string
+		lineageTag: c5a5e521-f824-528b-8ffd-2d0260a2d074
+		summarizeBy: none
+		sourceColumn: nome
+
+	column serie
+		dataType: string
+		lineageTag: b069c055-2d30-5f72-9570-d639c449dbd0
+		summarizeBy: none
+		sourceColumn: serie
+
+	column categoria
+		dataType: string
+		lineageTag: 875bffb5-7737-52a3-b354-5ab87e2ac46e
+		summarizeBy: none
+		sourceColumn: categoria
+
+	column data_inicio
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 975a2667-ce42-56c6-9678-64d574a33d02
+		summarizeBy: none
+		sourceColumn: data_inicio
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_fim
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 271c7e11-16d5-58b4-8257-19a2115ec9e9
+		summarizeBy: none
+		sourceColumn: data_fim
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column total_jogos
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fab9b9a-96a8-502c-826d-050f75f4b025
+		summarizeBy: none
+		sourceColumn: total_jogos
+
+	column atualizado_fpf_em
+		dataType: dateTime
+		formatString: dd/mm/yyyy hh:mm
+		lineageTag: 6f522761-12fc-5eee-b1f8-0dc868417fb1
+		summarizeBy: none
+		sourceColumn: atualizado_fpf_em
+
+	partition dim_competicao = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\dim_competicao.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_competicao", type text}, {"id_campeonato_fpf", Int64.Type}, {"id_categoria_fpf", Int64.Type}, {"exercicio", Int64.Type}, {"nome", type text}, {"serie", type text}, {"categoria", type text}, {"data_inicio", type date}, {"data_fim", type date}, {"total_jogos", Int64.Type}}, "en-US"),
+				    DatasHoras = Table.TransformColumns(Tipos, {{"atualizado_fpf_em", each if _ = null then null else DateTime.FromText(_, [Format = "yyyy-MM-dd'T'HH:mm:ss", Culture = "en-US"]), type datetime}})
+				in
+				    DatasHoras
+

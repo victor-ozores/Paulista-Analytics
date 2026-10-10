@@ -1,0 +1,40 @@
+/// Nomes alternativos de cada clube nas fontes (FPF, ESPN, Wikipédia), usados para casar os registros entre fontes.
+table dim_clube_alias
+	lineageTag: 1f82108b-4547-52f2-bc90-3acdb6edab43
+
+	column alias
+		dataType: string
+		lineageTag: 9fc4f759-f3a2-5121-9500-57e7ae4d8f88
+		summarizeBy: none
+		sourceColumn: alias
+
+	column alias_normalizado
+		dataType: string
+		lineageTag: 34298543-b590-5c66-b311-95611394b594
+		summarizeBy: none
+		sourceColumn: alias_normalizado
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: 675116d8-3a4e-5ecb-9a77-75a5723dc5af
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column fonte
+		dataType: string
+		lineageTag: a3c6605e-733f-52e5-a227-f30ae793b7e4
+		summarizeBy: none
+		sourceColumn: fonte
+
+	partition dim_clube_alias = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\dim_clube_alias.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"alias", type text}, {"alias_normalizado", type text}, {"id_clube", Int64.Type}, {"fonte", type text}}, "en-US")
+				in
+				    Tipos
+

@@ -1,0 +1,54 @@
+/// Fases do campeonato: 1ª fase em pontos corridos, quartas de final, semifinal e final. Fonte: FPF.
+table dim_fase
+	lineageTag: 5175ce40-e821-5cd7-8a82-52200ebcb1c0
+
+	column id_fase
+		dataType: int64
+		formatString: 0
+		lineageTag: e9f1e60b-e2db-54a5-bdf9-c16dd16cf9eb
+		summarizeBy: none
+		sourceColumn: id_fase
+
+	column id_competicao
+		dataType: string
+		lineageTag: 106b96fd-8b87-5de1-9cf5-ee7ed19b561c
+		summarizeBy: none
+		sourceColumn: id_competicao
+
+	column nome_fase
+		dataType: string
+		lineageTag: ce40f733-35e6-55cd-9e9e-291407d593c0
+		summarizeBy: none
+		sourceColumn: nome_fase
+
+	column ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d68197e-2ac9-5f10-b6e7-cac34a1cae80
+		summarizeBy: none
+		sourceColumn: ordem
+
+	column tipo
+		dataType: string
+		lineageTag: e70d1000-72cb-5170-a0d8-843265c019db
+		summarizeBy: none
+		sourceColumn: tipo
+
+	column jogos
+		dataType: int64
+		formatString: 0
+		lineageTag: c36a2248-5db1-52a7-a825-11b21aa375e8
+		summarizeBy: none
+		sourceColumn: jogos
+
+	partition dim_fase = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\dim_fase.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_fase", Int64.Type}, {"id_competicao", type text}, {"nome_fase", type text}, {"ordem", Int64.Type}, {"tipo", type text}, {"jogos", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

@@ -1,0 +1,148 @@
+/// Relação de jogadores de cada time em cada jogo: titular ou reserva, se jogou, minutos, gols e cartões. Gols e cartões ligados ao atleta por jogo, clube e camisa. Fonte: súmulas da FPF.
+table fato_escalacao
+	lineageTag: cac1657c-96a8-5258-a1ab-d9fee45d3039
+
+	column id_escalacao
+		dataType: string
+		lineageTag: 464b6972-33d4-5b82-87c4-9400107f253a
+		summarizeBy: none
+		sourceColumn: id_escalacao
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: bbe25fbd-e03c-5016-80fb-7b9c9037f960
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: b917876c-93aa-5b7f-9464-13a8e51b47a8
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column id_atleta
+		dataType: string
+		lineageTag: a8b60860-1a86-51b2-8e08-a3e5042be9c9
+		summarizeBy: none
+		sourceColumn: id_atleta
+
+	column numero_camisa
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f5ac180-6c4b-53a4-b2ed-b57dba3b282a
+		summarizeBy: none
+		sourceColumn: numero_camisa
+
+	column situacao
+		dataType: string
+		lineageTag: b3cead4a-633a-5bb7-ab5d-f2b5e400bb77
+		summarizeBy: none
+		sourceColumn: situacao
+
+	column vinculo
+		dataType: string
+		lineageTag: 946c067e-8733-56de-8fc8-20758cf081f9
+		summarizeBy: none
+		sourceColumn: vinculo
+
+	column registro
+		dataType: string
+		lineageTag: a522d509-92c8-57a8-b5c8-cc412d7f68a1
+		summarizeBy: none
+		sourceColumn: registro
+
+	column jogou
+		dataType: int64
+		formatString: 0
+		lineageTag: 10486f11-4afb-58dc-b4f3-2786d8173c9f
+		summarizeBy: none
+		sourceColumn: jogou
+
+	column periodo_entrada
+		dataType: string
+		lineageTag: 2c746f3c-7e77-5e31-981d-9cc4380e2281
+		summarizeBy: none
+		sourceColumn: periodo_entrada
+
+	column minuto_entrada
+		dataType: int64
+		formatString: 0
+		lineageTag: 45e86ccc-b60e-5dd7-9235-afde0fe3d415
+		summarizeBy: none
+		sourceColumn: minuto_entrada
+
+	column acrescimo_entrada
+		dataType: int64
+		formatString: 0
+		lineageTag: dbefaec1-61ee-530a-83ed-09d224e0a34d
+		summarizeBy: none
+		sourceColumn: acrescimo_entrada
+
+	column periodo_saida
+		dataType: string
+		lineageTag: 69f775bb-91a6-5099-ad84-ecced34f70e7
+		summarizeBy: none
+		sourceColumn: periodo_saida
+
+	column minuto_saida
+		dataType: int64
+		formatString: 0
+		lineageTag: cd40b5ad-50cd-58a4-be90-3df2d72b079a
+		summarizeBy: none
+		sourceColumn: minuto_saida
+
+	column acrescimo_saida
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c4f3e87-743b-5502-94a0-584f7df965fc
+		summarizeBy: none
+		sourceColumn: acrescimo_saida
+
+	column minutos_jogados
+		dataType: int64
+		formatString: 0
+		lineageTag: 7cec461b-8f2b-55de-bbc1-c3ceee800be0
+		summarizeBy: none
+		sourceColumn: minutos_jogados
+
+	column gols
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f780d03-1750-5f67-951e-7655743955a9
+		summarizeBy: none
+		sourceColumn: gols
+
+	column gols_contra
+		dataType: int64
+		formatString: 0
+		lineageTag: 71633bf6-f8b2-54cc-8e95-5129bde96bb0
+		summarizeBy: none
+		sourceColumn: gols_contra
+
+	column amarelos
+		dataType: int64
+		formatString: 0
+		lineageTag: 0173b09d-eec4-519a-836b-dc25b277fcc6
+		summarizeBy: none
+		sourceColumn: amarelos
+
+	column vermelhos
+		dataType: int64
+		formatString: 0
+		lineageTag: c0aeb7a5-0212-57f4-9f75-3ff10b689760
+		summarizeBy: none
+		sourceColumn: vermelhos
+
+	partition fato_escalacao = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_escalacao.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_escalacao", type text}, {"id_partida", Int64.Type}, {"id_clube", Int64.Type}, {"id_atleta", type text}, {"numero_camisa", Int64.Type}, {"situacao", type text}, {"vinculo", type text}, {"registro", type text}, {"jogou", Int64.Type}, {"periodo_entrada", type text}, {"minuto_entrada", Int64.Type}, {"acrescimo_entrada", Int64.Type}, {"periodo_saida", type text}, {"minuto_saida", Int64.Type}, {"acrescimo_saida", Int64.Type}, {"minutos_jogados", Int64.Type}, {"gols", Int64.Type}, {"gols_contra", Int64.Type}, {"amarelos", Int64.Type}, {"vermelhos", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

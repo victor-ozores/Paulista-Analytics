@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "PaulistaAnalytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0fcb46f9-1c1b-4922-b1f4-860e747a61e2"
+  }
+}

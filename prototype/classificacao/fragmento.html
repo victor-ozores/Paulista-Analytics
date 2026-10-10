@@ -1,0 +1,447 @@
+<style>
+#clx{--disp:"Arial Black","Segoe UI Black","Segoe UI",Arial,sans-serif;--gold:#ffd166;--mut:#9aa6b8;--txt:#e6ecf5;--ver:#2fd47a;--verc:#79e7a6;--verm:#ff5470;--vermc:#ff8a95;--ciano:#4cc9f0;--rox:#b388ff;position:relative;width:100%;height:100%;min-height:320px;overflow:hidden;background:#05070a;color:#fff;font-family:"Segoe UI",Arial,sans-serif;-webkit-user-select:none;user-select:none;outline:0}
+#clx *{box-sizing:border-box}
+#clx button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0;text-align:inherit}
+#clx button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#clx img{display:block}
+#clx .palco{position:absolute;left:0;top:0;width:1920px;height:1024px;transform-origin:0 0;overflow:hidden;background:radial-gradient(ellipse 80% 70% at 50% 22%,#171e2b 0,#080a0f 75%)}
+#clx .fundo{position:absolute;left:0;top:0;width:1920px;height:1024px;background:repeating-linear-gradient(115deg,rgba(255,255,255,.028) 0 2px,transparent 2px 34px)}
+#clx .faixa{position:absolute;left:0;top:0;width:1010px;height:88px;background:linear-gradient(100deg,#2a1450 0,#5b2a9c 58%,#8e4fe0 100%);clip-path:polygon(0 0,100% 0,calc(100% - 64px) 100%,0 100%)}
+#clx .faixa::after{content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:radial-gradient(circle,rgba(0,0,0,.26) 1.6px,transparent 2.2px) 0 0/17px 17px;-webkit-mask-image:linear-gradient(90deg,#000,transparent 85%);mask-image:linear-gradient(90deg,#000,transparent 85%)}
+#clx .tit{position:absolute;left:46px;top:6px;font:italic 900 46px/1.05 var(--disp);text-transform:uppercase;text-shadow:0 5px 0 rgba(0,0,0,.35);white-space:nowrap}
+#clx .tit b{color:var(--gold)}
+#clx .sub{position:absolute;left:46px;top:58px;width:900px;font-size:18px;font-weight:700;color:#efe6ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:help}
+#clx .ctl{position:absolute;right:46px;top:22px;display:flex;align-items:center;gap:16px;z-index:6}
+#clx .chp{display:inline-block;transform:skewX(-14deg);padding:7px 20px;font-size:16px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2)}
+#clx .chp span{display:block;transform:skewX(14deg)}
+#clx .chp:hover{background:rgba(255,255,255,.14)}
+#clx .chp.lim{background:rgba(255,84,112,.18);border-color:rgba(255,84,112,.6)}
+#clx .chp.lim.off{display:none}
+#clx .aju{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.55);border:2px solid rgba(255,255,255,.75);font:900 24px var(--disp);color:#fff}
+#clx .aju:hover{background:rgba(0,0,0,.8)}
+#clx .kpis{position:absolute;left:0;top:100px;width:1920px;height:108px}
+#clx .kpi{position:absolute;top:0;width:250px;height:108px;padding:11px 18px 0;background:linear-gradient(180deg,rgba(19,25,36,.96),rgba(8,10,15,.98));border:1px solid rgba(255,255,255,.14);border-top:4px solid var(--kc);clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,0 100%);cursor:help}
+#clx .kpi h4{margin:0;font-size:16px;letter-spacing:.1em;color:var(--mut);font-weight:800;text-transform:uppercase;white-space:nowrap}
+#clx .kpi .v{font:italic 900 38px/1.12 var(--disp);color:#fff;margin-top:2px;white-space:nowrap;text-shadow:0 0 18px var(--kc)}
+#clx .kpi .v.tx{font-size:25px;line-height:1.5;overflow:hidden;text-overflow:ellipsis}
+#clx .kpi small{display:block;font-size:16px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#clx .pn{position:absolute;padding:14px 22px 0;background:linear-gradient(180deg,rgba(15,20,29,.94),rgba(7,9,13,.98));border:1px solid rgba(255,255,255,.14);border-top:4px solid #fff;clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%)}
+#clx .pn h3{margin:0 0 8px;height:30px;display:flex;justify-content:space-between;align-items:center;font:italic 900 24px/1 var(--disp);text-transform:uppercase;white-space:nowrap}
+#clx .pn h3 span{cursor:help}
+#clx .pn h3 small{font:700 16px "Segoe UI",Arial,sans-serif;color:var(--mut);text-transform:none;letter-spacing:0}
+#clx .p1{left:46px;top:220px;width:960px;height:760px}
+#clx .p2{left:1020px;top:220px;width:854px;height:410px}
+#clx .p3{left:1020px;top:644px;width:854px;height:336px}
+#clx .th,#clx .tr{display:grid;grid-template-columns:44px 218px 54px 46px 46px 46px 46px 54px 54px 60px 78px 54px 54px;column-gap:4px;align-items:center}
+#clx .th{height:34px;padding:0 6px;font-size:16px;font-weight:800;color:var(--mut);text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.14);cursor:help}
+#clx .th span:nth-child(n+3){text-align:right}
+#clx .th span{white-space:nowrap}
+#clx .tr{position:relative;width:100%;height:38px;padding:0 6px;border-bottom:1px solid rgba(255,255,255,.08);font-size:17px;font-weight:700;opacity:0;transition:opacity .35s,background .15s;transition-delay:calc(var(--i)*30ms),0s}
+#clx .pn.on .tr{opacity:1}
+#clx .tr:hover{background:rgba(255,255,255,.09)}
+#clx .tr::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:5px;background:transparent}
+#clx .tr.zq::before{background:var(--ver)}
+#clx .tr.zr::before{background:var(--verm)}
+#clx .tr.zq{background:rgba(47,212,122,.07)}
+#clx .tr.zr{background:rgba(255,84,112,.1)}
+#clx .tr.sel{background:rgba(76,201,240,.24);box-shadow:inset 0 0 0 1px var(--ciano)}
+#clx .tr.sem{opacity:.38!important}
+#clx .tr .ps{font:italic 900 19px var(--disp);text-align:center}
+#clx .tr .cb{display:flex;align-items:center;gap:10px;overflow:hidden;white-space:nowrap}
+#clx .tr .cb img{width:28px;height:28px;object-fit:contain;flex:none}
+#clx .tr .cb .sg{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:16px;font-weight:900;color:#10141b;flex:none}
+#clx .tr .cb u{text-decoration:none;overflow:hidden;text-overflow:ellipsis}
+#clx .tr b,#clx .tr i{font-style:normal;text-align:right;font-variant-numeric:tabular-nums}
+#clx .tr b{font-weight:900;font-size:19px}
+#clx .tr i.pos{color:var(--verc)}
+#clx .tr i.neg{color:var(--vermc)}
+#clx .tr i.mut{color:var(--mut)}
+#clx .zg{display:flex;gap:30px;margin-top:10px;font-size:16px;font-weight:700;color:var(--mut)}
+#clx .zg span::before{content:"";display:inline-block;width:14px;height:14px;margin-right:8px;vertical-align:-2px;transform:skewX(-14deg)}
+#clx .zg .q::before{background:var(--ver)}
+#clx .zg .r::before{background:var(--verm)}
+#clx .br{position:relative;width:810px;height:334px;margin-top:2px}
+#clx .br svg{position:absolute;left:0;top:0;width:810px;height:334px;overflow:visible;pointer-events:none}
+#clx .gm{position:absolute;width:250px;height:76px;padding:2px 8px 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-left:4px solid rgba(255,255,255,.3);cursor:help;opacity:0;transition:opacity .35s,border-color .15s;transition-delay:calc(var(--i)*70ms),0s}
+#clx .pn.on .gm{opacity:1}
+#clx .gm.sel{border-color:var(--ciano);background:rgba(76,201,240,.12)}
+#clx .gm.sem{opacity:.34!important}
+#clx .gm em{display:block;font-style:normal;font-size:16px;line-height:18px;font-weight:700;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#clx .tl{display:flex;align-items:center;gap:8px;width:100%;height:27px;font-size:17px;font-weight:700;color:#aeb8c8;white-space:nowrap}
+#clx .tl:hover{background:rgba(255,255,255,.08)}
+#clx .tl img{width:20px;height:20px;object-fit:contain;flex:none}
+#clx .tl .sg{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;font-size:16px;font-weight:900;color:#10141b;flex:none}
+#clx .tl u{text-decoration:none;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+#clx .tl b{font-weight:900;font-size:18px;font-variant-numeric:tabular-nums}
+#clx .tl b small{font-size:16px;font-weight:700;color:var(--mut)}
+#clx .tl.w{color:#fff}
+#clx .tl.w b{color:var(--verc)}
+#clx .tl.sel{color:var(--ciano)}
+#clx .fn{position:absolute;width:250px;height:176px;padding:2px 8px 0;background:rgba(255,209,102,.08);border:1px solid rgba(255,209,102,.5);border-left:4px solid var(--gold);cursor:help;opacity:0;transition:opacity .35s,border-color .15s;transition-delay:.5s,0s}
+#clx .pn.on .fn{opacity:1}
+#clx .fn.sel{border-color:var(--ciano)}
+#clx .fn.sem{opacity:.34!important}
+#clx .fn em{display:block;font-style:normal;font-size:16px;line-height:18px;font-weight:700;color:var(--mut)}
+#clx .fn .lg{display:flex;gap:8px;align-items:center;height:26px;font-size:16px;font-weight:700;color:#d6deea;white-space:nowrap}
+#clx .fn .lg span{color:var(--mut)}
+#clx .fn .lg b{font-weight:900;font-variant-numeric:tabular-nums}
+#clx .fn .pt{margin-top:2px;font-size:16px;font-weight:700;color:var(--mut)}
+#clx .fn .pt b{color:#fff}
+#clx .fn .cp{display:flex;align-items:center;gap:8px;margin-top:6px;height:40px;padding:0 8px;background:rgba(255,209,102,.18);color:var(--gold);font-size:17px;font-weight:800;white-space:nowrap}
+#clx .fn .cp img{width:26px;height:26px;object-fit:contain}
+#clx .fn .cp .sg{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:900;color:#10141b}
+#clx .fn .cp u{text-decoration:none;overflow:hidden;text-overflow:ellipsis}
+#clx .bp{position:relative;width:810px;height:268px}
+#clx .bp svg{display:block;overflow:visible}
+#clx .bp text{font-family:"Segoe UI",Arial,sans-serif;font-size:16px;font-weight:700;fill:var(--mut)}
+#clx .bp text.q{fill:var(--verc)}
+#clx .bp text.r{fill:var(--vermc)}
+#clx .bp .ln{fill:none;stroke:rgba(154,166,184,.55);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;transition:opacity .15s}
+#clx .bp .ln.sel{stroke:var(--ciano);stroke-width:5;opacity:1}
+#clx .bp .ln.sem{opacity:.2}
+#clx .bp .pt{fill:#0c1118;stroke:rgba(154,166,184,.8);stroke-width:2}
+#clx .bp .pt.sel{stroke:var(--ciano);fill:var(--ciano)}
+#clx .bp .pt.sem{opacity:.2}
+#clx .bp .hit{fill:none;stroke:transparent;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;cursor:pointer;pointer-events:stroke}
+#clx .bp .ln,#clx .bp .pt{pointer-events:none}
+#clx .bp .fim{cursor:pointer}
+#clx .bp .fim.sem{opacity:.3}
+#clx .bp .bq{fill:rgba(47,212,122,.07)}
+#clx .bp .br2{fill:rgba(255,84,112,.1)}
+#clx .rod{position:absolute;left:0;top:988px;width:1920px;height:36px;z-index:12;display:flex;justify-content:space-between;align-items:center;padding:0 46px;font-size:16px;color:var(--mut);background:linear-gradient(0deg,rgba(0,0,0,.55),transparent)}
+#clx .rod b{color:#c3ccda;font-weight:600}
+#clx .rod span:first-child{cursor:help}
+#clx .tip{position:absolute;left:0;top:0;max-width:470px;z-index:60;padding:12px 16px;background:rgba(10,13,19,.97);border:1px solid rgba(255,255,255,.28);border-left:4px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.6);font-size:17px;line-height:1.4;color:var(--txt);opacity:0;pointer-events:none;transition:opacity .12s}
+#clx .tip.on{opacity:1}
+#clx .tip b{display:block;color:var(--gold);font-size:19px;margin-bottom:4px}
+#clx .tip>span{display:block;margin-top:6px}
+#clx .tip .tv{display:grid;gap:3px;margin-top:4px;padding:8px 12px;background:rgba(255,255,255,.07);border-left:3px solid rgba(255,255,255,.25)}
+#clx .tip .tv div{display:flex;justify-content:space-between;gap:28px}
+#clx .tip .tv div em{font-style:normal;font-weight:800;color:#fff;text-align:right}
+#clx .tip small{display:block;margin-top:8px;font-size:16px;color:var(--mut)}
+#clx .aj{position:absolute;left:0;top:0;width:1920px;height:1024px;z-index:55;display:none;background:rgba(3,5,8,.84);align-items:center;justify-content:center}
+#clx .aj.on{display:flex}
+#clx .aj .cx{width:1400px;padding:34px 44px 28px;background:linear-gradient(180deg,#161c27,#0c1017);border:1px solid rgba(255,255,255,.22);border-top:5px solid var(--gold);display:grid;grid-template-columns:1fr 1fr;gap:20px 52px}
+#clx .aj h2{grid-column:1 / span 2;margin:0;font:italic 900 34px var(--disp);text-transform:uppercase}
+#clx .aj h3{margin:0 0 10px;font-size:18px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+#clx .aj ol{margin:0;padding-left:26px}
+#clx .aj li{font-size:19px;line-height:1.45;color:var(--txt);margin:0 0 10px}
+#clx .aj dl{margin:0}
+#clx .aj dt{font-weight:800;color:#fff;font-size:19px}
+#clx .aj dd{margin:0 0 9px;font-size:18px;line-height:1.4;color:#c3ccda}
+#clx .aj .fe{grid-column:1 / span 2;display:flex;justify-content:flex-end;align-items:center}
+#clx .aj .fe button{padding:10px 26px;font-size:17px;font-weight:800;border:1px solid var(--gold);background:var(--gold);color:#12151c}
+#clx.go .kpi,#clx.go .pn{animation:cl-sobe .55s both}
+#clx.go .kpi:nth-child(2){animation-delay:.06s}
+#clx.go .kpi:nth-child(3){animation-delay:.12s}
+#clx.go .kpi:nth-child(4){animation-delay:.18s}
+#clx.go .kpi:nth-child(5){animation-delay:.24s}
+#clx.go .kpi:nth-child(6){animation-delay:.3s}
+#clx.go .kpi:nth-child(7){animation-delay:.36s}
+#clx.go .p1{animation-delay:.3s}
+#clx.go .p2{animation-delay:.4s}
+#clx.go .p3{animation-delay:.5s}
+#clx.rm *{animation:none!important;transition:none!important}
+@keyframes cl-sobe{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+</style>
+<div id="clx" tabindex="0">
+<div class="palco"><div class="fundo"></div><div class="faixa"></div><div class="tit">Classificação <b>e</b> chave</div><div class="sub"></div><div class="ctl"></div><div class="kpis"></div><div class="pn p1"></div><div class="pn p2"></div><div class="pn p3"></div><div class="rod"></div><div class="aj" role="dialog" aria-modal="true" aria-label="Como ler esta tela"></div><div class="tip"></div></div>
+</div>
+<script>
+(function(){
+var D=__DADOS__;
+var raiz=document.getElementById('clx'),palco=raiz.querySelector('.palco'),tipEl=raiz.querySelector('.tip'),ajEl=raiz.querySelector('.aj');
+var EL={sub:raiz.querySelector('.sub'),ctl:raiz.querySelector('.ctl'),kpis:raiz.querySelector('.kpis'),p1:raiz.querySelector('.p1'),p2:raiz.querySelector('.p2'),p3:raiz.querySelector('.p3'),rod:raiz.querySelector('.rod')};
+var COR={ciano:'#4cc9f0',verde:'#2fd47a',verdeClaro:'#79e7a6',vermelho:'#ff5470',amarelo:'#ffd166',roxo:'#b388ff',cinza:'#9aa6b8'};
+var M=D.meta,CL={},LG={},TAB={};
+D.clubes.forEach(function(c){CL[c.id]=c});
+D.tab.forEach(function(t){TAB[t.c]=t});
+if(window.PA&&window.PA.clubes)window.PA.clubes.forEach(function(c){LG[c.id]=c.logo});
+var CRIT={v:'vitórias',sg:'saldo de gols',gp:'gols marcados',cv:'cartões vermelhos',ca:'cartões amarelos'};
+var FASE={2:'Quartas de final',3:'Semifinal',4:'Final'};
+var NR=D.tab.length;
+var est={sel:null,k:1,ox:0,oy:0};
+var reduzido=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+if(reduzido)raiz.classList.add('rm');
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function num(n){return Number(n).toLocaleString('pt-BR')}
+function dec(n,c){return Number(n).toLocaleString('pt-BR',{minimumFractionDigits:c,maximumFractionDigits:c})}
+function pc(a,b){return b>0?dec(100*a/b,1)+'%':'—'}
+function sinal(n){return n>0?'+'+num(n):n<0?'−'+num(-n):'0'}
+function dataBR(d){var p=d.split('-');return p[2]+'/'+p[1]}
+function dataLonga(d){var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
+function plural(n,u,p){return num(n)+' '+(n===1?u:p)}
+function nomeLista(a){return a.length<2?(a[0]||''):a.slice(0,-1).join(', ')+' e '+a[a.length-1]}
+function tp(){return' data-tip="'+Array.prototype.slice.call(arguments).map(esc).join('||')+'"'}
+function linhasTip(l){return'@'+l.map(function(x){return x[0]+'::'+x[1]}).join('\n')}
+function tipHtml(s){
+var sec=String(s).split('||'),h='<b>'+esc(sec[0])+'</b>';
+for(var i=1;i<sec.length;i++){
+var x=sec[i];if(!x)continue;
+if(x.charAt(0)==='@')h+='<div class="tv">'+x.slice(1).split('\n').map(function(l){var p=l.split('::');return'<div><span>'+esc(p[0])+'</span><em>'+esc(p[1]===undefined?'':p[1])+'</em></div>'}).join('')+'</div>';
+else if(x.charAt(0)==='~')h+='<small>'+esc(x.slice(1))+'</small>';
+else h+='<span>'+esc(x)+'</span>';
+}
+return h;
+}
+function nome(id){return CL[id].curto}
+function logo(id,t){
+var c=CL[id];
+if(LG[id])return'<img src="'+LG[id]+'" alt=""'+(t?' style="width:'+t+'px;height:'+t+'px"':'')+'>';
+return'<span class="sg" style="background:'+c.cor+(t?';width:'+t+'px;height:'+t+'px':'')+'">'+esc(c.sigla.charAt(0))+'</span>';
+}
+function zona(p){return p<=M.nq?'q':p>NR-M.nr?'r':''}
+function jogosDe(id){return D.mm.filter(function(j){return j.m===id||j.v===id}).sort(function(a,b){return a.n-b.n})}
+function placar(j){return j.gm+' × '+j.gv+(j.pm!==null?' (pênaltis '+j.pm+' a '+j.pv+')':'')}
+function caminho(id){
+var l=jogosDe(id).filter(function(j){return j.f<4}).map(function(j){
+var adv=j.m===id?j.v:j.m,venceu=j.w===id;
+return[FASE[j.f],(venceu?'passou':'caiu')+' contra '+nome(adv)+' ('+placar(j)+')'];
+});
+var fin=jogosDe(id).filter(function(j){return j.f===4});
+if(fin.length){var camp=M.camp===id;l.push(['Final',(camp?'campeão':'vice')+', '+(camp?M.fpts[0]+' a '+M.fpts[1]:M.fpts[1]+' a '+M.fpts[0])+' em pontos contra '+nome(camp?M.vice:M.camp)])}
+return l;
+}
+function fraseDesempate(g){
+return g.pares.map(function(p){
+var f=function(c,v){return c==='sg'?sinal(v):num(v)};
+var ant=p.iguais.length?', depois de empatar em '+nomeLista(p.iguais.map(function(c){return CRIT[c]}))+' ('+f(p.iguais[0],TAB[p.a][p.iguais[0]])+' a '+f(p.iguais[0],TAB[p.b][p.iguais[0]])+')':'';
+return nome(p.a)+' ficou à frente de '+nome(p.b)+' no critério '+CRIT[p.c]+' ('+f(p.c,p.va)+' a '+f(p.c,p.vb)+')'+ant;
+}).join('. ')+'.';
+}
+function grupoEmpate(id){return D.emp.filter(function(g){return g.ids.indexOf(id)>=0})[0]}
+function dicaClube(id){
+var t=TAB[id],z=zona(t.p),g=grupoEmpate(id),cam=caminho(id),lin=[['Pontos',num(t.pt)+' em '+plural(t.j,'jogo','jogos')],['Vitórias, empates, derrotas',t.v+' · '+t.e+' · '+t.d],['Gols pró e contra',t.gp+' e '+t.gc+' (saldo '+sinal(t.sg)+')'],['Aproveitamento',pc(t.pt,3*t.j)],['Cartões','amarelos '+t.ca+' · vermelhos '+t.cv]];
+var sit=z==='q'?'Classificado às quartas de final.':z==='r'?'Rebaixado à A2 de 2027.':'Ficou fora do mata-mata e não caiu.';
+var arr=[nome(id)+' · '+t.p+'º lugar na 1ª fase',linhasTip(lin),sit];
+if(g)arr.push('Desempate: '+fraseDesempate({pares:g.pares.filter(function(p){return p.a===id||p.b===id})}));
+if(cam.length)arr.push(linhasTip(cam));
+arr.push('~Clique para destacar este clube na tabela, no chaveamento e no gráfico.');
+return arr;
+}
+function itensKpi(){
+var maxGp=Math.max.apply(null,D.tab.map(function(t){return t.gp})),minGc=Math.min.apply(null,D.tab.map(function(t){return t.gc}));
+var ata=D.tab.filter(function(t){return t.gp===maxGp}),def=D.tab.filter(function(t){return t.gc===minGc});
+var reb=D.tab.filter(function(t){return zona(t.p)==='r'}).sort(function(a,b){return a.p-b.p});
+var gruposPts=D.emp.length,clubesEmp=D.emp.reduce(function(s,g){return s+g.ids.length},0);
+return[
+{r:'Campeão',c:COR.amarelo,v:nome(M.camp),tx:1,s:'final: '+M.fpts[0]+' a '+M.fpts[1]+' em pontos',t:['Campeão','Quem somou mais pontos nos dois jogos da final. Em caso de empate em pontos, o returno vai aos pênaltis (regulamento).',linhasTip([['Final',nome(M.camp)+' '+M.fpts[0]+' × '+M.fpts[1]+' '+nome(M.vice)]])]},
+{r:'Vice-campeão',c:COR.cinza,v:nome(M.vice),tx:1,s:TAB[M.vice].p+'º na 1ª fase',t:['Vice-campeão','O outro finalista, que perdeu os dois jogos da final.']},
+{r:'Melhor ataque',c:COR.verdeClaro,v:nomeLista(ata.map(function(t){return nome(t.c)})),tx:1,s:maxGp+' gols na 1ª fase',t:['Melhor ataque da 1ª fase','O clube com mais gols marcados nos 8 jogos da 1ª fase.']},
+{r:'Melhor defesa',c:COR.ciano,v:nomeLista(def.map(function(t){return nome(t.c)})),tx:1,s:minGc+' gols sofridos na 1ª fase',t:['Melhor defesa da 1ª fase','O clube com menos gols sofridos nos 8 jogos da 1ª fase.']},
+{r:'Empates em pontos',c:COR.roxo,v:String(gruposPts),s:plural(clubesEmp,'clube','clubes')+' desempatados',t:['Empates em pontos','Grupos de clubes que terminaram a 1ª fase com os mesmos pontos e foram separados pelos critérios do Art. 16 do regulamento: vitórias, saldo de gols, gols marcados, menos vermelhos e menos amarelos, nessa ordem.',linhasTip(D.emp.map(function(g){return[plural(g.ids.length,'clube','clubes')+' com '+plural(g.p,'ponto','pontos'),g.ids.map(nome).join(', ')]}))]},
+{r:'Vão às quartas',c:COR.verde,v:String(M.nq),s:'do 1º ao '+M.nq+'º lugar',t:['Classificados às quartas','Os 8 primeiros da 1ª fase. As quartas são 1º x 8º, 2º x 7º, 3º x 6º e 4º x 5º, em jogo único.']},
+{r:'Rebaixados',c:COR.vermelho,v:String(M.nr),s:nomeLista(reb.map(function(t){return nome(t.c)})),t:['Rebaixados à A2 de 2027','Os dois últimos da 1ª fase, segundo o regulamento.',linhasTip(reb.map(function(t){return[t.p+'º',nome(t.c)+' · '+plural(t.pt,'ponto','pontos')]}))]}
+];
+}
+function kpisHtml(){
+return itensKpi().map(function(k,i){
+var ehNum=!k.tx;
+return'<div class="kpi" style="left:'+(46+i*263)+'px;--kc:'+k.c+'"'+tp.apply(null,k.t)+'><h4>'+esc(k.r)+'</h4><div class="v'+(k.tx?' tx':'')+'">'+(ehNum?'<span data-i="'+i+'">'+num(k.v)+'</span>':esc(k.v))+'</div><small>'+esc(k.s)+'</small></div>';
+}).join('');
+}
+function contar(el,alvo,dur){
+if(reduzido||dur<=0){el.textContent=num(alvo);return}
+var t0=performance.now();
+(function f(t){var k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,3);el.textContent=num(Math.round(alvo*e));if(k<1)requestAnimationFrame(f)})(t0);
+}
+function kpis(){
+EL.kpis.innerHTML=kpisHtml();
+if(!reduzido)itensKpi().forEach(function(k,i){if(k.tx)return;var el=EL.kpis.querySelector('span[data-i="'+i+'"]');contar(el,Number(k.v),700)});
+}
+function classe(id){return est.sel===null?'':est.sel===id?' sel':' sem'}
+function tabela(){
+var h='<h3><span'+tp('Tabela da 1ª fase','A classificação oficial da FPF depois dos 8 jogos de cada clube, em pontos corridos. Verde: classificados às quartas de final. Vermelho: rebaixados à A2 de 2027. Clique em um clube para destacá-lo aqui, no chaveamento e no gráfico de posições.')+'>Tabela da 1ª fase</span><small>'+plural(NR,'clube','clubes')+' · 8 jogos cada</small></h3>';
+h+='<div class="th"><span'+tp('Posição','Lugar na tabela depois do desempate pelo Art. 16.')+'>#</span><span>Clube</span><span'+tp('Pontos','3 por vitória, 1 por empate.')+'>P</span><span'+tp('Jogos')+'>J</span><span'+tp('Vitórias')+'>V</span><span'+tp('Empates')+'>E</span><span'+tp('Derrotas')+'>D</span><span'+tp('Gols pró','Gols marcados.')+'>GP</span><span'+tp('Gols contra','Gols sofridos.')+'>GC</span><span'+tp('Saldo de gols','Gols pró menos gols contra.')+'>SG</span><span'+tp('Aproveitamento','Pontos divididos pelo máximo possível (3 por jogo).')+'>Aprov.</span><span'+tp('Cartões amarelos','Contados pela regra da FPF: todas as advertências, menos os segundos amarelos.')+'>CA</span><span'+tp('Cartões vermelhos','Vermelhos diretos mais os segundos amarelos.')+'>CV</span></div>';
+D.tab.forEach(function(t,i){
+h+='<button class="tr z'+zona(t.p)+classe(t.c)+'" style="--i:'+i+'" data-act="clube" data-id="'+t.c+'"'+tp.apply(null,dicaClube(t.c))+'><span class="ps">'+t.p+'</span><span class="cb">'+logo(t.c)+'<u>'+esc(nome(t.c))+'</u></span><b>'+t.pt+'</b><i>'+t.j+'</i><i>'+t.v+'</i><i>'+t.e+'</i><i>'+t.d+'</i><i>'+t.gp+'</i><i>'+t.gc+'</i><i class="'+(t.sg>0?'pos':t.sg<0?'neg':'mut')+'">'+sinal(t.sg)+'</i><i class="mut">'+pc(t.pt,3*t.j)+'</i><i class="mut">'+t.ca+'</i><i class="mut">'+t.cv+'</i></button>';
+});
+return h+'<div class="zg"><span class="q">Classificados às quartas (1º ao '+M.nq+'º)</span><span class="r">Rebaixados à A2 de 2027 ('+(NR-M.nr+1)+'º e '+NR+'º)</span></div>';
+}
+function ordemQuartas(){
+var q=D.mm.filter(function(j){return j.f===2}),s=D.mm.filter(function(j){return j.f===3}).sort(function(a,b){return a.n-b.n}),o=[];
+s.forEach(function(sj){q.filter(function(j){return j.w===sj.m||j.w===sj.v}).sort(function(a,b){return a.n-b.n}).forEach(function(j){o.push(j)})});
+return o;
+}
+function linhaTime(id,gols,pen,venceu){
+return'<button class="tl'+(venceu?' w':'')+(est.sel===id?' sel':'')+'" data-act="clube" data-id="'+id+'">'+logo(id,20)+'<u>'+esc(nome(id))+'</u><b>'+gols+(pen!==null?' <small>('+pen+')</small>':'')+'</b></button>';
+}
+function dicaJogo(j){
+var venc=j.w===j.m?j.m:j.v,lin=[['Jogo',String(j.n)+' · '+dataLonga(j.d)+' · '+j.h],['Estádio',j.e],['Placar',nome(j.m)+' '+j.gm+' × '+j.gv+' '+nome(j.v)]];
+if(j.pm!==null)lin.push(['Pênaltis',j.pm+' a '+j.pv]);
+return[FASE[j.f]+' · '+nome(j.m)+' x '+nome(j.v),linhasTip(lin),'Passou: '+nome(venc)+(j.pm!==null?' (nos pênaltis)':'')+'.','~Clique em um clube para destacá-lo.'];
+}
+function boxJogo(j,x,y,i){
+var envolve=est.sel===null?'':(j.m===est.sel||j.v===est.sel)?' sel':' sem';
+return'<div class="gm'+envolve+'" style="left:'+x+'px;top:'+y+'px;--i:'+i+'"'+tp.apply(null,dicaJogo(j))+'><em>'+esc(FASE[j.f])+' · '+dataBR(j.d)+'</em>'+linhaTime(j.m,j.gm,j.pm,j.w===j.m)+linhaTime(j.v,j.gv,j.pv,j.w===j.v)+'</div>';
+}
+function chaveamento(){
+var q=ordemQuartas(),s=D.mm.filter(function(j){return j.f===3}).sort(function(a,b){return a.n-b.n}),f=D.mm.filter(function(j){return j.f===4}).sort(function(a,b){return a.n-b.n});
+var H=76,G=10,cy=[],svg='',h='<h3><span'+tp('Mata-mata','Quartas e semifinal em jogo único (empate vai aos pênaltis); final em dois jogos, vence quem somar mais pontos na final.')+'>Mata-mata</span><small>campeão: '+esc(nome(M.camp))+'</small></h3><div class="br">';
+q.forEach(function(j,k){var y=k*(H+G);cy.push(y+H/2);h+=boxJogo(j,0,y,k)});
+var sc=[(cy[0]+cy[1])/2,(cy[2]+cy[3])/2];
+s.forEach(function(j,k){h+=boxJogo(j,280,sc[k]-H/2,4+k)});
+var fc=(sc[0]+sc[1])/2,fy=fc-88;
+var envolveF=est.sel===null?'':(est.sel===M.camp||est.sel===M.vice)?' sel':' sem';
+var legs=f.map(function(j,k){return'<div class="lg"><span>'+(k?'Volta':'Ida')+' '+dataBR(j.d)+'</span><b>'+esc(CL[j.m].sigla)+' '+j.gm+' × '+j.gv+' '+esc(CL[j.v].sigla)+'</b></div>'}).join('');
+var lin=f.map(function(j,k){return[(k?'Volta ':'Ida ')+dataLonga(j.d),nome(j.m)+' '+j.gm+' × '+j.gv+' '+nome(j.v)]});
+lin.push(['Pontos na final',nome(M.camp)+' '+M.fpts[0]+' × '+M.fpts[1]+' '+nome(M.vice)]);
+h+='<div class="fn'+envolveF+'" style="left:560px;top:'+fy+'px"'+tp('Final · dois jogos',linhasTip(lin),'Campeão: '+nome(M.camp)+', que somou '+M.fpts[0]+' pontos contra '+M.fpts[1]+'.','~Vence quem somar mais pontos só na final; empate em pontos vai aos pênaltis no returno.')+'><em>Final · dois jogos</em>'+legs+'<div class="pt">Pontos: <b>'+esc(CL[M.camp].sigla)+' '+M.fpts[0]+'</b> × <b>'+M.fpts[1]+' '+esc(CL[M.vice].sigla)+'</b></div><button class="cp" data-act="clube" data-id="'+M.camp+'">'+logo(M.camp,26)+'<u>★ Campeão: '+esc(nome(M.camp))+'</u></button></div>';
+var traco='stroke="rgba(255,255,255,.28)" stroke-width="2" fill="none"';
+[[0,1],[2,3]].forEach(function(p,k){svg+='<path d="M250 '+cy[p[0]]+'H265V'+cy[p[1]]+'M250 '+cy[p[1]]+'H265M265 '+sc[k]+'H280" '+traco+'/>'});
+svg+='<path d="M530 '+sc[0]+'H545V'+sc[1]+'M530 '+sc[1]+'H545M545 '+fc+'H560" '+traco+'/>';
+return h+'<svg viewBox="0 0 810 334">'+svg+'</svg></div>';
+}
+function posicoes(id){return D.rod[String(id)]}
+function empateNaRodada(id,r){return(D.rt[r]||[]).filter(function(g){return g.indexOf(id)>=0})[0]}
+function haEmpateTotal(){return D.rt.some(function(g){return g.length>0})}
+function dicaLinha(id){
+var p=posicoes(id),pts=D.rpt[String(id)],teve=false;
+var lin=p.map(function(x,r){
+var g=empateNaRodada(id,r),outros=g?g.filter(function(c){return c!==id}).map(nome):[];
+if(g)teve=true;
+return['Depois da rodada '+(r+1),x+'º lugar · '+plural(pts[r],'ponto','pontos')+(g?' · empate total com '+nomeLista(outros):'')];
+});
+var arr=[nome(id),linhasTip(lin)];
+if(teve)arr.push('~Empate total: clubes iguais em todos os critérios do Art. 16, que o regulamento decidiria por sorteio. Aqui eles ficam lado a lado em ordem alfabética.');
+arr.push('~Clique para destacar este clube.');
+return arr;
+}
+function grafico(){
+var R=M.rod,x0=84,dx=(700-x0)/(R-1),y0=10,dy=15.8,X=function(r){return x0+r*dx},Y=function(p){return y0+(p-1)*dy};
+var s='<svg viewBox="0 0 810 268" width="810" height="268">';
+s+='<rect class="bq" x="'+(x0-14)+'" y="'+(Y(1)-dy/2)+'" width="'+(700-x0+28)+'" height="'+(M.nq*dy)+'"/><rect class="br2" x="'+(x0-14)+'" y="'+(Y(NR-M.nr+1)-dy/2)+'" width="'+(700-x0+28)+'" height="'+(M.nr*dy)+'"/>';
+for(var p=1;p<=NR;p++)s+='<text class="'+(zona(p)||'')+'" x="'+(x0-26)+'" y="'+(Y(p)+5)+'" text-anchor="end">'+p+'º</text>';
+for(var r=0;r<R;r++)s+='<text x="'+X(r)+'" y="263" text-anchor="middle">R'+(r+1)+'</text>';
+var ordem=D.tab.map(function(t){return t.c}).sort(function(a,b){return(est.sel===a?1:0)-(est.sel===b?1:0)});
+ordem.forEach(function(id){
+var pos=posicoes(id),pts=pos.map(function(q,r){return X(r).toFixed(1)+','+Y(q).toFixed(1)}).join(' '),c=classe(id);
+s+='<polyline class="ln'+c+'" points="'+pts+'"/>';
+pos.forEach(function(q,r){s+='<circle class="pt'+c+'" cx="'+X(r).toFixed(1)+'" cy="'+Y(q).toFixed(1)+'" r="'+(est.sel===id?5:3.5)+'"/>'});
+s+='<polyline class="hit" points="'+pts+'" data-act="clube" data-id="'+id+'"'+tp.apply(null,dicaLinha(id))+'/>';
+var yf=Y(pos[R-1]);
+s+='<g class="fim'+(est.sel===null||est.sel===id?'':' sem')+'" data-act="clube" data-id="'+id+'"'+tp.apply(null,dicaLinha(id))+'>'+(LG[id]?'<image href="'+LG[id]+'" x="'+(X(R-1)+14)+'" y="'+(yf-7.5)+'" width="15" height="15"/>':'<circle cx="'+(X(R-1)+21)+'" cy="'+yf+'" r="7" fill="'+CL[id].cor+'"/>')+'<text x="'+(X(R-1)+36)+'" y="'+(yf+5)+'" style="fill:'+(est.sel===id?COR.ciano:'#aeb8c8')+'">'+esc(CL[id].sigla)+'</text></g>';
+});
+return s+'</svg>';
+}
+function posicaoRodada(){
+var h='<h3><span'+tp('Posição rodada a rodada','Em que lugar cada clube estava depois de cada uma das 8 rodadas da 1ª fase, pelos mesmos critérios do Art. 16. A faixa verde é a zona de classificação às quartas e a vermelha, a de rebaixamento.')+'>Posição rodada a rodada</span>'+(haEmpateTotal()?'<small'+tp('Empate total','Depois de uma rodada do meio, dois ou mais clubes podem estar iguais em todos os critérios do Art. 16 (pontos, vitórias, saldo de gols, gols marcados, vermelhos e amarelos). O regulamento decidiria por sorteio; o gráfico põe esses clubes lado a lado em ordem alfabética. A dica do clube avisa em que rodada isso aconteceu.')+'>1ª fase · empate total em ordem alfabética</small>':'<small>1ª fase</small>')+'</h3>';
+return h+'<div class="bp">'+grafico()+'</div>';
+}
+function controles(){
+EL.ctl.innerHTML='<button class="chp lim'+(est.sel!==null?'':' off')+'" data-act="limpar"'+tp('Limpar','Solta o clube destacado.')+'><span>Limpar</span></button><button class="aju" data-act="ajuda"'+tp('Como ler esta tela','Passo a passo e significado das palavras. Atalho: ? ou h.')+'>?</button>';
+}
+function cabecalho(){
+var txt=est.sel!==null?nome(est.sel)+' destacado na tabela, no chaveamento e no gráfico · Esc solta':'1ª fase em pontos corridos · os '+M.nq+' primeiros vão às quartas · os '+M.nr+' últimos caem para a A2 de 2027';
+EL.sub.textContent=txt;
+EL.sub.setAttribute('data-tip',['Como é o campeonato','A 1ª fase tem os 16 clubes em grupo único, com 8 jogos para cada um. Os 8 primeiros vão às quartas de final (1º x 8º, 2º x 7º, 3º x 6º e 4º x 5º), em jogo único, assim como a semifinal; a final tem dois jogos. Os dois últimos da 1ª fase são rebaixados à A2 de 2027.'].map(esc).join('||'));
+}
+function montarRodape(){
+EL.rod.innerHTML='<span'+tp('Como os dados foram conferidos','A tabela é a classificação oficial da FPF. Ela foi comparada com o cálculo pelo Art. 16 do regulamento a partir dos placares e dos cartões das súmulas, clube a clube, e o campeão e os vencedores de cada confronto conferem com a tabela oficial de cada fase.',linhasTip([['Posições iguais à FPF',M.conf[0]+' de '+M.conf[1]],['Classificação da FPF atualizada em',dataLonga(M.fpf)]]))+'>Dados: classificação oficial da FPF · <b>conferida pelo Art. 16 em '+M.conf[0]+' de '+M.conf[1]+' clubes</b></span><span>Projeto independente, sem vínculo com a FPF · escudos são marcas dos clubes</span>';
+}
+function montarAjuda(){
+ajEl.innerHTML='<div class="cx"><h2>Como ler esta tela</h2><div><h3>Passo a passo</h3><ol><li>A <b>tabela</b> é a classificação oficial da 1ª fase. A faixa verde marca os 8 classificados às quartas e a vermelha, os 2 rebaixados à A2 de 2027.</li><li>Passe o mouse em um clube para ver como ele chegou à posição, o desempate (quando houve) e o caminho dele no mata-mata.</li><li>Clique em um clube, na tabela, no chaveamento ou no gráfico: ele fica em destaque nos três e os outros esmaecem. Clique de novo, use Limpar ou a tecla Esc para soltar.</li><li>O <b>chaveamento</b> mostra quartas, semifinal e a final em dois jogos, com o campeão. O <b>gráfico</b> mostra o lugar de cada clube depois de cada rodada.</li></ol></div><div><h3>Palavras que aparecem</h3><dl><dt>P, J, V, E, D</dt><dd>Pontos, jogos, vitórias, empates e derrotas. Vitória vale 3 pontos e empate, 1.</dd><dt>GP, GC e SG</dt><dd>Gols pró (marcados), gols contra (sofridos) e saldo de gols (a diferença).</dd><dt>Aproveitamento</dt><dd>Pontos conquistados divididos pelos pontos possíveis (3 por jogo).</dd><dt>CA e CV</dt><dd>Cartões amarelos e vermelhos, contados pela regra da FPF.</dd><dt>Desempate (Art. 16)</dt><dd>Com os mesmos pontos, vale: mais vitórias, maior saldo de gols, mais gols marcados, menos vermelhos, menos amarelos e, por último, sorteio.</dd><dt>Empate total</dt><dd>Clubes iguais em todos esses critérios. Na tabela final isso não acontece; no gráfico, em rodadas do meio, eles ficam em ordem alfabética.</dd></dl></div><div class="fe"><button data-act="ajuda-fechar"'+tp('Fechar','Fecha este passo a passo. Também fecham as teclas Esc, Enter e espaço, ou um clique fora da janela.')+'>Entendi</button></div></div>';
+}
+function ajuda(abrir){
+if(abrir===undefined)abrir=!ajEl.classList.contains('on');
+if(abrir)esconderTip();
+ajEl.classList.toggle('on',abrir);
+}
+var PAIN=['p1','p2','p3'];
+function atualizar(opc){
+opc=opc||{};
+esconderTip();
+PAIN.forEach(function(p){EL[p].classList.remove('on')});
+controles();cabecalho();kpis();
+EL.p1.innerHTML=tabela();
+EL.p2.innerHTML=chaveamento();
+EL.p3.innerHTML=posicaoRodada();
+if(opc.semAnimar){PAIN.forEach(function(p){EL[p].classList.add('on')})}
+else setTimeout(function(){PAIN.forEach(function(p){EL[p].classList.add('on')})},40);
+}
+function ajustar(){
+var w=raiz.clientWidth,h=raiz.clientHeight;if(!w||!h)return;
+var k=Math.min(w/1920,h/1024);
+est.k=k;est.ox=Math.round((w-1920*k)/2);est.oy=Math.round((h-1024*k)/2);
+palco.style.transform='translate('+est.ox+'px,'+est.oy+'px) scale('+k+')';
+}
+window.addEventListener('resize',ajustar);
+if(window.ResizeObserver)new ResizeObserver(ajustar).observe(raiz);
+ajustar();setTimeout(ajustar,60);setTimeout(ajustar,400);
+function pontoPalco(ev){var r=raiz.getBoundingClientRect();return[(ev.clientX-r.left-est.ox)/est.k,(ev.clientY-r.top-est.oy)/est.k]}
+var tipT=null,tipAlvo=null;
+function mostrarTip(alvo,ev){
+var s=alvo.getAttribute('data-tip');if(!s)return;
+tipEl.innerHTML=tipHtml(s);
+tipEl.classList.add('on');
+posTip(ev,alvo);
+}
+function posTip(ev,alvo){
+var pt;
+if(ev&&typeof ev.clientX==='number')pt=pontoPalco(ev);
+else{var r=alvo.getBoundingClientRect(),q=raiz.getBoundingClientRect();pt=[(r.left+r.width/2-q.left-est.ox)/est.k,(r.top+r.height-q.top-est.oy)/est.k-8]}
+var w=tipEl.offsetWidth,h=tipEl.offsetHeight,x=pt[0]+22,y=pt[1]+26;
+if(x+w>1908)x=pt[0]-w-22;
+if(x<12)x=12;
+if(y+h>1012)y=pt[1]-h-18;
+if(y<12)y=12;
+tipEl.style.left=Math.round(x)+'px';tipEl.style.top=Math.round(y)+'px';
+}
+function esconderTip(){clearTimeout(tipT);tipAlvo=null;tipEl.classList.remove('on')}
+function acao(a,id,v){
+if(a==='clube'){var n=Number(id);if(!TAB[n])return;est.sel=est.sel===n?null:n;atualizar({semAnimar:true})}
+else if(a==='limpar'){est.sel=null;atualizar({semAnimar:true})}
+else if(a==='ajuda')ajuda(true);
+else if(a==='ajuda-fechar')ajuda(false);
+}
+raiz.addEventListener('click',function(ev){
+var alvo=ev.target,t=alvo.closest&&alvo.closest('[data-act]'),dentro=alvo.closest&&alvo.closest('.cx');
+if(ajEl.classList.contains('on')&&!dentro){ajuda(false);return}
+if(!t)return;
+acao(t.getAttribute('data-act'),t.getAttribute('data-id'),t.getAttribute('data-v'));
+esconderTip();
+raiz.focus({preventScroll:true});
+});
+raiz.addEventListener('mouseover',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d!==tipAlvo){tipAlvo=d;clearTimeout(tipT);if(d){tipT=setTimeout(function(){mostrarTip(d,ev)},90)}else tipEl.classList.remove('on')}
+});
+raiz.addEventListener('mousemove',function(ev){if(tipAlvo&&tipEl.classList.contains('on'))posTip(ev,tipAlvo)});
+raiz.addEventListener('mouseleave',esconderTip);
+raiz.addEventListener('focusin',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d&&d!==tipAlvo&&ev.target!==raiz){tipAlvo=d;mostrarTip(d,null)}
+});
+raiz.addEventListener('focusout',esconderTip);
+raiz.addEventListener('touchstart',function(ev){
+var d=ev.target.closest&&ev.target.closest('[data-tip]');
+if(d&&d!==tipAlvo){tipAlvo=d;var tc=ev.touches&&ev.touches[0];mostrarTip(d,tc?{clientX:tc.clientX,clientY:tc.clientY}:null)}
+else if(!d)esconderTip();
+},{passive:true});
+function tecla(k,ctrl){
+if(k==='?'||(k==='h'&&!ctrl)){ajuda();return true}
+if(ajEl.classList.contains('on')){if(k==='Escape'||k==='Enter'||k===' '){ajuda(false);return true}return false}
+if((k==='Escape'||k==='Backspace')&&est.sel!==null){est.sel=null;atualizar({semAnimar:true});return true}
+return false;
+}
+document.addEventListener('keydown',function(ev){
+if(!raiz.offsetParent)return;
+if(tecla(ev.key,ev.ctrlKey||ev.metaKey))ev.preventDefault();
+});
+var goT=null;
+function entrar(){
+clearTimeout(goT);
+raiz.classList.remove('go');
+void raiz.offsetWidth;
+raiz.classList.add('go');
+goT=setTimeout(function(){raiz.classList.remove('go')},1500);
+ajustar();
+atualizar();
+}
+montarAjuda();montarRodape();
+atualizar({semAnimar:true});
+if(window.PA&&window.PA.shell)window.PA.mods.clas={entrar:entrar};
+else entrar();
+if(/[?&]debug/.test(location.search))window.__clx={D:D,CL:CL,TAB:TAB,est:est,acao:acao,tecla:tecla,atualizar:atualizar,tipHtml:tipHtml,itensKpi:itensKpi,kpisHtml:kpisHtml,tabela:tabela,chaveamento:chaveamento,grafico:grafico,ordemQuartas:ordemQuartas,caminho:caminho,fraseDesempate:fraseDesempate,dicaClube:dicaClube,zona:zona,controles:controles};
+})();
+</script>

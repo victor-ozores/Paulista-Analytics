@@ -1,0 +1,43 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
+
+annotation PBI_QueryOrder = ["aux_config","dim_arbitro","dim_atleta","dim_calendario","dim_clube","dim_clube_alias","dim_competicao","dim_estadio","dim_fase","fato_classificacao_oficial","fato_comissao","fato_despesa","fato_escalacao","fato_estatistica_time","fato_evento","fato_inconsistencia","fato_ingresso","fato_partida","fato_rateio","fato_substituicao","ref_classificacao_primeira_fase","ref_indicadores","resultado_regra","CaminhoDados"]
+
+ref table aux_config
+ref table dim_arbitro
+ref table dim_calendario
+ref table dim_clube
+ref table dim_clube_alias
+ref table dim_competicao
+ref table dim_estadio
+ref table dim_fase
+ref table fato_classificacao_oficial
+ref table fato_estatistica_time
+ref table fato_evento
+ref table fato_inconsistencia
+ref table fato_partida
+ref table ref_classificacao_primeira_fase
+ref table ref_indicadores
+ref table resultado_regra
+ref table _Medidas
+ref table dim_atleta
+ref table fato_comissao
+ref table fato_despesa
+ref table fato_escalacao
+ref table fato_ingresso
+ref table fato_rateio
+ref table fato_substituicao
+ref table aux_dashboard
+
+ref cultureInfo pt-BR
+

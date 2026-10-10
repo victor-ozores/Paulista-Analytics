@@ -1,0 +1,59 @@
+/// Estádios, com município e número de jogos. Capacidade vazia: sem fonte verificada (regra A32 aberta). Fonte: FPF.
+table dim_estadio
+	lineageTag: ebbe926c-7e09-500b-9902-47b97016b69e
+
+	column id_estadio
+		dataType: string
+		lineageTag: 0500f63c-8103-5f05-b743-74a6bc65c689
+		summarizeBy: none
+		sourceColumn: id_estadio
+
+	column nome_fpf
+		dataType: string
+		lineageTag: a519e4ed-6678-5f14-be1d-ec44d229bbd7
+		summarizeBy: none
+		sourceColumn: nome_fpf
+
+	column nome_espn
+		dataType: string
+		lineageTag: dce46711-0d50-54e3-a66b-ebabc144a7d8
+		summarizeBy: none
+		sourceColumn: nome_espn
+
+	column municipio
+		dataType: string
+		lineageTag: d4a0bce6-4578-5a6a-a573-d6269f34c926
+		summarizeBy: none
+		sourceColumn: municipio
+
+	column capacidade
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f4aced2-cb36-5f08-932f-d5d05351a3bd
+		summarizeBy: none
+		sourceColumn: capacidade
+
+	column fonte_capacidade
+		dataType: string
+		lineageTag: f32bd629-42a6-58e6-8222-b5cdd86bf12e
+		summarizeBy: none
+		sourceColumn: fonte_capacidade
+
+	column jogos
+		dataType: int64
+		formatString: 0
+		lineageTag: 8229b746-1643-5317-8c5d-f9f9cd09a08f
+		summarizeBy: none
+		sourceColumn: jogos
+
+	partition dim_estadio = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\dim_estadio.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_estadio", type text}, {"nome_fpf", type text}, {"nome_espn", type text}, {"municipio", type text}, {"capacidade", Int64.Type}, {"fonte_capacidade", type text}, {"jogos", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

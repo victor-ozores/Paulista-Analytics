@@ -1,0 +1,82 @@
+/// Linhas da tabela de ingressos do boletim financeiro: setor e tipo de ingresso, quantidade, preço e arrecadação, com a categoria do projeto (classificação não oficial) e a marca de setor de visitante. Fonte: boletins da FPF.
+table fato_ingresso
+	lineageTag: bce38e9a-947c-5087-92bc-a8dd7696633d
+
+	column id_ingresso
+		dataType: string
+		lineageTag: 7dd4df7d-7bc8-5af6-8bd0-6467bceb7778
+		summarizeBy: none
+		sourceColumn: id_ingresso
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: 69966540-de85-56c6-9f96-12a273c704aa
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: 844263fb-10ec-533e-a5c3-cb2b8bbe02f1
+		summarizeBy: none
+		sourceColumn: ordem
+
+	column localidade
+		dataType: string
+		lineageTag: a523d61f-e484-545a-919a-db2be32fe8ce
+		summarizeBy: none
+		sourceColumn: localidade
+
+	column categoria
+		dataType: string
+		lineageTag: 7376ae62-a19a-521c-877d-6a8e97e27c02
+		summarizeBy: none
+		sourceColumn: categoria
+
+	column ordem_categoria
+		dataType: int64
+		formatString: 0
+		lineageTag: 806719a6-82ec-5b94-99c8-36e0f338cce6
+		summarizeBy: none
+		sourceColumn: ordem_categoria
+
+	column setor_visitante
+		dataType: int64
+		formatString: 0
+		lineageTag: 39e3546a-36da-5ff1-b105-fd0da64b7696
+		summarizeBy: none
+		sourceColumn: setor_visitante
+
+	column ingressos
+		dataType: int64
+		formatString: 0
+		lineageTag: e02cd450-0b98-5b30-9424-ab7da0a617d8
+		summarizeBy: none
+		sourceColumn: ingressos
+
+	column preco
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: 772b9460-b339-5a67-b3dd-7c5c14e2d6fa
+		summarizeBy: none
+		sourceColumn: preco
+
+	column arrecadacao
+		dataType: decimal
+		formatString: #,0.00
+		lineageTag: c91ec176-3e6b-5764-8c32-ca7551992f25
+		summarizeBy: none
+		sourceColumn: arrecadacao
+
+	partition fato_ingresso = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_ingresso.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_ingresso", type text}, {"id_partida", Int64.Type}, {"ordem", Int64.Type}, {"localidade", type text}, {"categoria", type text}, {"ordem_categoria", Int64.Type}, {"setor_visitante", Int64.Type}, {"ingressos", Int64.Type}, {"preco", Currency.Type}, {"arrecadacao", Currency.Type}}, "en-US")
+				in
+				    Tipos
+

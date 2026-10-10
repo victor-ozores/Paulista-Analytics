@@ -1,0 +1,59 @@
+/// Valores de referência calculados em Python (indicadores I01 a I59 por escopo). Servem de gabarito para conferir as medidas; não é tabela de análise.
+table ref_indicadores
+	lineageTag: 01a0c80c-a172-5f7b-9e83-fb30b716ffaf
+
+	column id_indicador
+		dataType: string
+		lineageTag: 85621974-ee65-54b1-aa60-4204ef2621c2
+		summarizeBy: none
+		sourceColumn: id_indicador
+
+	column indicador
+		dataType: string
+		lineageTag: ce4cc069-bfff-58aa-a285-45ad6d7cade4
+		summarizeBy: none
+		sourceColumn: indicador
+
+	column escopo
+		dataType: string
+		lineageTag: 8ec410e9-cda4-5e85-87de-8ad196825413
+		summarizeBy: none
+		sourceColumn: escopo
+
+	column chave
+		dataType: string
+		lineageTag: 08f74f33-6f8f-5684-a870-789b960832d7
+		summarizeBy: none
+		sourceColumn: chave
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: 5bd7ce11-33c8-55e9-a96e-13f7305d4b94
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column valor
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 9ca0ace3-14f0-52db-adee-0efd16aa9c19
+		summarizeBy: none
+		sourceColumn: valor
+
+	column unidade
+		dataType: string
+		lineageTag: ea53e80e-c91b-564d-8e01-34e25bc4820f
+		summarizeBy: none
+		sourceColumn: unidade
+
+	partition ref_indicadores = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\ref_indicadores.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_indicador", type text}, {"indicador", type text}, {"escopo", type text}, {"chave", type text}, {"id_clube", Int64.Type}, {"valor", type number}, {"unidade", type text}}, "en-US")
+				in
+				    Tipos
+

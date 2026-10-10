@@ -1,0 +1,107 @@
+/// Substituições de cada jogo (regulares e por concussão): quem saiu, quem entrou, período e minuto. Fonte: súmulas da FPF.
+table fato_substituicao
+	lineageTag: 5e579d03-c07c-52fb-95e7-e5ebc13594f9
+
+	column id_substituicao
+		dataType: string
+		lineageTag: 2224ee10-0fda-57d9-9e3b-4ff1b829fc15
+		summarizeBy: none
+		sourceColumn: id_substituicao
+
+	column id_partida
+		dataType: int64
+		formatString: 0
+		lineageTag: c4b91a96-42aa-5169-86b2-a9ceffa16f4f
+		summarizeBy: none
+		sourceColumn: id_partida
+
+	column id_clube
+		dataType: int64
+		formatString: 0
+		lineageTag: 6291019f-9950-541a-950a-93fbdf070949
+		summarizeBy: none
+		sourceColumn: id_clube
+
+	column ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: e82fd8d5-fbaf-5a22-a512-952fdbca670c
+		summarizeBy: none
+		sourceColumn: ordem
+
+	column tipo
+		dataType: string
+		lineageTag: 29aa9b6a-75f3-5242-88a6-ec03c7bd50f5
+		summarizeBy: none
+		sourceColumn: tipo
+
+	column id_atleta_saiu
+		dataType: string
+		lineageTag: c5f883d1-7c36-580f-b9d4-d8e9fc1e6a79
+		summarizeBy: none
+		sourceColumn: id_atleta_saiu
+
+	column id_atleta_entrou
+		dataType: string
+		lineageTag: f198bd74-2292-5076-93c8-cba191b5982a
+		summarizeBy: none
+		sourceColumn: id_atleta_entrou
+
+	column numero_saiu
+		dataType: int64
+		formatString: 0
+		lineageTag: b513d346-a88c-5079-baec-f062307237fc
+		summarizeBy: none
+		sourceColumn: numero_saiu
+
+	column numero_entrou
+		dataType: int64
+		formatString: 0
+		lineageTag: 686ea3e6-fe7a-5d0b-b833-569d67143b07
+		summarizeBy: none
+		sourceColumn: numero_entrou
+
+	column periodo
+		dataType: string
+		lineageTag: f4d207f7-0b64-54bd-99ec-2cb6010dbd05
+		summarizeBy: none
+		sourceColumn: periodo
+
+	column minuto
+		dataType: int64
+		formatString: 0
+		lineageTag: cd9f973b-72e6-52f0-8bee-aa97781b91a9
+		summarizeBy: none
+		sourceColumn: minuto
+
+	column acrescimo
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b01a6b4-e5fa-5057-a7d0-d04245e0e9c8
+		summarizeBy: none
+		sourceColumn: acrescimo
+
+	column minuto_total
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a11d125-08b6-53f0-b208-02b46efca42d
+		summarizeBy: none
+		sourceColumn: minuto_total
+
+	column motivo
+		dataType: string
+		lineageTag: d8dc5e6d-0a74-5cff-bc65-354dd77af4f8
+		summarizeBy: none
+		sourceColumn: motivo
+
+	partition fato_substituicao = m
+		mode: import
+		source =
+				let
+				    Origem = Csv.Document(File.Contents(CaminhoDados & "\fato_substituicao.csv"), [Delimiter = ";", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Cabecalho = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+				    Vazios = Table.ReplaceValue(Cabecalho, "", null, Replacer.ReplaceValue, Table.ColumnNames(Cabecalho)),
+				    Tipos = Table.TransformColumnTypes(Vazios, {{"id_substituicao", type text}, {"id_partida", Int64.Type}, {"id_clube", Int64.Type}, {"ordem", Int64.Type}, {"tipo", type text}, {"id_atleta_saiu", type text}, {"id_atleta_entrou", type text}, {"numero_saiu", Int64.Type}, {"numero_entrou", Int64.Type}, {"periodo", type text}, {"minuto", Int64.Type}, {"acrescimo", Int64.Type}, {"minuto_total", Int64.Type}, {"motivo", type text}}, "en-US")
+				in
+				    Tipos
+
